@@ -8,31 +8,36 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 
-/**
- * JavaFX App
- */
+
 public class App extends Application {
 
-    private static Scene scene;
 
-    @Override
-    public void start(Stage stage) throws IOException {
-        scene = new Scene(loadFXML("primary"), 640, 480);
-        stage.setScene(scene);
-        stage.show();
-    }
+        public static void main(String[] args)  {
+            launch(args);
+        }
 
-    static void setRoot(String fxml) throws IOException {
-        scene.setRoot(loadFXML(fxml));
-    }
+        @Override
+        public void start(Stage splashScreen) throws IOException{
+          Parent root = FXMLLoader.load(getClass().getResource("LoginScene.fxml"));
+          splashScreen.setTitle("Library");
+          splashScreen.setResizable(false);
+          splashScreen.setScene(new Scene(root));
+          splashScreen.show();
 
-    private static Parent loadFXML(String fxml) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource(fxml + ".fxml"));
-        return fxmlLoader.load();
-    }
+          System.out.println(this.getClass().getProtectionDomain().getCodeSource().getLocation());
 
-    public static void main(String[] args) {
-        launch();
+            /*
+            to confirm that some file exists
+            File file = new File("src/main/java/org/example/LoginPage.fxml");
+            if(file.exists())
+            {
+                System.out.println("file exist!");//I would print file path here.
+            }
+            else
+            {
+                System.out.println("file does not exist!");
+            }
+            */
     }
 
 }
