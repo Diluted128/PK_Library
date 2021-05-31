@@ -1,4 +1,4 @@
-package org.example.user;
+package org.example.library.user;
 
 @SuppressWarnings("unused")
 public abstract class User {

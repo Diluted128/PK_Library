@@ -1,4 +1,4 @@
-package org.example;
+package org.example.gui;
 
 import javax.mail.*;
 import javax.mail.internet.InternetAddress;

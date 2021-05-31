@@ -1,4 +1,4 @@
-package org.example.user;
+package org.example.library.user;
 
 public class Manager extends Worker{
 

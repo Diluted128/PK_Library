@@ -1,4 +1,4 @@
-package org.example.user;
+package org.example.library.user;
 
 public final class Customer extends User{
 
