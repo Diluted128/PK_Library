@@ -16,4 +16,4 @@
   :turtle: Wojciech Jacoszek [Diluted128](https://github.com/Diluted128)
   
 ## Project Structure
-![diagram](https://user-images.githubusercontent.com/67759414/119734230-f6277280-be7a-11eb-9aeb-0421dcdab310.png)
+![diagram](assets/diagram.png)
