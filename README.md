@@ -17,3 +17,13 @@
   
 ## Project Structure
 ![diagram](assets/diagram.png)
+
+
+
+
+## Rules and regulations
+- User can rent an item for a month.
+- User can rent 5 items at the time.
+- If a user exceeds 100.00 penalty they are added to the black list.
+- User can get out of  the black list by paying a penalty.
+- For every day of delay penalty is 1.00.
