@@ -1,7 +1,7 @@
 package org.example.library.item;
 
 public enum PublishingFrequency {
-
+    DAY,
     WEEK,
     TWO_WEEKS,
     MONTH,
