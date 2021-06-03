@@ -5,6 +5,9 @@
 ## Basic Overview
 
  Simple program in java to simulate and manage real library resources for workers. Using this app you can hire/fire employees, view stats about rented books, show info about customers and more! 
+ ### Initial interface
+![window](https://user-images.githubusercontent.com/67759414/120695303-8bde8580-c4ab-11eb-81f0-c6f3866ac1f8.png)
+
 
 
 ## Rules and regulations :page_with_curl:
