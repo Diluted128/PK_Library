@@ -1,6 +1,7 @@
 package org.example;
 
 import com.jfoenix.controls.JFXButton;
+import com.jfoenix.controls.JFXTextArea;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -20,13 +21,17 @@ public class LoginSceneController {
     @FXML
     private AnchorPane ap;
     @FXML
-    private TextField LoginEmail;
+    private JFXTextArea LoginEmail;
     @FXML
-    private TextField LoginPassword;
+    private JFXTextArea LoginPassword;
     @FXML
     private Label WarnningEmpty;
     @FXML
     private JFXButton LoginButton;
+    @FXML
+    private JFXButton ForgotPasword;
+    @FXML
+    private JFXButton SignupButton;
 
 
     String passedLogin;

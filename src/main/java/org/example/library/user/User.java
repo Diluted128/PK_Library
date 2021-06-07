@@ -1,14 +1,18 @@
 package org.example.library.user;
 
-import java.io.Serializable;
+
+import org.example.library.item.Item;
 
 @SuppressWarnings("unused")
-public abstract class User implements Serializable {
+public abstract class User {
+    private int userID;
     private String firstName;
     private String lastName;
     private String login;
     private String password;
     private String email;
+    private String roles; //enum
+    private String permissions; //enum
 
     public User(String firstName, String lastName, String login, String password, String email) {
         this.firstName = firstName;
@@ -56,5 +60,17 @@ public abstract class User implements Serializable {
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    public void rentItem(Item item) {
+
+    }
+
+    public void returnItem(Item item) {
+
+    }
+
+    public void reserveItem(Item item) {
+
     }
 }
