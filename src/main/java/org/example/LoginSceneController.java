@@ -70,12 +70,10 @@ public class LoginSceneController {
             th.start();
         }
         else{
-            Parent root = FXMLLoader.load(getClass().getResource("[2] WelcomeScene.fxml"));
+            Parent root = FXMLLoader.load(getClass().getResource("[2] MyItemsScene.fxml"));
             Scene LoginReminder = new Scene(root);
 
             Stage ourStage = (Stage)((Node)event.getSource()).getScene().getWindow();
-            ourStage.setX(260);
-            ourStage.setY(60);
             ourStage.setScene(LoginReminder);
             ourStage.show();
         }
