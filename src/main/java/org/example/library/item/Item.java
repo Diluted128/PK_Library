@@ -7,6 +7,10 @@ public abstract class Item {
     private List<String> authors;
     private String title;
     private int numberOfPages;
+    private int itemID;
+    private String ISBN;
+    private boolean isRented;
+    private boolean isReserved;
 
     public Item(List<String> authors, String title, int numberOfPages) {
         this.authors = authors;

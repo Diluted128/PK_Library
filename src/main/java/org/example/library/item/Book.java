@@ -6,14 +6,12 @@ public class Book extends Item {
 
     private String publisher;
     private Cover cover;
-    private Long ISBN;
     private Genre genre;
 
-    public Book(List<String> authors, String title, int numberOfPages, String publisher, Cover cover, Long ISBN, Genre genre) {
+    public Book(List<String> authors, String title, int numberOfPages, String publisher, Cover cover, Genre genre) {
         super(authors, title, numberOfPages);
         this.publisher = publisher;
         this.cover = cover;
-        this.ISBN = ISBN;
         this.genre = genre;
     }
 
@@ -31,14 +29,6 @@ public class Book extends Item {
 
     public void setCover(Cover cover) {
         this.cover = cover;
-    }
-
-    public Long getISBN() {
-        return ISBN;
-    }
-
-    public void setISBN(Long ISBN) {
-        this.ISBN = ISBN;
     }
 
     public Genre getGenre() {
