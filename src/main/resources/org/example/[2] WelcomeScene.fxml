@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="900.0" prefWidth="1400.0" snapToPixel="false" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.gui.WelcomeController">
+   <children>
+      <ImageView fitHeight="900.0" fitWidth="1400.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="file:/C:/Users/Wojciech%20Jacoszek/Desktop/project/src/main/Images/WelcomeBackground.png" />
+         </image>
+         <cursor>
+            <Cursor fx:constant="DEFAULT" />
+         </cursor>
+      </ImageView>
+      <JFXButton fx:id="MyItemsButton" buttonType="RAISED" layoutX="91.0" layoutY="255.0" prefHeight="50.0" prefWidth="225.0" ripplerFill="#ae00ff" text="-" textFill="#ae2a2a" textOverrun="CLIP">
+         <font>
+            <Font size="1.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </JFXButton>
+      <JFXButton fx:id="RentItemButton" buttonType="RAISED" layoutX="91.0" layoutY="315.0" prefHeight="50.0" prefWidth="225.0" ripplerFill="#a221dd" text="-" textFill="WHITE">
+         <font>
+            <Font size="1.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </JFXButton>
+      <JFXButton fx:id="MyProfile" buttonType="RAISED" layoutX="91.0" layoutY="375.0" prefHeight="50.0" prefWidth="225.0" ripplerFill="#a221dd" text="-" textFill="WHITE">
+         <font>
+            <Font size="1.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </JFXButton>
+      <JFXButton fx:id="Settings" buttonType="RAISED" layoutX="91.0" layoutY="435.0" prefHeight="50.0" prefWidth="225.0" ripplerFill="#a221dd" text="-" textFill="WHITE">
+         <font>
+            <Font size="1.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </JFXButton>
+   </children>
+</AnchorPane>

@@ -1,5 +1,7 @@
 package org.example.gui;
 
+import com.jfoenix.controls.JFXButton;
+import com.jfoenix.controls.JFXTextArea;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -14,19 +16,19 @@ import java.util.Map;
 
 public class CreateAccountController {
     @FXML
-    private Button CreateAccountButton;
+    private JFXButton CreateAccountButton;
     @FXML
     private Button ReturnButton;
     @FXML
-    private TextField FirstNameTextField;
+    private JFXTextArea FirstNameTextField;
     @FXML
-    private TextField LastNameTextField;
+    private JFXTextArea LastNameTextField;
     @FXML
-    private TextField EmailAddressTextField;
+    private JFXTextArea EmailAddressTextField;
     @FXML
-    private TextField UsernameTextField;
+    private JFXTextArea UsernameTextField;
     @FXML
-    private TextField PasswordTextField;
+    private JFXTextArea PasswordTextField;
     @FXML
     private CheckBox CheckBox;
     @FXML
@@ -42,7 +44,7 @@ public class CreateAccountController {
 
 
     public void ReturnFunctions(ActionEvent event) throws Exception {
-        Parent root = FXMLLoader.load(getClass().getResource("LoginScene.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("[1] LoginScene.fxml"));
         Scene LoginReminder = new Scene(root);
 
         Stage ourStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
@@ -111,40 +113,41 @@ public class CreateAccountController {
                     }
                 }
             }
-                if (EmptyField) {
-                    EmptyFields.setVisible(true);
-                    try {
-                        Thread.sleep(5000);
-                    } catch (InterruptedException e) {
-                        e.printStackTrace();
-                    }
-                    EmptyFields.setVisible(false);
+            if (EmptyField) {
+                EmptyFields.setVisible(true);
+                try {
+                    Thread.sleep(5000);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
                 }
-                else if(emptyAgreement){
-                    EmptyAgreement.setVisible(true);
-                    try {
-                        Thread.sleep(5000);
-                    } catch (InterruptedException e) {
-                        e.printStackTrace();
-                    }
-                    EmptyAgreement.setVisible(false);
+                EmptyFields.setVisible(false);
+            }
+            else if(emptyAgreement){
+                EmptyAgreement.setVisible(true);
+                try {
+                    Thread.sleep(5000);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
                 }
-                else{
-                    FirstNameTextField.clear();
-                    LastNameTextField.clear();
-                    EmailAddressTextField.clear();
-                    UsernameTextField.clear();
-                    PasswordTextField.clear();
-                    CheckBox.fire();
+                EmptyAgreement.setVisible(false);
+            }
+            else{
+                FirstNameTextField.clear();
+                LastNameTextField.clear();
+                EmailAddressTextField.clear();
+                UsernameTextField.clear();
+                PasswordTextField.clear();
+                CheckBox.fire();
 
-                    SuccesfulLabel.setVisible(true);
-                    try {
-                        Thread.sleep(5000);
-                    } catch (InterruptedException e) {
-                        e.printStackTrace();
-                    }
-                    SuccesfulLabel.setVisible(false);
+                SuccesfulLabel.setVisible(true);
+                try {
+                    Thread.sleep(5000);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
                 }
+                SuccesfulLabel.setVisible(false);
+            }
         }
     }
 }
+

@@ -19,15 +19,15 @@ public class App extends Application {
 
         @Override
         public void start(Stage splashScreen) throws IOException{
-        // Parent root = FXMLLoader.load(getClass().getResource("..//..//..//resources//org/example/LoginScene.fxml"));
+         Parent root = FXMLLoader.load(getClass().getResource("LoginScene.fxml"));
           splashScreen.setTitle("Library");
           splashScreen.setResizable(false);
-       //   splashScreen.setScene(new Scene(root));
+          splashScreen.setScene(new Scene(root));
           splashScreen.show();
 
           System.out.println(this.getClass().getProtectionDomain().getCodeSource().getLocation());
 
-
+/*
             File file = new File("file:../../../resources/org/example/LoginScene.fxml");
             if(file.exists())
             {
@@ -37,7 +37,7 @@ public class App extends Application {
             {
                 System.out.println("file does not exist!");
             }
-
+*/
     }
 
 }

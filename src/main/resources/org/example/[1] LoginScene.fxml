@@ -1,23 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import com.jfoenix.controls.JFXButton?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.PasswordField?>
-<?import javafx.scene.control.ProgressBar?>
 <?import javafx.scene.control.TextField?>
-<?import javafx.scene.effect.ColorAdjust?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="675.0" prefWidth="1050.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.gui.LoginSceneController">
+<AnchorPane fx:id="ap" prefHeight="675.0" prefWidth="1050.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.gui.LoginSceneController">
    <children>
       <ImageView fitHeight="675.0" fitWidth="1050.0" pickOnBounds="true">
          <image>
-            <Image url="file:/C:/Users/Wojciech%20Jacoszek/Desktop/project/src/main/Images/LoginBackground.png" />
+            <Image url="file:/C:/Users/Wojciech%20Jacoszek/Desktop/Biblioteka/PK_Library/src/main/Images/LoginBackground.png" />
          </image>
       </ImageView>
       <TextField fx:id="LoginEmail" alignment="TOP_LEFT" cacheShape="false" centerShape="false" focusTraversable="false" layoutX="575.0" layoutY="301.0" nodeOrientation="LEFT_TO_RIGHT" pickOnBounds="false" prefHeight="44.0" prefWidth="385.0" scaleShape="false" style="-fx-background-color: 10;">
@@ -31,19 +30,6 @@
             <Font name="Roboto" size="14.0" />
          </font>
       </TextField>
-      <Button fx:id="LoginButton" cache="true" depthTest="DISABLE" layoutX="581.0" layoutY="508.0" onAction="#LoginButtonFunctions" opacity="0.6" prefHeight="50.0" prefWidth="379.0" style="-fx-background-color: 25;" textFill="#fffefe" underline="true">
-         <font>
-            <Font name="Open Sans Regular" size="23.0" />
-         </font>
-         <cursor>
-            <Cursor fx:constant="HAND" />
-         </cursor>
-      </Button>
-      <ProgressBar fx:id="myProgressBar" cacheShape="false" focusTraversable="false" layoutY="664.0" opacity="0.7" prefHeight="11.0" prefWidth="487.0" progress="0.86" scaleY="1.5" style="-fx-background-image: 10;">
-         <effect>
-            <ColorAdjust brightness="0.19" contrast="1.0" hue="-0.1" saturation="0.01" />
-         </effect>
-      </ProgressBar>
       <Button fx:id="ForgotPasswordButton" cache="true" depthTest="DISABLE" layoutX="891.0" layoutY="411.0" onAction="#ForgotPasswordFunctions" opacity="0.6" prefHeight="131.0" prefWidth="30.0" rotate="90.0" style="-fx-background-color: 25;" textFill="#fffefe" underline="true">
          <font>
             <Font name="Open Sans Regular" size="23.0" />
@@ -62,5 +48,11 @@
             <Font name="Roboto" size="14.0" />
          </font>
       </Label>
+      <Button fx:id="SignupButton" layoutX="786.0" layoutY="606.0" mnemonicParsing="false" onAction="#SignUpFunctions" prefHeight="17.0" prefWidth="63.0" style="-fx-background-color: 25;">
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </Button>
+      <JFXButton fx:id="LoginButton" layoutX="581.0" layoutY="509.0" onAction="#LoginButtonFunctions" prefHeight="50.0" prefWidth="378.0" ripplerFill="#ff02dd" text="-" />
    </children>
 </AnchorPane>
