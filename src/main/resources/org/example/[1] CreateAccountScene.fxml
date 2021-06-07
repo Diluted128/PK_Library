@@ -20,12 +20,12 @@
             <Image url="@../../../../src/main/java/org/example/images/CreateAccountBackground.png" />
          </image>
       </ImageView>
-      <CheckBox fx:id="CheckBox" layoutX="572.0" layoutY="492.0" mnemonicParsing="false" prefHeight="9.0" prefWidth="8.0" style="-fx-background-color: 25;">
+      <CheckBox fx:id="CheckBox" layoutX="572.0" layoutY="492.0" mnemonicParsing="false" prefHeight="9.0" prefWidth="8.0" style="-fx-background-color: rgba(210,210,210,0.3);">
          <effect>
             <ColorAdjust brightness="0.15" contrast="0.05" hue="0.12" saturation="-1.0" />
          </effect>
       </CheckBox>
-      <Button fx:id="ReturnButton" layoutX="512.0" layoutY="627.0" mnemonicParsing="false" onAction="#ReturnFunctions" prefHeight="17.0" prefWidth="81.0" style="-fx-background-color: 25;">
+      <Button fx:id="ReturnButton" layoutX="512.0" layoutY="627.0" mnemonicParsing="false" onAction="#ReturnFunctions" prefHeight="17.0" prefWidth="81.0" style="-fx-background-color: rgba(210,210,210,0.3);">
          <cursor>
             <Cursor fx:constant="HAND" />
          </cursor>

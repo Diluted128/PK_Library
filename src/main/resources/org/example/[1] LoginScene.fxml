@@ -19,7 +19,7 @@
             <Image url="@../../../../src/main/java/org/example/images/LoginBackground.png" />
          </image>
       </ImageView>
-      <TextField fx:id="LoginEmail" alignment="TOP_LEFT" cacheShape="false" centerShape="false" focusTraversable="false" layoutX="575.0" layoutY="301.0" nodeOrientation="LEFT_TO_RIGHT" pickOnBounds="false" prefHeight="44.0" prefWidth="385.0" scaleShape="false" style="-fx-background-color: 10;">
+      <TextField fx:id="LoginEmail" alignment="TOP_LEFT" cacheShape="false" centerShape="false" focusTraversable="false" layoutX="575.0" layoutY="301.0" nodeOrientation="LEFT_TO_RIGHT" pickOnBounds="false" prefHeight="44.0" prefWidth="385.0" scaleShape="false" style="-fx-background-color: rgba(210,210,210,0.3);">
          <cursor>
             <Cursor fx:constant="TEXT" />
          </cursor>
@@ -30,7 +30,7 @@
             <Font name="Roboto" size="14.0" />
          </font>
       </TextField>
-      <Button fx:id="ForgotPasswordButton" cache="true" depthTest="DISABLE" layoutX="891.0" layoutY="411.0" onAction="#ForgotPasswordFunctions" opacity="0.6" prefHeight="131.0" prefWidth="30.0" rotate="90.0" style="-fx-background-color: 25;" textFill="#fffefe" underline="true">
+      <Button fx:id="ForgotPasswordButton" cache="true" depthTest="DISABLE" layoutX="891.0" layoutY="411.0" onAction="#ForgotPasswordFunctions" opacity="0.6" prefHeight="131.0" prefWidth="30.0" rotate="90.0" style="-fx-background-color: rgba(210,210,210,0.3);" textFill="#fffefe" underline="true">
          <font>
             <Font name="Open Sans Regular" size="23.0" />
          </font>
@@ -38,7 +38,7 @@
             <Cursor fx:constant="HAND" />
          </cursor>
       </Button>
-      <PasswordField fx:id="LoginPassword" layoutX="575.0" layoutY="394.0" prefHeight="38.0" prefWidth="385.0" style="-fx-background-color: 23;">
+      <PasswordField fx:id="LoginPassword" layoutX="575.0" layoutY="394.0" prefHeight="38.0" prefWidth="385.0" style="-fx-background-color: rgba(210,210,210,0.3);">
          <font>
             <Font name="Roboto" size="14.0" />
          </font>
@@ -48,7 +48,7 @@
             <Font name="Roboto" size="14.0" />
          </font>
       </Label>
-      <Button fx:id="SignupButton" layoutX="786.0" layoutY="606.0" mnemonicParsing="false" onAction="#SignUpFunctions" prefHeight="17.0" prefWidth="63.0" style="-fx-background-color: 25;">
+      <Button fx:id="SignupButton" layoutX="786.0" layoutY="606.0" mnemonicParsing="false" onAction="#SignUpFunctions" prefHeight="17.0" prefWidth="63.0" style="-fx-background-color: rgba(210,210,210,0.3);">
          <cursor>
             <Cursor fx:constant="HAND" />
          </cursor>
