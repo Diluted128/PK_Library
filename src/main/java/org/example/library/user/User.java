@@ -3,8 +3,10 @@ package org.example.library.user;
 
 import org.example.library.item.Item;
 
+import java.io.Serializable;
+
 @SuppressWarnings("unused")
-public abstract class User {
+public abstract class User implements Serializable {
     private int userID;
     private String firstName;
     private String lastName;

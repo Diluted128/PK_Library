@@ -27,20 +27,6 @@ public class App extends Application {
           splashScreen.setResizable(false);
           splashScreen.setScene(new Scene(root));
           splashScreen.show();
-
-          System.out.println(this.getClass().getProtectionDomain().getCodeSource().getLocation());
-
-
-            File file = new File("src/main/resources/org/example/LoginScene.fxml");
-            if(file.exists())
-            {
-                System.out.println("file exist!");//I would print file path here.
-            }
-            else
-            {
-                System.out.println("file does not exist!");
-            }
-
     }
 
 }
