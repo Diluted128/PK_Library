@@ -1,4 +1,4 @@
-package org.example.gui;
+package org.example;
 
 public class WelcomeController {
 }

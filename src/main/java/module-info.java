@@ -5,7 +5,7 @@ module org.example {
     requires com.jfoenix;
 
     opens org.example to javafx.fxml;
-    opens org.example.gui to javafx.fxml;
+   // opens org.example.gui to javafx.fxml;
     exports org.example;
-    exports org.example.gui;
+  //  exports org.example.gui;
 }
