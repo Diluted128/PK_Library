@@ -17,7 +17,7 @@
    <children>
       <ImageView fitHeight="675.0" fitWidth="1050.0" pickOnBounds="true">
          <image>
-            <Image url="file:/C:/Users/Wojciech%20Jacoszek/Desktop/project/src/main/Images/LoginBackground.png" />
+            <Image url="@../../../../src/main/java/org/example/images/LoginBackground.png" />
          </image>
       </ImageView>
       <TextField fx:id="LoginEmail" alignment="TOP_LEFT" cacheShape="false" centerShape="false" focusTraversable="false" layoutX="575.0" layoutY="301.0" nodeOrientation="LEFT_TO_RIGHT" pickOnBounds="false" prefHeight="44.0" prefWidth="385.0" scaleShape="false" style="-fx-background-color: 10;">

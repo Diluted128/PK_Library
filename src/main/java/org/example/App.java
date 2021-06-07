@@ -8,6 +8,7 @@ import javafx.stage.Stage;
 
 import java.io.File;
 import java.io.IOException;
+import java.net.URL;
 
 
 public class App extends Application {
@@ -19,16 +20,16 @@ public class App extends Application {
 
         @Override
         public void start(Stage splashScreen) throws IOException{
-        // Parent root = FXMLLoader.load(getClass().getResource("..//..//..//resources//org/example/LoginScene.fxml"));
+         Parent root = FXMLLoader.load(getClass().getResource("LoginScene.fxml"));
           splashScreen.setTitle("Library");
           splashScreen.setResizable(false);
-       //   splashScreen.setScene(new Scene(root));
+          splashScreen.setScene(new Scene(root));
           splashScreen.show();
 
           System.out.println(this.getClass().getProtectionDomain().getCodeSource().getLocation());
 
 
-            File file = new File("file:../../../resources/org/example/LoginScene.fxml");
+            File file = new File("src/main/resources/org/example/LoginScene.fxml");
             if(file.exists())
             {
                 System.out.println("file exist!");//I would print file path here.
