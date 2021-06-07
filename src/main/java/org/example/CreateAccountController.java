@@ -18,7 +18,7 @@ public class CreateAccountController {
     @FXML
     private JFXButton CreateAccountButton;
     @FXML
-    private Button ReturnButton;
+    private JFXButton ReturnButton;
     @FXML
     private JFXTextArea FirstNameTextField;
     @FXML

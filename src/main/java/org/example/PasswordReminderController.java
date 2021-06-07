@@ -23,6 +23,8 @@ public class PasswordReminderController {
     private ProgressBar myProgressBar;
     @FXML
     private JFXButton PasswordReminderButton;
+    @FXML
+    private JFXButton ReturnButton;
 
     public void ForgotPasswordSubmit() throws Exception {
 
