@@ -10,8 +10,12 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.stage.Stage;
+import org.example.library.user.Customer;
 
+import java.io.*;
+import java.util.ArrayList;
 import java.util.LinkedHashMap;
+import java.util.List;
 import java.util.Map;
 
 public class CreateAccountController {
@@ -74,6 +78,38 @@ public class CreateAccountController {
         }
         if(!CheckBox.isSelected())
             emptyAgree = true;
+
+
+        Customer newCustomer = new Customer(
+                FirstNameTextField.getText(),
+                LastNameTextField.getText(),
+                UsernameTextField.getText(),
+                PasswordTextField.getText(),
+                EmailAddressTextField.getText()
+        );
+
+        List<Customer> customerList = new ArrayList<>();
+
+        if(new File("users.bin").exists()) {
+            try (ObjectInputStream inputStream = new ObjectInputStream(new FileInputStream("users.bin"))) {
+                customerList = (ArrayList) inputStream.readObject();
+                System.out.println("\nUżytkownicy:");
+                customerList.forEach(System.out::println);
+            } catch (Exception e) {
+                System.out.println(e.getMessage());
+            }
+        }
+
+        customerList.add(newCustomer);
+
+        try (ObjectOutputStream outputStream = new ObjectOutputStream(new FileOutputStream("users.bin"))) {
+            outputStream.writeObject(customerList);
+        } catch (IOException e) {
+            System.out.println(e.getMessage());
+        }
+
+
+
 
         Thread warningThread = new Thread(new warning_Thread(emptyFields,wrongPassword,emptyAgree));
         warningThread.start();
