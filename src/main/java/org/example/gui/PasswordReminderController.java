@@ -1,5 +1,7 @@
 package org.example.gui;
 
+import com.jfoenix.controls.JFXButton;
+import com.jfoenix.controls.JFXTextArea;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -15,11 +17,13 @@ import javafx.stage.Stage;
 public class PasswordReminderController {
 
     @FXML
-    private TextField PasswordReminderEmail;
+    private JFXTextArea PasswordReminderEmail;
     @FXML
     private Label MailSentSuccessfully;
     @FXML
     private ProgressBar myProgressBar;
+    @FXML
+    private JFXButton PasswordReminderButton;
 
     public void ForgotPasswordSubmit() throws Exception {
 
@@ -29,7 +33,7 @@ public class PasswordReminderController {
     }
     public void ForgotPasswordReturn(ActionEvent event) throws Exception {
 
-        Parent root = FXMLLoader.load(getClass().getResource("LoginScene.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("[1] LoginScene.fxml"));
         Scene LoginScene = new Scene(root);
 
         Stage ourStage = (Stage)((Node)event.getSource()).getScene().getWindow();

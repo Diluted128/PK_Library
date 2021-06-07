@@ -20,7 +20,7 @@ public class App extends Application {
 
         @Override
         public void start(Stage splashScreen) throws IOException{
-         Parent root = FXMLLoader.load(getClass().getResource("LoginScene.fxml"));
+         Parent root = FXMLLoader.load(getClass().getResource("[1] LoginScene.fxml"));
           splashScreen.setTitle("Library");
           splashScreen.setResizable(false);
           splashScreen.setScene(new Scene(root));
