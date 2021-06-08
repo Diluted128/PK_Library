@@ -5,6 +5,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import org.example.db.UserRepository;
 import org.example.library.user.Customer;
 import org.example.library.user.Manager;
 import org.example.library.user.User;
@@ -42,15 +43,7 @@ public class App extends Application {
                     "admin@gmail.com",
                     new ArrayList<>()
                     );
-
-            ArrayList<User> users = new ArrayList<>(Arrays.asList(manager));
-
-
-            try (ObjectOutputStream outputStream = new ObjectOutputStream(new FileOutputStream("users.bin"))) {
-                outputStream.writeObject(users);
-            } catch (IOException e) {
-                System.out.println(e.getMessage());
-            }
+            new UserRepository().addNewUser(manager);
         }
 
 }

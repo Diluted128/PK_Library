@@ -11,6 +11,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
+import org.example.db.UserRepository;
 import org.example.library.user.User;
 
 import java.io.File;
@@ -18,6 +19,7 @@ import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.util.ArrayList;
+import java.util.Optional;
 
 
 public class LoginSceneController {
@@ -40,6 +42,8 @@ public class LoginSceneController {
 
     String passedLogin;
     String passedPassword;
+
+    UserRepository userRepository = new UserRepository();
 
     public void ForgotPasswordFunctions(ActionEvent event) throws Exception {
         Parent root = FXMLLoader.load(getClass().getResource("[1] PasswordReminderScene.fxml"));
@@ -67,24 +71,16 @@ public class LoginSceneController {
         passedLogin = LoginEmail.getText();
         passedPassword = LoginPassword.getText();
 
-        ArrayList<User> usersList = new ArrayList<>();
+        ArrayList<User> usersList = userRepository.getAllUsers();
         User loggedInUser = null;
 
-        if(new File("users.bin").exists()) {
-            try (ObjectInputStream inputStream = new ObjectInputStream(new FileInputStream("users.bin"))) {
-                usersList = (ArrayList) inputStream.readObject();
-            } catch (Exception e) {
-                System.out.println(e.getMessage());
-            }
-        }
+        Optional<User> foundUser = usersList.stream()
+                .filter(u -> u.areCredentialsEqual(passedLogin, passedPassword))
+                .findFirst();
 
-        for (User u : usersList) {
-            if (u.areCredentialsEqual(passedLogin, passedPassword)) {
-                loggedInUser = u;
-                break;
-            }
+        if (foundUser.isPresent()) {
+            loggedInUser = foundUser.get();
         }
-
 
 
         System.out.println("Login: " + passedLogin + " Password: " + passedPassword);
