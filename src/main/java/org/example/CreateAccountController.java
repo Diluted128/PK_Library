@@ -88,13 +88,11 @@ public class CreateAccountController {
                 EmailAddressTextField.getText()
         );
 
-        List<Customer> customerList = new ArrayList<>();
+        ArrayList<Customer> customerList = new ArrayList<>();
 
         if(new File("users.bin").exists()) {
             try (ObjectInputStream inputStream = new ObjectInputStream(new FileInputStream("users.bin"))) {
-                customerList = (ArrayList) inputStream.readObject();
-                System.out.println("\nUżytkownicy:");
-                customerList.forEach(System.out::println);
+                customerList = (ArrayList<Customer>) inputStream.readObject();
             } catch (Exception e) {
                 System.out.println(e.getMessage());
             }

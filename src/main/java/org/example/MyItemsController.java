@@ -1,17 +1,18 @@
 package org.example;
 
-import com.jfoenix.controls.JFXButton;
 import javafx.event.ActionEvent;
-import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import org.example.library.user.User;
 
 import java.io.IOException;
 
 public class MyItemsController {
+
+    private User loggedInUser;
 
     public void changeSceneToMyItems(ActionEvent event) throws IOException {
         Parent root = FXMLLoader.load(getClass().getResource("[2] MyItemsScene.fxml"));
@@ -30,7 +31,13 @@ public class MyItemsController {
     }
 
     public void changeSceneToMyProfile(ActionEvent event) throws IOException {
-        Parent root = FXMLLoader.load(getClass().getResource("[2] MyProfileScene.fxml"));
+
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("[2] MyProfileScene.fxml"));
+        Parent root = fxmlLoader.load();
+
+        MyProfileController myProfileController = fxmlLoader.getController();
+        myProfileController.setLoggedInUser(loggedInUser);
+
         Scene LoginReminder = new Scene(root);
         Stage ourStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         ourStage.setScene(LoginReminder);
@@ -51,5 +58,9 @@ public class MyItemsController {
         Stage ourStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         ourStage.setScene(LoginReminder);
         ourStage.show();
+    }
+
+    public void setLoggedInUser(User user) {
+        this.loggedInUser = user;
     }
 }

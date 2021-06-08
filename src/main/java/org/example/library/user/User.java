@@ -75,4 +75,8 @@ public abstract class User implements Serializable {
     public void reserveItem(Item item) {
 
     }
+
+    public boolean areCredentialsEqual(String login, String password) {
+        return this.getLogin().equals(login) && this.getPassword().equals(password);
+    }
 }

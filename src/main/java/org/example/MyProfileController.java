@@ -9,6 +9,8 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.stage.Stage;
+import org.example.library.user.Customer;
+import org.example.library.user.User;
 
 import java.io.IOException;
 
@@ -25,6 +27,8 @@ public class MyProfileController {
     private Label balanceField;
     @FXML
     private JFXButton payPenalty;
+
+    private User loggedInUser;
 
     public void changeSceneToMyItems(ActionEvent event) throws IOException {
         Parent root = FXMLLoader.load(getClass().getResource("[2] MyItemsScene.fxml"));
@@ -67,5 +71,18 @@ public class MyProfileController {
     }
     public void payPenalty(){
 
+    }
+
+    public void setLoggedInUser(User user) {
+        this.loggedInUser = user;
+        this.firstNameField.setText(user.getFirstName());
+        this.lastNameField.setText(user.getLastName());
+        this.userNameField.setText(user.getLogin());
+        this.emailField.setText(user.getEmail());
+        if (user instanceof Customer) {
+            this.balanceField.setText(String.valueOf(((Customer) user).getPenalty()));
+        } else {
+            this.balanceField.setText("0.0");
+        }
     }
 }
