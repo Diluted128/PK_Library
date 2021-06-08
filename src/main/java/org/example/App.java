@@ -5,18 +5,22 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import org.example.library.user.Customer;
+import org.example.library.user.Manager;
+import org.example.library.user.User;
 
-import java.io.File;
-import java.io.IOException;
-import java.io.ObjectInputStream;
-import java.io.ObjectOutputStream;
+import java.io.*;
 import java.net.URL;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 
 public class App extends Application {
 
 
         public static void main(String[] args)  {
+            addAdminToFileDB();
             launch(args);
         }
 
@@ -27,6 +31,26 @@ public class App extends Application {
           splashScreen.setResizable(false);
           splashScreen.setScene(new Scene(root));
           splashScreen.show();
-    }
+        }
+
+        public static void addAdminToFileDB() {
+            Manager manager = new Manager(
+                    "John",
+                    "Doe",
+                    "admin",
+                    "admin",
+                    "admin@gmail.com",
+                    new ArrayList<>()
+                    );
+
+            ArrayList<User> users = new ArrayList<>(Arrays.asList(manager));
+
+
+            try (ObjectOutputStream outputStream = new ObjectOutputStream(new FileOutputStream("users.bin"))) {
+                outputStream.writeObject(users);
+            } catch (IOException e) {
+                System.out.println(e.getMessage());
+            }
+        }
 
 }

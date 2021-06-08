@@ -11,6 +11,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.stage.Stage;
 import org.example.library.user.Customer;
+import org.example.library.user.User;
 
 import java.io.*;
 import java.util.ArrayList;
@@ -88,20 +89,20 @@ public class CreateAccountController {
                 EmailAddressTextField.getText()
         );
 
-        ArrayList<Customer> customerList = new ArrayList<>();
+        ArrayList<User> users = new ArrayList<>();
 
         if(new File("users.bin").exists()) {
             try (ObjectInputStream inputStream = new ObjectInputStream(new FileInputStream("users.bin"))) {
-                customerList = (ArrayList<Customer>) inputStream.readObject();
+                users = (ArrayList) inputStream.readObject();
             } catch (Exception e) {
                 System.out.println(e.getMessage());
             }
         }
 
-        customerList.add(newCustomer);
+        users.add(newCustomer);
 
         try (ObjectOutputStream outputStream = new ObjectOutputStream(new FileOutputStream("users.bin"))) {
-            outputStream.writeObject(customerList);
+            outputStream.writeObject(users);
         } catch (IOException e) {
             System.out.println(e.getMessage());
         }
