@@ -14,7 +14,7 @@ import org.example.library.user.User;
 
 import java.io.IOException;
 
-public class MyProfileController {
+public class MyCustomerProfileController {
     @FXML
     private Label firstNameField;
     @FXML

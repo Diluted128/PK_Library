@@ -8,7 +8,7 @@
 
 <AnchorPane xmlns="http://javafx.com/javafx"
             xmlns:fx="http://javafx.com/fxml"
-            fx:controller="org.example.SignoutController"
+            fx:controller="org.example.MyCustomerProfileController"
             prefHeight="400.0" prefWidth="600.0">
 
 </AnchorPane>

@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.effect.ColorAdjust?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="675.0" prefWidth="1050.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.ConfirmRentalController">
+   <children>
+      <ImageView fitHeight="675.0" fitWidth="1050.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../../src/main/java/org/example/images/ConfirmRentalBackground.png" />
+         </image>
+      </ImageView>
+      <JFXButton buttonType="RAISED" cacheShape="false" focusTraversable="false" layoutX="57.0" layoutY="237.0" onAction="#changeSceneToAddItem" pickOnBounds="false" prefHeight="44.0" prefWidth="191.0" ripplerFill="#3b0257" text="-" textFill="#ae2a2a" textOverrun="CLIP">
+         <font>
+            <Font size="1.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </JFXButton>
+      <JFXButton buttonType="RAISED" focusTraversable="false" layoutX="61.0" layoutY="287.0" onAction="#changeSceneToRemoveItem" prefHeight="44.0" prefWidth="184.0" ripplerFill="#540479" text="-" textFill="WHITE">
+         <font>
+            <Font size="1.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </JFXButton>
+      <JFXButton buttonType="RAISED" focusTraversable="false" layoutX="61.0" layoutY="345.0" onAction="#changeSceneToConfirmRental" prefHeight="44.0" prefWidth="184.0" ripplerFill="#5a0383" text="-" textFill="WHITE">
+         <font>
+            <Font size="1.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </JFXButton>
+      <JFXButton buttonType="RAISED" focusTraversable="false" layoutX="57.0" layoutY="396.0" onAction="#changeSceneToPickUpItem" prefHeight="44.0" prefWidth="191.0" ripplerFill="#56027c" text="-" textFill="WHITE">
+         <font>
+            <Font size="1.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </JFXButton>
+      <JFXButton buttonType="RAISED" focusTraversable="false" layoutX="61.0" layoutY="448.0" onAction="#changeSceneToMyProfile" prefHeight="44.0" prefWidth="184.0" ripplerFill="#4c026f" text="-" textFill="WHITE">
+         <font>
+            <Font size="1.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </JFXButton>
+      <JFXButton buttonType="RAISED" focusTraversable="false" layoutX="57.0" layoutY="500.0" onAction="#changeSceneToSignOut" prefHeight="35.0" prefWidth="178.0" ripplerFill="#4c026f" text="-" textFill="WHITE">
+         <font>
+            <Font size="1.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </JFXButton>
+      <TextField fx:id="IdField" layoutX="646.0" layoutY="523.0" prefHeight="25.0" prefWidth="66.0" promptText="Item ID">
+         <effect>
+            <ColorAdjust brightness="0.1" hue="0.27" />
+         </effect>
+      </TextField>
+      <JFXButton layoutX="581.0" layoutY="594.0" onAction="#confirmRental" prefHeight="35.0" prefWidth="199.0" ripplerFill="#ff03ff" style="-fx-background-color: #924da5;" text="Confirm rental" textFill="WHITE">
+         <font>
+            <Font name="Open Sans Bold" size="14.0" />
+         </font>
+         <effect>
+            <ColorAdjust contrast="0.24" hue="0.79" />
+         </effect>
+      </JFXButton>
+      <Label layoutX="600.0" layoutY="562.0" prefHeight="20.0" prefWidth="160.0" text="Put ID to confirm rental" textFill="#757575">
+         <font>
+            <Font name="Open Sans Regular" size="14.0" />
+         </font>
+      </Label>
+      <ScrollPane layoutX="363.0" layoutY="117.0" prefHeight="383.0" prefWidth="632.0">
+         <content>
+            <TableView prefHeight="382.0" prefWidth="625.0">
+               <columns>
+                  <TableColumn prefWidth="54.0" text="ID" />
+                  <TableColumn prefWidth="60.0" text="Type" />
+                  <TableColumn prefWidth="74.0" text="Title" />
+                  <TableColumn prefWidth="86.0" text="Authors" />
+                  <TableColumn prefWidth="70.0" text="Pages" />
+                  <TableColumn prefWidth="67.0" text="ISBN" />
+                  <TableColumn minWidth="0.0" prefWidth="122.0" text="Reservation" />
+                  <TableColumn prefWidth="74.0" text="Rental" />
+               </columns>
+            </TableView>
+         </content>
+         <effect>
+            <ColorAdjust contrast="0.14" />
+         </effect>
+      </ScrollPane>
+      <HBox layoutX="363.0" layoutY="118.0" prefHeight="35.0" prefWidth="632.0" style="-fx-background-color: #DCDBDB;">
+         <children>
+            <Label prefHeight="35.0" prefWidth="54.0" text="     ID">
+               <font>
+                  <Font name="Open Sans Bold" size="14.0" />
+               </font>
+            </Label>
+            <Label prefHeight="35.0" prefWidth="66.0" text="     Type">
+               <font>
+                  <Font name="Open Sans Bold" size="14.0" />
+               </font>
+            </Label>
+            <Label prefHeight="35.0" prefWidth="73.0" text="      Titile" textAlignment="CENTER">
+               <font>
+                  <Font name="Open Sans Bold" size="14.0" />
+               </font>
+            </Label>
+            <Label prefHeight="35.0" prefWidth="82.0" text="    Authors">
+               <font>
+                  <Font name="Open Sans Bold" size="14.0" />
+               </font>
+            </Label>
+            <Label prefHeight="35.0" prefWidth="65.0" text="   Pages">
+               <font>
+                  <Font name="Open Sans Bold" size="14.0" />
+               </font>
+            </Label>
+            <Label prefHeight="52.0" prefWidth="89.0" text="       ISBN">
+               <font>
+                  <Font name="Open Sans Bold" size="14.0" />
+               </font>
+            </Label>
+            <Label prefHeight="35.0" prefWidth="102.0" text="   Reservation">
+               <font>
+                  <Font name="Open Sans Bold" size="14.0" />
+               </font>
+            </Label>
+            <Label prefHeight="35.0" prefWidth="85.0" text="     Rental">
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font>
+            </Label>
+         </children>
+      </HBox>
+   </children>
+</AnchorPane>
