@@ -12,16 +12,6 @@ import javafx.stage.Stage;
 import java.io.IOException;
 
 public class MyItemsController {
-    @FXML
-    private JFXButton myItemsButton;
-    @FXML
-    private JFXButton rentItemButton;
-    @FXML
-    private JFXButton myProfileButton;
-    @FXML
-    private JFXButton settingsButton;
-    @FXML
-    private JFXButton signOutButton;
 
     public void changeSceneToMyItems(ActionEvent event) throws IOException {
         Parent root = FXMLLoader.load(getClass().getResource("[2] MyItemsScene.fxml"));

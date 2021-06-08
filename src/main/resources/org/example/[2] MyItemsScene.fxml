@@ -18,10 +18,10 @@
    <children>
       <ImageView fitHeight="675.0" fitWidth="1050.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="file:/C:/Users/Wojciech%20Jacoszek/Desktop/Biblioteka/PK_Library/src/main/java/org/example/images/WelcomeBackground.png" />
+            <Image url="@../../../../src/main/java/org/example/images/MyItemsBackground.png" />
          </image>
       </ImageView>
-      <JFXButton fx:id="MyItemsButton" buttonType="RAISED" cacheShape="false" focusTraversable="false" layoutX="50.0" layoutY="239.0" pickOnBounds="false" prefHeight="44.0" prefWidth="191.0" ripplerFill="#3b0257" text="-" textFill="#ae2a2a" textOverrun="CLIP">
+      <JFXButton fx:id="MyItemsButton" buttonType="RAISED" cacheShape="false" focusTraversable="false" layoutX="50.0" layoutY="239.0" onAction="#changeSceneToMyItems" pickOnBounds="false" prefHeight="44.0" prefWidth="191.0" ripplerFill="#3b0257" text="-" textFill="#ae2a2a" textOverrun="CLIP">
          <font>
             <Font size="1.0" />
          </font>
@@ -29,7 +29,7 @@
             <Cursor fx:constant="HAND" />
          </cursor>
       </JFXButton>
-      <JFXButton fx:id="RentItemButton" buttonType="RAISED" focusTraversable="false" layoutX="55.0" layoutY="288.0" prefHeight="50.0" prefWidth="184.0" ripplerFill="#540479" text="-" textFill="WHITE">
+      <JFXButton fx:id="RentItemButton" buttonType="RAISED" focusTraversable="false" layoutX="55.0" layoutY="288.0" onAction="#changeSceneToRentItem" prefHeight="50.0" prefWidth="184.0" ripplerFill="#540479" text="-" textFill="WHITE">
          <font>
             <Font size="1.0" />
          </font>
@@ -37,7 +37,7 @@
             <Cursor fx:constant="HAND" />
          </cursor>
       </JFXButton>
-      <JFXButton fx:id="MyProfile" buttonType="RAISED" focusTraversable="false" layoutX="52.0" layoutY="338.0" prefHeight="50.0" prefWidth="184.0" ripplerFill="#5a0383" text="-" textFill="WHITE">
+      <JFXButton fx:id="changeSceneToMyProfile" buttonType="RAISED" focusTraversable="false" layoutX="52.0" layoutY="338.0" onAction="#changeSceneToMyProfile" prefHeight="50.0" prefWidth="184.0" ripplerFill="#5a0383" text="-" textFill="WHITE">
          <font>
             <Font size="1.0" />
          </font>
@@ -45,7 +45,7 @@
             <Cursor fx:constant="HAND" />
          </cursor>
       </JFXButton>
-      <JFXButton fx:id="Settings" buttonType="RAISED" focusTraversable="false" layoutX="55.0" layoutY="394.0" prefHeight="44.0" prefWidth="191.0" ripplerFill="#56027c" text="-" textFill="WHITE">
+      <JFXButton fx:id="Settings" buttonType="RAISED" focusTraversable="false" layoutX="55.0" layoutY="394.0" onAction="#changeSceneToSettings" prefHeight="44.0" prefWidth="191.0" ripplerFill="#56027c" text="-" textFill="WHITE">
          <font>
             <Font size="1.0" />
          </font>
@@ -53,7 +53,7 @@
             <Cursor fx:constant="HAND" />
          </cursor>
       </JFXButton>
-      <JFXButton buttonType="RAISED" focusTraversable="false" layoutX="52.0" layoutY="444.0" prefHeight="44.0" prefWidth="184.0" ripplerFill="#4c026f" text="-" textFill="WHITE">
+      <JFXButton fx:id="signOutButton" buttonType="RAISED" focusTraversable="false" layoutX="52.0" layoutY="444.0" onAction="#changeSceneToSignOut" prefHeight="44.0" prefWidth="184.0" ripplerFill="#4c026f" text="-" textFill="WHITE">
          <font>
             <Font size="1.0" />
          </font>
@@ -65,7 +65,7 @@
          <children>
             <VBox prefHeight="114.0" prefWidth="183.0">
                <children>
-                  <Label prefHeight="61.0" prefWidth="193.0" text="     2200" textFill="#0fa2eb">
+                  <Label prefHeight="61.0" prefWidth="193.0" text="         0" textFill="#0fa2eb">
                      <font>
                         <Font name="Roboto" size="36.0" />
                      </font>
@@ -79,7 +79,7 @@
             </VBox>
             <VBox layoutX="10.0" layoutY="10.0" prefHeight="114.0" prefWidth="180.0">
                <children>
-                  <Label prefHeight="61.0" prefWidth="187.0" text="       328" textFill="#13eb94">
+                  <Label prefHeight="61.0" prefWidth="187.0" text="         0" textFill="#13eb94">
                      <font>
                         <Font name="Roboto" size="36.0" />
                      </font>
@@ -93,7 +93,7 @@
             </VBox>
             <VBox layoutX="175.0" layoutY="10.0" prefHeight="114.0" prefWidth="181.0">
                <children>
-                  <Label prefHeight="61.0" prefWidth="191.0" text="       213" textFill="#eb001f">
+                  <Label prefHeight="61.0" prefWidth="191.0" text="         0 " textFill="#eb001f">
                      <font>
                         <Font name="Roboto" size="36.0" />
                      </font>
@@ -111,13 +111,14 @@
          <content>
             <TableView prefHeight="382.0" prefWidth="625.0">
               <columns>
-                <TableColumn prefWidth="69.0" text="ID" />
-                <TableColumn prefWidth="95.0" text="Title" />
-                  <TableColumn prefWidth="82.0" text="Authors" />
-                  <TableColumn prefWidth="108.0" text="Pages" />
-                  <TableColumn prefWidth="68.0" text="ISBN" />
-                  <TableColumn prefWidth="101.0" text="Reservation" />
-                  <TableColumn prefWidth="94.0" text="Rental" />
+                <TableColumn prefWidth="54.0" text="ID" />
+                <TableColumn prefWidth="60.0" text="Type" />
+                  <TableColumn prefWidth="74.0" text="Title" />
+                  <TableColumn prefWidth="86.0" text="Authors" />
+                  <TableColumn prefWidth="70.0" text="Pages" />
+                  <TableColumn prefWidth="67.0" text="ISBN" />
+                  <TableColumn minWidth="0.0" prefWidth="122.0" text="Reservation" />
+                  <TableColumn prefWidth="74.0" text="Rental" />
               </columns>
             </TableView>
          </content>
@@ -127,37 +128,42 @@
       </ScrollPane>
       <HBox layoutX="353.0" layoutY="261.0" prefHeight="35.0" prefWidth="632.0" style="-fx-background-color: #DCDBDB;">
          <children>
-            <Label prefHeight="35.0" prefWidth="67.0" text="        ID">
+            <Label prefHeight="35.0" prefWidth="54.0" text="     ID">
                <font>
                   <Font name="Open Sans Bold" size="14.0" />
                </font>
             </Label>
-            <Label prefHeight="64.0" prefWidth="111.0" text="          Titile" textAlignment="CENTER">
+            <Label prefHeight="35.0" prefWidth="66.0" text="     Type">
                <font>
                   <Font name="Open Sans Bold" size="14.0" />
                </font>
             </Label>
-            <Label prefHeight="52.0" prefWidth="88.0" text="    Authors">
+            <Label prefHeight="35.0" prefWidth="73.0" text="      Titile" textAlignment="CENTER">
                <font>
                   <Font name="Open Sans Bold" size="14.0" />
                </font>
             </Label>
-            <Label prefHeight="55.0" prefWidth="81.0" text="       Pages">
+            <Label prefHeight="35.0" prefWidth="82.0" text="    Authors">
                <font>
                   <Font name="Open Sans Bold" size="14.0" />
                </font>
             </Label>
-            <Label prefHeight="52.0" prefWidth="89.0" text="        ISBN">
+            <Label prefHeight="35.0" prefWidth="65.0" text="   Pages">
                <font>
                   <Font name="Open Sans Bold" size="14.0" />
                </font>
             </Label>
-            <Label prefHeight="50.0" prefWidth="108.0" text="   Reservation">
+            <Label prefHeight="52.0" prefWidth="89.0" text="       ISBN">
                <font>
                   <Font name="Open Sans Bold" size="14.0" />
                </font>
             </Label>
-            <Label prefHeight="50.0" prefWidth="82.0" text="     Rental">
+            <Label prefHeight="35.0" prefWidth="102.0" text="   Reservation">
+               <font>
+                  <Font name="Open Sans Bold" size="14.0" />
+               </font>
+            </Label>
+            <Label prefHeight="35.0" prefWidth="85.0" text="     Rental">
                <font>
                   <Font name="System Bold" size="14.0" />
                </font>

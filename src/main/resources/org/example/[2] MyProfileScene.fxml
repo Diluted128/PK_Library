@@ -1,14 +1,87 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane xmlns="http://javafx.com/javafx"
-            xmlns:fx="http://javafx.com/fxml"
-            fx:controller="org.example.MyProfileController"
-            prefHeight="400.0" prefWidth="600.0">
-
+<AnchorPane prefHeight="675.0" prefWidth="1050.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.MyProfileController">
+   <children>
+      <ImageView fitHeight="675.0" fitWidth="1050.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../../src/main/java/org/example/images/MyProfileBackground.png" />
+         </image>
+      </ImageView>
+      <JFXButton fx:id="MyItemsButton" buttonType="RAISED" cacheShape="false" focusTraversable="false" layoutX="52.0" layoutY="239.0" onAction="#changeSceneToMyItems" pickOnBounds="false" prefHeight="44.0" prefWidth="191.0" ripplerFill="#3b0257" text="-" textFill="#ae2a2a" textOverrun="CLIP">
+         <font>
+            <Font size="1.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </JFXButton>
+      <JFXButton fx:id="RentItemButton" buttonType="RAISED" focusTraversable="false" layoutX="59.0" layoutY="288.0" onAction="#changeSceneToRentItem" prefHeight="50.0" prefWidth="184.0" ripplerFill="#540479" text="-" textFill="WHITE">
+         <font>
+            <Font size="1.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </JFXButton>
+      <JFXButton fx:id="changeSceneToMyProfile" buttonType="RAISED" focusTraversable="false" layoutX="59.0" layoutY="338.0" onAction="#changeSceneToMyProfile" prefHeight="50.0" prefWidth="184.0" ripplerFill="#5a0383" text="-" textFill="WHITE">
+         <font>
+            <Font size="1.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </JFXButton>
+      <JFXButton fx:id="Settings" buttonType="RAISED" focusTraversable="false" layoutX="52.0" layoutY="395.0" onAction="#changeSceneToSettings" prefHeight="44.0" prefWidth="191.0" ripplerFill="#56027c" text="-" textFill="WHITE">
+         <font>
+            <Font size="1.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </JFXButton>
+      <JFXButton fx:id="signOutButton" buttonType="RAISED" focusTraversable="false" layoutX="56.0" layoutY="446.0" onAction="#changeSceneToSignOut" prefHeight="44.0" prefWidth="184.0" ripplerFill="#4c026f" text="-" textFill="WHITE">
+         <font>
+            <Font size="1.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </JFXButton>
+      <JFXButton layoutX="615.0" layoutY="294.0" prefHeight="25.0" prefWidth="108.0" text="-">
+         <font>
+            <Font size="1.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </JFXButton>
+      <Label fx:id="firstNameField" layoutX="499.0" layoutY="376.0" prefHeight="38.0" prefWidth="191.0" text="-">
+         <font>
+            <Font name="Open Sans Regular" size="12.0" />
+         </font></Label>
+      <Label fx:id="lastNameField" layoutX="495.0" layoutY="430.0" prefHeight="32.0" prefWidth="184.0" text="-" />
+      <Label fx:id="userNameField" layoutX="492.0" layoutY="480.0" prefHeight="32.0" prefWidth="191.0" text="-">
+         <font>
+            <Font name="Open Sans Regular" size="12.0" />
+         </font></Label>
+      <Label fx:id="emailField" layoutX="450.0" layoutY="527.0" prefHeight="32.0" prefWidth="233.0" text="-" />
+      <Label fx:id="balanceField" layoutX="858.0" layoutY="387.0" prefHeight="25.0" prefWidth="80.0" text="-">
+         <font>
+            <Font name="Open Sans Regular" size="12.0" />
+         </font>
+      </Label>
+      <JFXButton fx:id="payPenalty" layoutX="780.0" layoutY="456.0" onAction="#payPenalty" prefHeight="25.0" prefWidth="157.0" style="-fx-background-color: #924da5;" text="Pay penalty" textFill="WHITE">
+         <font>
+            <Font name="Open Sans Bold" size="12.0" />
+         </font>
+      </JFXButton>
+   </children>
 </AnchorPane>

@@ -1,14 +1,59 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane xmlns="http://javafx.com/javafx"
-            xmlns:fx="http://javafx.com/fxml"
-            fx:controller="org.example.SettingsController"
-            prefHeight="400.0" prefWidth="600.0">
 
+<AnchorPane prefHeight="675.0" prefWidth="1050.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.SettingsController">
+   <children>
+      <ImageView fitHeight="675.0" fitWidth="1050.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../../src/main/java/org/example/images/SettingsBackground.png" />
+         </image>
+      </ImageView>
+      <JFXButton fx:id="MyItemsButton" buttonType="RAISED" cacheShape="false" focusTraversable="false" layoutX="50.0" layoutY="238.0" onAction="#changeSceneToMyItems" pickOnBounds="false" prefHeight="44.0" prefWidth="191.0" ripplerFill="#3b0257" text="-" textFill="#ae2a2a" textOverrun="CLIP">
+         <font>
+            <Font size="1.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </JFXButton>
+      <JFXButton fx:id="RentItemButton" buttonType="RAISED" focusTraversable="false" layoutX="54.0" layoutY="288.0" onAction="#changeSceneToRentItem" prefHeight="50.0" prefWidth="184.0" ripplerFill="#540479" text="-" textFill="WHITE">
+         <font>
+            <Font size="1.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </JFXButton>
+      <JFXButton fx:id="changeSceneToMyProfile" buttonType="RAISED" focusTraversable="false" layoutX="54.0" layoutY="338.0" onAction="#changeSceneToMyProfile" prefHeight="50.0" prefWidth="184.0" ripplerFill="#5a0383" text="-" textFill="WHITE">
+         <font>
+            <Font size="1.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </JFXButton>
+      <JFXButton fx:id="Settings" buttonType="RAISED" focusTraversable="false" layoutX="51.0" layoutY="394.0" onAction="#changeSceneToSettings" prefHeight="44.0" prefWidth="191.0" ripplerFill="#56027c" text="-" textFill="WHITE">
+         <font>
+            <Font size="1.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </JFXButton>
+      <JFXButton fx:id="signOutButton" buttonType="RAISED" focusTraversable="false" layoutX="55.0" layoutY="445.0" onAction="#changeSceneToSignOut" prefHeight="44.0" prefWidth="184.0" ripplerFill="#4c026f" text="-" textFill="WHITE">
+         <font>
+            <Font size="1.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </JFXButton>
+   </children>
 </AnchorPane>
