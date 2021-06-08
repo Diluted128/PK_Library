@@ -1,8 +1,9 @@
 package org.example.library.item;
 
+import java.io.Serializable;
 import java.util.List;
 
-public abstract class Item {
+public abstract class Item implements Serializable {
 
     private List<String> authors;
     private String title;

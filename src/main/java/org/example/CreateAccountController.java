@@ -86,13 +86,16 @@ public class CreateAccountController {
             emptyAgree = true;
 
 
-        boolean wasUserAdded = userRepository.addNewUserAndReturnIfSuccessful(new Customer(
-                FirstNameTextField.getText(),
-                LastNameTextField.getText(),
-                UsernameTextField.getText(),
-                PasswordTextField.getText(),
-                EmailAddressTextField.getText()
-        ));
+        boolean wasUserAdded = false;
+        if (!emptyFields && !emptyAgree) {
+            wasUserAdded = userRepository.addNewUserAndReturnIfSuccessful(new Customer(
+                    FirstNameTextField.getText(),
+                    LastNameTextField.getText(),
+                    UsernameTextField.getText(),
+                    PasswordTextField.getText(),
+                    EmailAddressTextField.getText()
+            ));
+        }
 
         if (wasUserAdded) {
             FirstNameTextField.clear();
