@@ -38,8 +38,7 @@ public class UserRepository {
     public boolean addNewUserAndReturnIfSuccessful(User newUser) {
         ArrayList<User> users = getAllUsers();
 
-        if (users.stream()
-                .anyMatch(u -> u.areCredentialsEqual(newUser.getLogin(), newUser.getPassword()))) {
+        if (users.stream().anyMatch(u -> u.getLogin().equals(newUser.getEmail()))) {
             return false;
         }
 
