@@ -9,9 +9,12 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
+import javafx.scene.control.ListView;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import org.example.db.UserRepository;
+import org.example.library.item.Item;
+import org.example.library.user.Customer;
 import org.example.library.user.User;
 
 import java.io.File;

@@ -38,4 +38,9 @@ public class Book extends Item {
     public void setGenre(Genre genre) {
         this.genre = genre;
     }
+
+    @Override
+    public String toString() {
+        return String.format("%s, written by %s", getTitle(), getAuthors());
+    }
 }
