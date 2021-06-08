@@ -43,7 +43,7 @@ public class App extends Application {
                     "admin@gmail.com",
                     new ArrayList<>()
                     );
-            new UserRepository().addNewUser(manager);
+            new UserRepository().addNewUserAndReturnIfSuccessful(manager);
         }
 
 }

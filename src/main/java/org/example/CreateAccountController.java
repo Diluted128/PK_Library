@@ -10,6 +10,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.stage.Stage;
+import org.example.db.UserRepository;
 import org.example.library.user.Customer;
 import org.example.library.user.User;
 
@@ -44,8 +45,12 @@ public class CreateAccountController {
     private Label EmptyAgreement;
     @FXML
     private Label SuccesfulLabel;
+    @FXML
+    private Label UsernameAlreadyTaken;
 
     private Map<String, String> accountData = new LinkedHashMap<>();
+
+    private UserRepository userRepository = new UserRepository();
 
 
     public void ReturnFunctions(ActionEvent event) throws Exception {
@@ -81,37 +86,28 @@ public class CreateAccountController {
             emptyAgree = true;
 
 
-        Customer newCustomer = new Customer(
+        boolean wasUserAdded = userRepository.addNewUserAndReturnIfSuccessful(new Customer(
                 FirstNameTextField.getText(),
                 LastNameTextField.getText(),
                 UsernameTextField.getText(),
                 PasswordTextField.getText(),
                 EmailAddressTextField.getText()
-        );
+        ));
 
-        ArrayList<User> users = new ArrayList<>();
+        if (wasUserAdded) {
+            FirstNameTextField.clear();
+            LastNameTextField.clear();
+            EmailAddressTextField.clear();
+            UsernameTextField.clear();
+            PasswordTextField.clear();
+            CheckBox.fire();
 
-        if(new File("users.bin").exists()) {
-            try (ObjectInputStream inputStream = new ObjectInputStream(new FileInputStream("users.bin"))) {
-                users = (ArrayList) inputStream.readObject();
-            } catch (Exception e) {
-                System.out.println(e.getMessage());
-            }
+            SuccesfulLabel.setVisible(true);
+
+        } else {
+            Thread warningThread = new Thread(new warning_Thread(emptyFields, wrongPassword, emptyAgree, !wasUserAdded));
+            warningThread.start();
         }
-
-        users.add(newCustomer);
-
-        try (ObjectOutputStream outputStream = new ObjectOutputStream(new FileOutputStream("users.bin"))) {
-            outputStream.writeObject(users);
-        } catch (IOException e) {
-            System.out.println(e.getMessage());
-        }
-
-
-
-
-        Thread warningThread = new Thread(new warning_Thread(emptyFields,wrongPassword,emptyAgree));
-        warningThread.start();
         //Pattern pattern = Pattern.compile(".*[A-Z].*[0-9].*");
         // add pattern for password
 
@@ -122,31 +118,26 @@ public class CreateAccountController {
         boolean EmptyField;
         boolean WrongPassword;
         boolean emptyAgreement;
+        boolean usernameAlreadyTaken;
 
-        public warning_Thread(boolean a, boolean b, boolean c){
+        public warning_Thread(boolean a, boolean b, boolean c, boolean d){
             EmptyField = a;
             WrongPassword = b;
             emptyAgreement = c;
+            usernameAlreadyTaken = d;
         }
         public synchronized void run() {
             System.out.println(emptyAgreement);
             progressBar.setProgress(0.0);
-            for (int i = 0; i <= 4; i++) {
-                if (i == 0)
-                    progressBar.setProgress(0.2);
-                if (i == 1)
-                    progressBar.setProgress(0.6);
-                if (i == 2)
-                    progressBar.setProgress(0.8);
-                if (i == 3)
-                    progressBar.setProgress(1);
-                if (i < 4) {
-                    try {
-                        Thread.sleep(1000);
-                    } catch (InterruptedException e) {
-                        e.printStackTrace();
-                    }
+            for (int i = 0; i <= 100; i++) {
+                progressBar.setProgress(0.01 * i);
+
+                try {
+                    Thread.sleep(10);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
                 }
+
             }
             if (EmptyField) {
                 EmptyFields.setVisible(true);
@@ -165,8 +156,15 @@ public class CreateAccountController {
                     e.printStackTrace();
                 }
                 EmptyAgreement.setVisible(false);
-            }
-            else{
+            } else if (usernameAlreadyTaken) {
+                UsernameAlreadyTaken.setVisible(true);
+                try {
+                    Thread.sleep(5000);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+                UsernameAlreadyTaken.setVisible(false);
+            } else {
                 FirstNameTextField.clear();
                 LastNameTextField.clear();
                 EmailAddressTextField.clear();

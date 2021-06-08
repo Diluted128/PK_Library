@@ -29,6 +29,7 @@
          </effect>
       </ProgressBar>
       <Label fx:id="EmptyFields" layoutX="552.0" layoutY="135.0" text="Fields can't be empty." textFill="RED" visible="false" />
+      <Label fx:id="UsernameAlreadyTaken" layoutX="552.0" layoutY="135.0" text="That username is already taken." textFill="RED" visible="false" />
       <Label fx:id="EmptyAgreement" layoutX="552.0" layoutY="135.0" text="You must agree to the Terms of Service. " textFill="RED" visible="false" />
       <Label fx:id="SuccesfulLabel" disable="true" layoutX="552.0" layoutY="136.0" text="Account has been created successfuly" textFill="#00ff15" visible="false">
          <font>

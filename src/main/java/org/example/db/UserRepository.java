@@ -5,6 +5,7 @@ import org.example.library.user.User;
 
 import java.io.*;
 import java.util.ArrayList;
+import java.util.Optional;
 
 public class UserRepository {
 
@@ -34,14 +35,23 @@ public class UserRepository {
         return users;
     }
 
-    public void addNewUser(User newUser) {
+    public boolean addNewUserAndReturnIfSuccessful(User newUser) {
         ArrayList<User> users = getAllUsers();
+
+        if (users.stream()
+                .anyMatch(u -> u.areCredentialsEqual(newUser.getLogin(), newUser.getPassword()))) {
+            return false;
+        }
+
+
         users.add(newUser);
 
         try (ObjectOutputStream outputStream = new ObjectOutputStream(new FileOutputStream(usersFile))) {
             outputStream.writeObject(users);
+            return true;
         } catch (IOException e) {
             System.out.println(e.getMessage());
+            return false;
         }
 
     }
