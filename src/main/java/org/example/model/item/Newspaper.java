@@ -7,7 +7,8 @@ public class Newspaper extends Item {
     private PublishingFrequency publishingFrequency;
 
     public Newspaper(List<String> authors, String title, int numberOfPages, String ISBN, PublishingFrequency publishingFrequency) {
-        super(authors, title, numberOfPages, ISBN);
+        super(authors, title,"Newspaper", numberOfPages, ISBN);
+
         this.publishingFrequency = publishingFrequency;
     }
 

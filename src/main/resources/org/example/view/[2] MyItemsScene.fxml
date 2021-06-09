@@ -3,10 +3,8 @@
 <?import com.jfoenix.controls.JFXButton?>
 <?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
-<?import javafx.scene.effect.ColorAdjust?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -107,26 +105,19 @@
             </VBox>
          </children>
       </HBox>
-      <ScrollPane layoutX="353.0" layoutY="260.0" prefHeight="383.0" prefWidth="632.0">
-         <content>
-            <TableView prefHeight="382.0" prefWidth="625.0">
-              <columns>
-                <TableColumn prefWidth="54.0" text="ID" />
-                <TableColumn prefWidth="60.0" text="Type" />
-                  <TableColumn prefWidth="74.0" text="Title" />
-                  <TableColumn prefWidth="86.0" text="Authors" />
-                  <TableColumn prefWidth="70.0" text="Pages" />
-                  <TableColumn prefWidth="67.0" text="ISBN" />
-                  <TableColumn minWidth="0.0" prefWidth="122.0" text="Reservation" />
-                  <TableColumn prefWidth="74.0" text="Rental" />
-              </columns>
-            </TableView>
-         </content>
-         <effect>
-            <ColorAdjust contrast="0.14" />
-         </effect>
-      </ScrollPane>
-      <HBox layoutX="353.0" layoutY="261.0" prefHeight="35.0" prefWidth="632.0" style="-fx-background-color: #DCDBDB;">
+      <TableView fx:id="items" layoutX="323.0" layoutY="253.0" prefHeight="382.0" prefWidth="625.0">
+        <columns>
+          <TableColumn fx:id="ID" prefWidth="54.0" text="ID" />
+          <TableColumn fx:id="type" prefWidth="60.0" text="Type" />
+            <TableColumn fx:id="title" prefWidth="74.0" text="Title" />
+            <TableColumn fx:id="authors" prefWidth="86.0" text="Authors" />
+            <TableColumn fx:id="pages" prefWidth="70.0" text="Pages" />
+            <TableColumn fx:id="ISBN" prefWidth="67.0" text="ISBN" />
+            <TableColumn fx:id="isReserved" minWidth="0.0" prefWidth="122.0" text="Reservation" />
+            <TableColumn fx:id="isRented" prefWidth="89.0" text="Rental" />
+        </columns>
+      </TableView>
+      <HBox layoutX="353.0" layoutY="261.0" prefHeight="35.0" prefWidth="632.0" style="-fx-background-color: #DCDBDB;" visible="false">
          <children>
             <Label prefHeight="35.0" prefWidth="54.0" text="     ID">
                <font>

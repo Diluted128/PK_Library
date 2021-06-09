@@ -9,7 +9,7 @@ public class Book extends Item {
     private Genre genre;
 
     public Book(List<String> authors, String title, int numberOfPages, String ISBN, String publisher, Cover cover, Genre genre) {
-        super(authors, title, numberOfPages, ISBN);
+        super(authors, title, "Book", numberOfPages, ISBN);
         this.publisher = publisher;
         this.cover = cover;
         this.genre = genre;

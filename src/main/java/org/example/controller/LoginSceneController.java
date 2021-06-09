@@ -11,6 +11,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
+import org.example.db.ItemRepository;
 import org.example.db.UserRepository;
 import org.example.model.user.Customer;
 import org.example.model.user.Manager;
@@ -101,8 +102,9 @@ public class LoginSceneController {
             else if(loggedInUser instanceof Manager){
                 fxmlLoader = new FXMLLoader(getClass().getResource("/org/example/view/[4] HireWorkerScene.fxml"));
                 root =  fxmlLoader.load();
-             //   MyItemsController myItemsController = fxmlLoader.getController();
-             //   myItemsController.setLoggedInUser(loggedInUser);
+
+              MyItemsController myItemsController = fxmlLoader.getController();
+              myItemsController.setLoggedInUser(loggedInUser);
             }
             else{
                 fxmlLoader = new FXMLLoader(getClass().getResource("/org/example/view/[3] AddItemScene.fxml"));

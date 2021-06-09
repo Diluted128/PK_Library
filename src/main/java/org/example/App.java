@@ -60,7 +60,7 @@ public class App extends Application {
             );
 
             Book book = new Book(
-                    List.of("Stephen King"),
+                    List.of("Stephen King","King Steven"),
                     "Misery",
                     380,
                     "9780450417399",

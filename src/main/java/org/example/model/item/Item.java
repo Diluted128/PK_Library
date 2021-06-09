@@ -9,14 +9,16 @@ public abstract class Item implements Serializable {
     private String title;
     private int numberOfPages;
     private int itemID;
+    private String type;
     private String ISBN;
     private boolean isRented;
     private boolean isReserved;
-    private static int counter = 0;
+    private static int counter = 1;
 
-    public Item(List<String> authors, String title, int numberOfPages, String ISBN) {
+    public Item(List<String> authors, String title, String type, int numberOfPages, String ISBN) {
         this.authors = authors;
         this.title = title;
+        this.type = type;
         this.numberOfPages = numberOfPages;
         this.ISBN = ISBN;
         isRented = false;
@@ -28,7 +30,7 @@ public abstract class Item implements Serializable {
         return authors;
     }
 
-    public void setAuthor(List<String> authors) {
+    public void setAuthors(List<String> authors) {
         this.authors = authors;
     }
 
@@ -48,10 +50,6 @@ public abstract class Item implements Serializable {
         this.numberOfPages = numberOfPages;
     }
 
-    public void setAuthors(List<String> authors) {
-        this.authors = authors;
-    }
-
     public int getItemID() {
         return itemID;
     }
@@ -68,7 +66,7 @@ public abstract class Item implements Serializable {
         this.ISBN = ISBN;
     }
 
-    public boolean isRented() {
+    public boolean getIsRented() {
         return isRented;
     }
 
@@ -76,11 +74,15 @@ public abstract class Item implements Serializable {
         isRented = rented;
     }
 
-    public boolean isReserved() {
+    public boolean getIsReserved() {
         return isReserved;
     }
 
     public void setReserved(boolean reserved) {
         isReserved = reserved;
     }
+
+    public String getType() { return type; }
+
+    public void setType(String type) { this.type = type; }
 }
