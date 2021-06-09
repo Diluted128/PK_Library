@@ -3,9 +3,6 @@
 <?import com.jfoenix.controls.JFXButton?>
 <?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.control.ScrollPane?>
-<?import javafx.scene.control.TableColumn?>
-<?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.effect.ColorAdjust?>
 <?import javafx.scene.image.Image?>
@@ -21,69 +18,6 @@
             <Image url="@../../../../../src/main/java/org/example/images/AddItemBackground.png" />
          </image>
       </ImageView>
-      <ScrollPane layoutX="353.0" layoutY="93.0" prefHeight="383.0" prefWidth="632.0">
-         <content>
-            <TableView prefHeight="382.0" prefWidth="625.0">
-               <columns>
-                  <TableColumn prefWidth="54.0" text="ID" />
-                  <TableColumn prefWidth="60.0" text="Type" />
-                  <TableColumn prefWidth="74.0" text="Title" />
-                  <TableColumn prefWidth="86.0" text="Authors" />
-                  <TableColumn prefWidth="70.0" text="Pages" />
-                  <TableColumn prefWidth="67.0" text="ISBN" />
-                  <TableColumn minWidth="0.0" prefWidth="122.0" text="Reservation" />
-                  <TableColumn prefWidth="91.0" text="Rental" />
-               </columns>
-            </TableView>
-         </content>
-         <effect>
-            <ColorAdjust contrast="0.14" />
-         </effect>
-      </ScrollPane>
-      <HBox layoutX="353.0" layoutY="94.0" prefHeight="35.0" prefWidth="632.0" style="-fx-background-color: #DCDBDB;">
-         <children>
-            <Label prefHeight="35.0" prefWidth="54.0" text="     ID">
-               <font>
-                  <Font name="Open Sans Bold" size="14.0" />
-               </font>
-            </Label>
-            <Label prefHeight="35.0" prefWidth="66.0" text="     Type">
-               <font>
-                  <Font name="Open Sans Bold" size="14.0" />
-               </font>
-            </Label>
-            <Label prefHeight="35.0" prefWidth="73.0" text="      Titile" textAlignment="CENTER">
-               <font>
-                  <Font name="Open Sans Bold" size="14.0" />
-               </font>
-            </Label>
-            <Label prefHeight="35.0" prefWidth="82.0" text="    Authors">
-               <font>
-                  <Font name="Open Sans Bold" size="14.0" />
-               </font>
-            </Label>
-            <Label prefHeight="35.0" prefWidth="65.0" text="   Pages">
-               <font>
-                  <Font name="Open Sans Bold" size="14.0" />
-               </font>
-            </Label>
-            <Label prefHeight="52.0" prefWidth="89.0" text="       ISBN">
-               <font>
-                  <Font name="Open Sans Bold" size="14.0" />
-               </font>
-            </Label>
-            <Label prefHeight="35.0" prefWidth="102.0" text="   Reservation">
-               <font>
-                  <Font name="Open Sans Bold" size="14.0" />
-               </font>
-            </Label>
-            <Label prefHeight="35.0" prefWidth="85.0" text="     Rental">
-               <font>
-                  <Font name="System Bold" size="14.0" />
-               </font>
-            </Label>
-         </children>
-      </HBox>
       <Label layoutX="576.0" layoutY="547.0" prefHeight="20.0" prefWidth="193.0" text="Put details to add a new Item" textFill="#757575">
          <font>
             <Font name="Open Sans Regular" size="14.0" />
@@ -129,15 +63,7 @@
             <Cursor fx:constant="HAND" />
          </cursor>
       </JFXButton>
-      <JFXButton buttonType="RAISED" focusTraversable="false" layoutX="58.0" layoutY="338.0" onAction="#changeSceneToConfirmRental" prefHeight="50.0" prefWidth="184.0" ripplerFill="#5a0383" text="-" textFill="WHITE">
-         <font>
-            <Font size="1.0" />
-         </font>
-         <cursor>
-            <Cursor fx:constant="HAND" />
-         </cursor>
-      </JFXButton>
-      <JFXButton buttonType="RAISED" focusTraversable="false" layoutX="55.0" layoutY="394.0" onAction="#changeSceneToPickUpItem" prefHeight="44.0" prefWidth="191.0" ripplerFill="#56027c" text="-" textFill="WHITE">
+      <JFXButton buttonType="RAISED" focusTraversable="false" layoutX="58.0" layoutY="338.0" onAction="#changeSceneToConfirmRental" prefHeight="114.0" prefWidth="184.0" ripplerFill="#5a0383" text="-" textFill="WHITE">
          <font>
             <Font size="1.0" />
          </font>

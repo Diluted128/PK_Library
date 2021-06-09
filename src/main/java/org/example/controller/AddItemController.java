@@ -1,34 +1,46 @@
 package org.example.controller;
 
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
+import org.example.model.item.ArticleType;
+import org.example.model.item.Genre;
+import org.example.model.item.Item;
+import org.example.model.user.Customer;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.stream.Collectors;
 
 public class AddItemController {
 
     @FXML
-    private TextField ID;
+    private TextField IDField;
     @FXML
-    private TextField Type;
+    private TextField typeField;
     @FXML
-    private TextField Title;
+    private TextField titleField;
     @FXML
-    private TextField Authors;
+    private TextField authorsField;
     @FXML
-    private TextField Pages;
+    private TextField pagesField;
     @FXML
-    private TextField ISBN;
+    private TextField ISBNField;
     @FXML
-    private TextField Reservation;
+    private TextField isReservedField;
     @FXML
-    private TextField Rental;
+    private TextField isRentedField;
 
     public void changeSceneToAddItem(ActionEvent event) throws IOException {
         Parent root = FXMLLoader.load(getClass().getResource("/org/example/view/[3] AddItemScene.fxml"));
@@ -43,15 +55,7 @@ public class AddItemController {
     }
 
     public void changeSceneToConfirmRental(ActionEvent event) throws IOException {
-
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/org/example/view/[3] ConfirmRentalScene.fxml"));
-        Parent root = fxmlLoader.load();
-        Stage ourStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        setScene(root,ourStage);
-    }
-
-    public void changeSceneToPickUpItem(ActionEvent event) throws IOException {
-        Parent root = FXMLLoader.load(getClass().getResource("/org/example/view/[3] PickupItemScene.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("/org/example/view/[3] ConfirmRentalScene.fxml"));
         Stage ourStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         setScene(root,ourStage);
     }

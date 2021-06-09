@@ -31,15 +31,7 @@
             <Cursor fx:constant="HAND" />
          </cursor>
       </JFXButton>
-      <JFXButton buttonType="RAISED" focusTraversable="false" layoutX="57.0" layoutY="338.0" onAction="#changeSceneToConfirmRental" prefHeight="50.0" prefWidth="184.0" ripplerFill="#5a0383" text="-" textFill="WHITE">
-         <font>
-            <Font size="1.0" />
-         </font>
-         <cursor>
-            <Cursor fx:constant="HAND" />
-         </cursor>
-      </JFXButton>
-      <JFXButton buttonType="RAISED" focusTraversable="false" layoutX="50.0" layoutY="395.0" onAction="#changeSceneToPickUpItem" prefHeight="44.0" prefWidth="191.0" ripplerFill="#56027c" text="-" textFill="WHITE">
+      <JFXButton buttonType="RAISED" focusTraversable="false" layoutX="57.0" layoutY="338.0" onAction="#changeSceneToConfirmRental" prefHeight="106.0" prefWidth="184.0" ripplerFill="#5a0383" text="-" textFill="WHITE">
          <font>
             <Font size="1.0" />
          </font>

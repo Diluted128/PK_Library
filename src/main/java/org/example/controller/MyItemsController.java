@@ -13,6 +13,9 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
+import org.example.model.item.Article;
+import org.example.model.item.ArticleType;
+import org.example.model.item.Genre;
 import org.example.model.item.Item;
 import org.example.model.user.Customer;
 import org.example.model.user.User;
@@ -43,6 +46,12 @@ public class MyItemsController {
     @FXML
     private TableColumn<Item, Boolean> isRented;
     @FXML
+    private TableColumn<Item, String> publisher;
+    @FXML
+    private TableColumn<Item, Genre> genre;
+    @FXML
+    private TableColumn<Item, ArticleType> articleType;
+    @FXML
     private Label rentedBooks;
     @FXML
     private Label rentedArticles;
@@ -52,7 +61,6 @@ public class MyItemsController {
     private User loggedInUser;
 
     public void setTableView(){
-        // if(item instanceof Book) {
 
         ID.setCellValueFactory(new PropertyValueFactory<>("itemID"));
         type.setCellValueFactory(new PropertyValueFactory<>("type"));
@@ -62,6 +70,10 @@ public class MyItemsController {
         ISBN.setCellValueFactory(new PropertyValueFactory<>("ISBN"));
         isReserved.setCellValueFactory(new PropertyValueFactory<>("isReserved"));
         isRented.setCellValueFactory(new PropertyValueFactory<>("isRented"));
+        publisher.setCellValueFactory(new PropertyValueFactory<>("publisher"));
+        genre.setCellValueFactory(new PropertyValueFactory<>("genre"));
+        articleType.setCellValueFactory(new PropertyValueFactory<>("articleType"));
+
         List<Item> customerItems = new ArrayList<>();
         if(loggedInUser instanceof Customer){
             customerItems = ((Customer)loggedInUser).getRentedItems();
@@ -84,8 +96,6 @@ public class MyItemsController {
                 .stream()
                 .filter(i -> i.getType().equals("Newspaper"))
                 .collect(Collectors.toList()).size()));
-
-
 
     }
     public void changeSceneToMyItems(ActionEvent event) throws IOException {

@@ -3,6 +3,7 @@
 <?import com.jfoenix.controls.JFXButton?>
 <?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.image.Image?>
@@ -59,16 +60,26 @@
             <Cursor fx:constant="HAND" />
          </cursor>
       </JFXButton>
-      <HBox layoutX="339.0" layoutY="114.0" prefHeight="114.0" prefWidth="632.0">
+      <Label fx:id="rentedBooks" layoutX="413.0" layoutY="114.0" prefHeight="61.0" prefWidth="50.0" text="0" textAlignment="CENTER" textFill="#0fa2eb">
+         <font>
+            <Font name="Roboto" size="36.0" />
+         </font>
+      </Label>
+      <Label fx:id="rentedArticles" layoutX="585.0" layoutY="114.0" prefHeight="61.0" prefWidth="70.0" text=" 0" textAlignment="CENTER" textFill="#13eb94">
+         <font>
+            <Font name="Roboto" size="36.0" />
+         </font>
+      </Label>
+      <Label fx:id="rentedNewspapers" layoutX="759.0" layoutY="114.0" prefHeight="61.0" prefWidth="70.0" text=" 0" textFill="#eb001f">
+         <font>
+            <Font name="Roboto" size="36.0" />
+         </font>
+      </Label>
+      <HBox layoutX="339.0" layoutY="175.0" prefHeight="31.0" prefWidth="632.0">
          <children>
             <VBox prefHeight="114.0" prefWidth="183.0">
                <children>
-                  <Label fx:id="rentedBooks" prefHeight="61.0" prefWidth="193.0" text="0" textFill="#0fa2eb" textAlignment="CENTER">
-                     <font>
-                        <Font name="Roboto" size="36.0" />
-                     </font>
-                  </Label>
-                  <Label prefHeight="35.0" prefWidth="166.0" text="Rented Books" textFill="#616060" textAlignment="CENTER">
+                  <Label prefHeight="116.0" prefWidth="183.0" text="          Rented Books" textFill="#616060">
                      <font>
                         <Font name="Open Sans Bold" size="14.0" />
                      </font>
@@ -77,12 +88,7 @@
             </VBox>
             <VBox layoutX="10.0" layoutY="10.0" prefHeight="114.0" prefWidth="180.0">
                <children>
-                  <Label fx:id="rentedArticles" prefHeight="61.0" prefWidth="187.0" text="0" textFill="#13eb94"  textAlignment="CENTER">
-                     <font>
-                        <Font name="Roboto" size="36.0" />
-                     </font>
-                  </Label>
-                  <Label prefHeight="35.0" prefWidth="183.0" text="Rented Magazines" textFill="#616060" textAlignment="CENTER">
+                  <Label prefHeight="35.0" prefWidth="183.0" text="     Rented Magazines" textAlignment="CENTER" textFill="#616060">
                      <font>
                         <Font name="Open Sans Bold" size="14.0" />
                      </font>
@@ -91,12 +97,7 @@
             </VBox>
             <VBox layoutX="175.0" layoutY="10.0" prefHeight="114.0" prefWidth="181.0">
                <children>
-                  <Label fx:id="rentedNewspapers" prefHeight="61.0" prefWidth="191.0" text="0" textFill="#eb001f" textAlignment="CENTER">
-                     <font>
-                        <Font name="Roboto" size="36.0" />
-                     </font>
-                  </Label>
-                  <Label prefHeight="35.0" prefWidth="185.0" text="Rented Newspapers" textFill="#616060" textAlignment="CENTER">
+                  <Label prefHeight="35.0" prefWidth="185.0" text=" Rented Newspapers" textAlignment="CENTER" textFill="#616060">
                      <font>
                         <Font name="Open Sans Bold" size="14.0" />
                      </font>
@@ -105,61 +106,28 @@
             </VBox>
          </children>
       </HBox>
-      <TableView fx:id="items" layoutX="323.0" layoutY="253.0" prefHeight="382.0" prefWidth="625.0">
-        <columns>
-          <TableColumn fx:id="ID" prefWidth="54.0" text="ID" />
-          <TableColumn fx:id="type" prefWidth="60.0" text="Type" />
-            <TableColumn fx:id="title" prefWidth="74.0" text="Title" />
-            <TableColumn fx:id="authors" prefWidth="86.0" text="Authors" />
-            <TableColumn fx:id="pages" prefWidth="70.0" text="Pages" />
-            <TableColumn fx:id="ISBN" prefWidth="67.0" text="ISBN" />
-            <TableColumn fx:id="isReserved" minWidth="0.0" prefWidth="122.0" text="Reservation" />
-            <TableColumn fx:id="isRented" prefWidth="89.0" text="Rental" />
-        </columns>
-      </TableView>
-      <HBox layoutX="353.0" layoutY="261.0" prefHeight="35.0" prefWidth="632.0" style="-fx-background-color: #DCDBDB;" visible="false">
+    <AnchorPane layoutX="311.0" layoutY="283.0" minHeight="0.0" minWidth="0.0" prefHeight="346.0" prefWidth="703.0">
          <children>
-            <Label prefHeight="35.0" prefWidth="54.0" text="     ID">
-               <font>
-                  <Font name="Open Sans Bold" size="14.0" />
-               </font>
-            </Label>
-            <Label prefHeight="35.0" prefWidth="66.0" text="     Type">
-               <font>
-                  <Font name="Open Sans Bold" size="14.0" />
-               </font>
-            </Label>
-            <Label prefHeight="35.0" prefWidth="73.0" text="      Titile" textAlignment="CENTER">
-               <font>
-                  <Font name="Open Sans Bold" size="14.0" />
-               </font>
-            </Label>
-            <Label prefHeight="35.0" prefWidth="82.0" text="    Authors">
-               <font>
-                  <Font name="Open Sans Bold" size="14.0" />
-               </font>
-            </Label>
-            <Label prefHeight="35.0" prefWidth="65.0" text="   Pages">
-               <font>
-                  <Font name="Open Sans Bold" size="14.0" />
-               </font>
-            </Label>
-            <Label prefHeight="52.0" prefWidth="89.0" text="       ISBN">
-               <font>
-                  <Font name="Open Sans Bold" size="14.0" />
-               </font>
-            </Label>
-            <Label prefHeight="35.0" prefWidth="102.0" text="   Reservation">
-               <font>
-                  <Font name="Open Sans Bold" size="14.0" />
-               </font>
-            </Label>
-            <Label prefHeight="35.0" prefWidth="85.0" text="     Rental">
-               <font>
-                  <Font name="System Bold" size="14.0" />
-               </font>
-            </Label>
+            <ScrollPane prefHeight="347.0" prefWidth="709.0">
+               <content>
+                  <TableView fx:id="items" prefHeight="347.0" prefWidth="695.0">
+                    <columns>
+                      <TableColumn fx:id="ID" prefWidth="30.0" text="ID" />
+                      <TableColumn fx:id="type" prefWidth="60.0" text="Type" />
+                        <TableColumn fx:id="title" text="Title" />
+                        <TableColumn fx:id="authors" prefWidth="75.0" text="Authors" />
+                        <TableColumn fx:id="pages" prefWidth="43.0" text="Pages" />
+                        <TableColumn fx:id="ISBN" prefWidth="47.0" text="ISBN" />
+                        <TableColumn fx:id="isReserved" minWidth="0.0" prefWidth="76.0" text="Reservation" />
+                        <TableColumn fx:id="isRented" prefWidth="53.0" text="Rental" />
+                        <TableColumn fx:id="publisher" prefWidth="89.0" text="Publisher" />
+                        <TableColumn fx:id="genre" prefWidth="77.0" text="Genre" />
+                        <TableColumn fx:id="articleType" prefWidth="87.0" text="Article type" />
+                    </columns>
+                  </TableView>
+               </content>
+            </ScrollPane>
          </children>
-      </HBox>
+      </AnchorPane>
    </children>
 </AnchorPane>

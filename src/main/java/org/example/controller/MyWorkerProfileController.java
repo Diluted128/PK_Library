@@ -30,13 +30,6 @@ public class MyWorkerProfileController {
         Stage ourStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         setScene(root,ourStage);
     }
-
-    public void changeSceneToPickUpItem(ActionEvent event) throws IOException {
-        Parent root = FXMLLoader.load(getClass().getResource("/org/example/view/[3] PickupItemScene.fxml"));
-        Stage ourStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        setScene(root,ourStage);
-    }
-
     public void changeSceneToMyProfile(ActionEvent event) throws IOException {
         Parent root = FXMLLoader.load(getClass().getResource("/org/example/view/[3] MyProfileScene.fxml"));
         Stage ourStage = (Stage) ((Node) event.getSource()).getScene().getWindow();

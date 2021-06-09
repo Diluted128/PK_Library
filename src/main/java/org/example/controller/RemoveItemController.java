@@ -29,14 +29,7 @@ public class RemoveItemController {
 
     public void changeSceneToConfirmRental(ActionEvent event) throws IOException {
 
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/org/example/view/[3] ConfirmRentalScene.fxml"));
-        Parent root = fxmlLoader.load();
-        Stage ourStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        setScene(root,ourStage);
-    }
-
-    public void changeSceneToPickUpItem(ActionEvent event) throws IOException {
-        Parent root = FXMLLoader.load(getClass().getResource("/org/example/view/[3] PickupItemScene.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("/org/example/view/[3] ConfirmRentalScene.fxml"));
         Stage ourStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         setScene(root,ourStage);
     }

@@ -1,15 +1,22 @@
 package org.example.controller;
 
 import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
 import java.io.IOException;
 
 public class ConfirmRentalController {
+
+    @FXML
+    private TextField idField1;
+    @FXML
+    private TextField idField2;
 
     public void changeSceneToAddItem(ActionEvent event) throws IOException {
         Parent root = FXMLLoader.load(getClass().getResource("/org/example/view/[3] AddItemScene.fxml"));
@@ -24,15 +31,7 @@ public class ConfirmRentalController {
     }
 
     public void changeSceneToConfirmRental(ActionEvent event) throws IOException {
-
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/org/example/view/[3] ConfirmRentalScene.fxml"));
-        Parent root = fxmlLoader.load();
-        Stage ourStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        setScene(root,ourStage);
-    }
-
-    public void changeSceneToPickUpItem(ActionEvent event) throws IOException {
-        Parent root = FXMLLoader.load(getClass().getResource("/org/example/view/[3] PickupItemScene.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("/org/example/view/[3] ConfirmRentalScene.fxml"));
         Stage ourStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         setScene(root,ourStage);
     }
@@ -48,6 +47,9 @@ public class ConfirmRentalController {
         setScene(root,ourStage);
     }
     public void confirmRental(){
+
+    }
+    public void confirmPickup(){
 
     }
     public void setScene(Parent root, Stage ourStage){
