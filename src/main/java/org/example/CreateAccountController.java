@@ -54,7 +54,7 @@ public class CreateAccountController {
 
 
     public void ReturnFunctions(ActionEvent event) throws Exception {
-        Parent root = FXMLLoader.load(getClass().getResource("[1] LoginScene.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("view/[1] LoginScene.fxml"));
         Scene LoginReminder = new Scene(root);
 
         Stage ourStage = (Stage) ((Node) event.getSource()).getScene().getWindow();

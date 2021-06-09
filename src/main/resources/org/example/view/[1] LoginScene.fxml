@@ -12,7 +12,7 @@
    <children>
       <ImageView fitHeight="675.0" fitWidth="1050.0" pickOnBounds="true">
          <image>
-            <Image url="@../../../../src/main/java/org/example/images/LoginBackground.png" />
+            <Image url="@../../../../../src/main/java/org/example/images/LoginBackground.png" />
          </image>
       </ImageView>
       <Label fx:id="WarnningEmpty" layoutX="581.0" layoutY="230.0" prefHeight="38.0" prefWidth="413.0" text=" Incorrect data. Are you sure you put the correct login credentials? " textFill="RED" visible="false">

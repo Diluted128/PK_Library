@@ -30,7 +30,7 @@ public class App extends Application {
 
         @Override
         public void start(Stage splashScreen) throws IOException{
-         Parent root = FXMLLoader.load(getClass().getResource("[1] LoginScene.fxml"));
+         Parent root = FXMLLoader.load(getClass().getResource("view/[1] LoginScene.fxml"));
           splashScreen.setTitle("Library");
           splashScreen.setResizable(false);
           splashScreen.setScene(new Scene(root));
@@ -43,9 +43,9 @@ public class App extends Application {
                     "Doe",
                     "admin",
                     "admin",
-                    "admin@gmail.com",
-                    new ArrayList<>()
+                    "admin@gmail.com"
                     );
+
             Worker worker = new Worker(
                     "Adam",
                     "Johnson",

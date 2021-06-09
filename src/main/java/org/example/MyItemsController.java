@@ -15,19 +15,19 @@ public class MyItemsController {
     private User loggedInUser;
 
     public void changeSceneToMyItems(ActionEvent event) throws IOException {
-        Parent root = FXMLLoader.load(getClass().getResource("[2] MyItemsScene.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("view/[2] MyItemsScene.fxml"));
         Stage ourStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         setScene(root,ourStage);
     }
 
     public void changeSceneToRentItem(ActionEvent event) throws IOException {
-        Parent root = FXMLLoader.load(getClass().getResource("[2] RentItemScene.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("view/[2] RentItemScene.fxml"));
         Stage ourStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         setScene(root,ourStage);
     }
 
     public void changeSceneToMyProfile(ActionEvent event) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("[2] MyProfileScene.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("view/[2] MyProfileScene.fxml"));
         Stage ourStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         Parent root = fxmlLoader.load();
 
@@ -38,13 +38,13 @@ public class MyItemsController {
     }
 
     public void changeSceneToSettings(ActionEvent event) throws IOException {
-        Parent root = FXMLLoader.load(getClass().getResource("[2] SettingsScene.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("view/[2] SettingsScene.fxml"));
         Stage ourStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         setScene(root,ourStage);
     }
 
     public void changeSceneToSignOut(ActionEvent event) throws IOException {
-        Parent root = FXMLLoader.load(getClass().getResource("[1] LoginScene.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("view/[1] LoginScene.fxml"));
         Stage ourStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         setScene(root,ourStage);
     }

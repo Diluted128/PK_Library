@@ -34,7 +34,7 @@ public class PasswordReminderController {
     }
     public void ForgotPasswordReturn(ActionEvent event) throws Exception {
 
-        Parent root = FXMLLoader.load(getClass().getResource("[1] LoginScene.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("view/[1] LoginScene.fxml"));
         Scene LoginScene = new Scene(root);
 
         Stage ourStage = (Stage)((Node)event.getSource()).getScene().getWindow();

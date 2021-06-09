@@ -51,7 +51,7 @@ public class LoginSceneController {
     UserRepository userRepository = new UserRepository();
 
     public void ForgotPasswordFunctions(ActionEvent event) throws Exception {
-        Parent root = FXMLLoader.load(getClass().getResource("[1] PasswordReminderScene.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("view/[1] PasswordReminderScene.fxml"));
         Scene LoginReminder = new Scene(root);
 
         Stage ourStage = (Stage)((Node)event.getSource()).getScene().getWindow();
@@ -61,7 +61,7 @@ public class LoginSceneController {
 
     }
     public void SignUpFunctions(ActionEvent event) throws Exception {
-        Parent root = FXMLLoader.load(getClass().getResource("[1] CreateAccountScene.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("view/[1] CreateAccountScene.fxml"));
         Scene LoginReminder = new Scene(root);
 
         Stage ourStage = (Stage)((Node)event.getSource()).getScene().getWindow();
@@ -99,19 +99,19 @@ public class LoginSceneController {
             FXMLLoader fxmlLoader;
             Parent root;
             if(loggedInUser instanceof Customer){
-               fxmlLoader = new FXMLLoader(getClass().getResource("[2] MyItemsScene.fxml"));
+               fxmlLoader = new FXMLLoader(getClass().getResource("view/[2] MyItemsScene.fxml"));
                root =  fxmlLoader.load();
                 MyItemsController myItemsController = fxmlLoader.getController();
                 myItemsController.setLoggedInUser(loggedInUser);
             }
             else if(loggedInUser instanceof Manager){
-                fxmlLoader = new FXMLLoader(getClass().getResource("[4] HireWorkerScene.fxml"));
+                fxmlLoader = new FXMLLoader(getClass().getResource("view/[4] HireWorkerScene.fxml"));
                 root =  fxmlLoader.load();
              //   MyItemsController myItemsController = fxmlLoader.getController();
              //   myItemsController.setLoggedInUser(loggedInUser);
             }
             else{
-                fxmlLoader = new FXMLLoader(getClass().getResource("[3] AddItemScene.fxml"));
+                fxmlLoader = new FXMLLoader(getClass().getResource("view/[3] AddItemScene.fxml"));
                 root =  fxmlLoader.load();
             }
 

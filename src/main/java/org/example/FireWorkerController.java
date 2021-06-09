@@ -16,18 +16,18 @@ public class FireWorkerController {
     private TextField workerID;
 
     public void changeSceneHireWorker(ActionEvent event) throws IOException {
-        Parent root = FXMLLoader.load(getClass().getResource("[4] HireWorkerScene.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("view/[4] HireWorkerScene.fxml"));
         Stage ourStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         setScene(root,ourStage);
     }
 
     public void changeSceneToFireWorker(ActionEvent event) throws IOException {
-        Parent root = FXMLLoader.load(getClass().getResource("[4] FireWorkerScene.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("view/[4] FireWorkerScene.fxml"));
         Stage ourStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         setScene(root,ourStage);
     }
     public void changeSceneToSignOut(ActionEvent event) throws IOException {
-        Parent root = FXMLLoader.load(getClass().getResource("[1] LoginScene.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("view/[1] LoginScene.fxml"));
         Stage ourStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         setScene(root,ourStage);
     }

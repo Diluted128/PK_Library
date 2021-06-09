@@ -16,38 +16,38 @@ public class PickupItemController {
     private TextField ID;
 
     public void changeSceneToAddItem(ActionEvent event) throws IOException {
-        Parent root = FXMLLoader.load(getClass().getResource("[3] AddItemScene.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("view/[3] AddItemScene.fxml"));
         Stage ourStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         setScene(root,ourStage);
     }
 
     public void changeSceneToRemoveItem(ActionEvent event) throws IOException {
-        Parent root = FXMLLoader.load(getClass().getResource("[3] RemoveItemScene.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("view/[3] RemoveItemScene.fxml"));
         Stage ourStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         setScene(root,ourStage);
     }
 
     public void changeSceneToConfirmRental(ActionEvent event) throws IOException {
 
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("[3] ConfirmRentalScene.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("view/[3] ConfirmRentalScene.fxml"));
         Parent root = fxmlLoader.load();
         Stage ourStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         setScene(root,ourStage);
     }
 
     public void changeSceneToPickUpItem(ActionEvent event) throws IOException {
-        Parent root = FXMLLoader.load(getClass().getResource("[3] PickupItemScene.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("view/[3] PickupItemScene.fxml"));
         Stage ourStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         setScene(root,ourStage);
     }
 
     public void changeSceneToMyProfile(ActionEvent event) throws IOException {
-        Parent root = FXMLLoader.load(getClass().getResource("[3] MyProfileScene.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("view/[3] MyProfileScene.fxml"));
         Stage ourStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         setScene(root,ourStage);
     }
     public void changeSceneToSignOut(ActionEvent event) throws IOException {
-        Parent root = FXMLLoader.load(getClass().getResource("[1] LoginScene.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("view/[1] LoginScene.fxml"));
         Stage ourStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         setScene(root,ourStage);
     }

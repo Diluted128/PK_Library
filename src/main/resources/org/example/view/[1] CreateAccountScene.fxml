@@ -15,7 +15,7 @@
    <children>
       <ImageView fitHeight="680.0" fitWidth="1050.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../../../../src/main/java/org/example/images/CreateAccountBackground.png" />
+            <Image url="@../../../../../src/main/java/org/example/images/CreateAccountBackground.png" />
          </image>
       </ImageView>
       <CheckBox fx:id="CheckBox" layoutX="572.0" layoutY="492.0" mnemonicParsing="false" prefHeight="9.0" prefWidth="8.0" style="-fx-background-color: rgba(210,210,210,0.3);">

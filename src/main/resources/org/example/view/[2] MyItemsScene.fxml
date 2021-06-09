@@ -18,7 +18,7 @@
    <children>
       <ImageView fitHeight="675.0" fitWidth="1050.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../../../../src/main/java/org/example/images/MyItemsBackground.png" />
+            <Image url="@../../../../../src/main/java/org/example/images/MyItemsBackground.png" />
          </image>
       </ImageView>
       <JFXButton fx:id="MyItemsButton" buttonType="RAISED" cacheShape="false" focusTraversable="false" layoutX="50.0" layoutY="239.0" onAction="#changeSceneToMyItems" pickOnBounds="false" prefHeight="44.0" prefWidth="191.0" ripplerFill="#3b0257" text="-" textFill="#ae2a2a" textOverrun="CLIP">
