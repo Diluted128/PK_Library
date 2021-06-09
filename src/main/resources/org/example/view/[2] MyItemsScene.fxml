@@ -14,7 +14,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="675.0" prefWidth="1050.0" snapToPixel="false" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.MyItemsController">
+<AnchorPane prefHeight="675.0" prefWidth="1050.0" snapToPixel="false" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.controller.MyItemsController">
    <children>
       <ImageView fitHeight="675.0" fitWidth="1050.0" pickOnBounds="true" preserveRatio="true">
          <image>

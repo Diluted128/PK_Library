@@ -1,11 +1,9 @@
 package org.example.db;
 
-import org.example.library.user.Customer;
-import org.example.library.user.User;
+import org.example.model.user.User;
 
 import java.io.*;
 import java.util.ArrayList;
-import java.util.Optional;
 
 public class UserRepository {
 

@@ -1,7 +1,6 @@
 package org.example.db;
 
-import org.example.library.item.Item;
-import org.example.library.user.User;
+import org.example.model.item.Item;
 
 import java.io.*;
 import java.util.ArrayList;

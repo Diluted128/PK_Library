@@ -7,16 +7,14 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 import org.example.db.ItemRepository;
 import org.example.db.UserRepository;
-import org.example.library.item.Book;
-import org.example.library.item.Cover;
-import org.example.library.item.Genre;
-import org.example.library.user.Customer;
-import org.example.library.user.Manager;
-import org.example.library.user.User;
-import org.example.library.user.Worker;
+import org.example.model.item.Book;
+import org.example.model.item.Cover;
+import org.example.model.item.Genre;
+import org.example.model.user.Customer;
+import org.example.model.user.Manager;
+import org.example.model.user.Worker;
 
 import java.io.*;
-import java.util.ArrayList;
 import java.util.List;
 
 
@@ -30,7 +28,7 @@ public class App extends Application {
 
         @Override
         public void start(Stage splashScreen) throws IOException{
-         Parent root = FXMLLoader.load(getClass().getResource("view/[1] LoginScene.fxml"));
+         Parent root = FXMLLoader.load(getClass().getResource("/org/example/view/[1] LoginScene.fxml"));
           splashScreen.setTitle("Library");
           splashScreen.setResizable(false);
           splashScreen.setScene(new Scene(root));
