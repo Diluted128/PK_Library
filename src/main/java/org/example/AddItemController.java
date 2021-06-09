@@ -50,10 +50,6 @@ public class AddItemController {
 
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("[3] ConfirmRentalScene.fxml"));
         Parent root = fxmlLoader.load();
-
-        MyCustomerProfileController myCustomerProfileController = fxmlLoader.getController();
-      //  myProfileController.setLoggedInUser(loggedInUser);
-
         Scene LoginReminder = new Scene(root);
         Stage ourStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         ourStage.setScene(LoginReminder);

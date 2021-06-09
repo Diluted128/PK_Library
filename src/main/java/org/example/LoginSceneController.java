@@ -15,7 +15,9 @@ import javafx.stage.Stage;
 import org.example.db.UserRepository;
 import org.example.library.item.Item;
 import org.example.library.user.Customer;
+import org.example.library.user.Manager;
 import org.example.library.user.User;
+import org.example.library.user.Worker;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -91,13 +93,27 @@ public class LoginSceneController {
         if (loggedInUser == null || passedLogin.equals("") || passedPassword.equals("")) {
             Thread th = new Thread(new bg_Thread());
             th.start();
-        } else {
+        }
+        else {
 
-            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("[2] MyItemsScene.fxml"));
-            Parent root = fxmlLoader.load();
-
-            MyItemsController myItemsController = fxmlLoader.getController();
-            myItemsController.setLoggedInUser(loggedInUser);
+            FXMLLoader fxmlLoader;
+            Parent root;
+            if(loggedInUser instanceof Customer){
+               fxmlLoader = new FXMLLoader(getClass().getResource("[2] MyItemsScene.fxml"));
+               root =  fxmlLoader.load();
+                MyItemsController myItemsController = fxmlLoader.getController();
+                myItemsController.setLoggedInUser(loggedInUser);
+            }
+            else if(loggedInUser instanceof Manager){
+                fxmlLoader = new FXMLLoader(getClass().getResource("[4] HireWorkerScene.fxml"));
+                root =  fxmlLoader.load();
+             //   MyItemsController myItemsController = fxmlLoader.getController();
+             //   myItemsController.setLoggedInUser(loggedInUser);
+            }
+            else{
+                fxmlLoader = new FXMLLoader(getClass().getResource("[3] AddItemScene.fxml"));
+                root =  fxmlLoader.load();
+            }
 
             Scene LoginReminder = new Scene(root);
             Stage ourStage = (Stage)((Node)event.getSource()).getScene().getWindow();
