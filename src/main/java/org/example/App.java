@@ -7,14 +7,13 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 import org.example.db.ItemRepository;
 import org.example.db.UserRepository;
-import org.example.model.item.Book;
-import org.example.model.item.Cover;
-import org.example.model.item.Genre;
+import org.example.model.item.*;
 import org.example.model.user.Customer;
 import org.example.model.user.Manager;
 import org.example.model.user.Worker;
 
 import java.io.*;
+import java.util.ArrayList;
 import java.util.List;
 
 
@@ -59,8 +58,8 @@ public class App extends Application {
                     "customer@gmail.com"
             );
 
-            Book book = new Book(
-                    List.of("Stephen King","King Steven"),
+            Book bookOne = new Book(
+                    List.of("Stephen King"),
                     "Misery",
                     380,
                     "9780450417399",
@@ -68,8 +67,50 @@ public class App extends Application {
                     Cover.PAPERBACK,
                     Genre.HORROR
             );
+            Book bookTwo = new Book(
+                    List.of("Stephen King"),
+                    "It",
+                    380,
+                    "9780452347399",
+                    "Albatros",
+                    Cover.PAPERBACK,
+                    Genre.HORROR
+            );
+            Book bookThree = new Book(
+                    List.of("Stephen King"),
+                    "The Stand",
+                    380,
+                    "9781230417399",
+                    "Albatros",
+                    Cover.PAPERBACK,
+                    Genre.HORROR
+            );
 
-            customer.setRentedItems(List.of(book));
+            Article article = new Article(
+                    List.of("John Doe"),
+                    "World",
+                    12,
+                    "3453464357437",
+                    ArticleType.CASE_STUDY
+            );
+
+            Newspaper newspaper = new Newspaper(
+                    List.of("Matthew Patrick"),
+                    "New York Times",
+                    25,
+                    "3463464573457457",
+                    PublishingFrequency.DAY
+            );
+
+
+
+
+
+
+
+
+            List<Item> items = new ArrayList<>(List.of(bookOne, bookTwo, bookThree, article, newspaper));
+            customer.setRentedItems(items);
 
 
             UserRepository userRepository = new UserRepository();
@@ -79,7 +120,7 @@ public class App extends Application {
             userRepository.addNewUserAndReturnIfSuccessful(worker);
             userRepository.addNewUserAndReturnIfSuccessful(customer);
 
-            itemRepository.addNewItemAndReturnIfSuccessful(book);
+            itemRepository.addNewItemsAndReturnIfSuccessful(items);
         }
 
 }

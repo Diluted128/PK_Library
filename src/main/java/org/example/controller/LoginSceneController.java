@@ -98,15 +98,13 @@ public class LoginSceneController {
                root =  fxmlLoader.load();
                 MyItemsController myItemsController = fxmlLoader.getController();
                 myItemsController.setLoggedInUser(loggedInUser);
-            }
-            else if(loggedInUser instanceof Manager){
+            } else if(loggedInUser instanceof Manager){
                 fxmlLoader = new FXMLLoader(getClass().getResource("/org/example/view/[4] HireWorkerScene.fxml"));
                 root =  fxmlLoader.load();
 
-              MyItemsController myItemsController = fxmlLoader.getController();
-              myItemsController.setLoggedInUser(loggedInUser);
-            }
-            else{
+              HireWorkerController hireWorkerController = fxmlLoader.getController();
+              hireWorkerController.setLoggedInUser(loggedInUser);
+            } else{
                 fxmlLoader = new FXMLLoader(getClass().getResource("/org/example/view/[3] AddItemScene.fxml"));
                 root =  fxmlLoader.load();
             }

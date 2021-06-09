@@ -63,12 +63,12 @@
          <children>
             <VBox prefHeight="114.0" prefWidth="183.0">
                <children>
-                  <Label prefHeight="61.0" prefWidth="193.0" text="         0" textFill="#0fa2eb">
+                  <Label fx:id="rentedBooks" prefHeight="61.0" prefWidth="193.0" text="0" textFill="#0fa2eb" textAlignment="CENTER">
                      <font>
                         <Font name="Roboto" size="36.0" />
                      </font>
                   </Label>
-                  <Label prefHeight="35.0" prefWidth="166.0" text="          Rented Books" textFill="#616060">
+                  <Label prefHeight="35.0" prefWidth="166.0" text="Rented Books" textFill="#616060" textAlignment="CENTER">
                      <font>
                         <Font name="Open Sans Bold" size="14.0" />
                      </font>
@@ -77,12 +77,12 @@
             </VBox>
             <VBox layoutX="10.0" layoutY="10.0" prefHeight="114.0" prefWidth="180.0">
                <children>
-                  <Label prefHeight="61.0" prefWidth="187.0" text="         0" textFill="#13eb94">
+                  <Label fx:id="rentedArticles" prefHeight="61.0" prefWidth="187.0" text="0" textFill="#13eb94"  textAlignment="CENTER">
                      <font>
                         <Font name="Roboto" size="36.0" />
                      </font>
                   </Label>
-                  <Label prefHeight="35.0" prefWidth="183.0" text="       Rented Magazines" textFill="#616060">
+                  <Label prefHeight="35.0" prefWidth="183.0" text="Rented Magazines" textFill="#616060" textAlignment="CENTER">
                      <font>
                         <Font name="Open Sans Bold" size="14.0" />
                      </font>
@@ -91,12 +91,12 @@
             </VBox>
             <VBox layoutX="175.0" layoutY="10.0" prefHeight="114.0" prefWidth="181.0">
                <children>
-                  <Label prefHeight="61.0" prefWidth="191.0" text="         0 " textFill="#eb001f">
+                  <Label fx:id="rentedNewspapers" prefHeight="61.0" prefWidth="191.0" text="0" textFill="#eb001f" textAlignment="CENTER">
                      <font>
                         <Font name="Roboto" size="36.0" />
                      </font>
                   </Label>
-                  <Label prefHeight="35.0" prefWidth="185.0" text="      Rented Newspapers" textFill="#616060">
+                  <Label prefHeight="35.0" prefWidth="185.0" text="Rented Newspapers" textFill="#616060" textAlignment="CENTER">
                      <font>
                         <Font name="Open Sans Bold" size="14.0" />
                      </font>

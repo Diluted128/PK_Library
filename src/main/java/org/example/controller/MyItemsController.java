@@ -8,6 +8,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
@@ -19,6 +20,7 @@ import org.example.model.user.User;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class MyItemsController {
 
@@ -40,6 +42,12 @@ public class MyItemsController {
     private TableColumn<Item, Boolean> isReserved;
     @FXML
     private TableColumn<Item, Boolean> isRented;
+    @FXML
+    private Label rentedBooks;
+    @FXML
+    private Label rentedArticles;
+    @FXML
+    private Label rentedNewspapers;
 
     private User loggedInUser;
 
@@ -54,15 +62,31 @@ public class MyItemsController {
         ISBN.setCellValueFactory(new PropertyValueFactory<>("ISBN"));
         isReserved.setCellValueFactory(new PropertyValueFactory<>("isReserved"));
         isRented.setCellValueFactory(new PropertyValueFactory<>("isRented"));
-        List<Item> Customeritems = new ArrayList<>();
+        List<Item> customerItems = new ArrayList<>();
         if(loggedInUser instanceof Customer){
-            Customeritems = ((Customer)loggedInUser).getRentedItems();
+            customerItems = ((Customer)loggedInUser).getRentedItems();
         }
         ObservableList<Item> observableItems = FXCollections.observableArrayList();
-        observableItems.addAll(Customeritems);
+        observableItems.addAll(customerItems);
         items.setItems(observableItems);
 
-        System.out.println(Customeritems);
+        this.rentedBooks.setText(String.valueOf(customerItems
+                .stream()
+                .filter(i -> i.getType().equals("Book"))
+                .collect(Collectors.toList()).size()));
+
+        this.rentedArticles.setText(String.valueOf(customerItems
+                .stream()
+                .filter(i -> i.getType().equals("Article"))
+                .collect(Collectors.toList()).size()));
+
+        this.rentedNewspapers.setText(String.valueOf(customerItems
+                .stream()
+                .filter(i -> i.getType().equals("Newspaper"))
+                .collect(Collectors.toList()).size()));
+
+
+
     }
     public void changeSceneToMyItems(ActionEvent event) throws IOException {
         Parent root = FXMLLoader.load(getClass().getResource("/org/example/view/[2] MyItemsScene.fxml"));
