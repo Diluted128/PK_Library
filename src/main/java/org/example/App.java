@@ -55,7 +55,7 @@ public class App extends Application {
             );
             Customer customer = new Customer(
                     "Tom",
-                    "Arthur",
+                    "Brown",
                     "customer",
                     "customer",
                     "customer@gmail.com"
@@ -65,6 +65,7 @@ public class App extends Application {
                     List.of("Stephen King"),
                     "Misery",
                     380,
+                    "9780450417399",
                     "Albatros",
                     Cover.PAPERBACK,
                     Genre.HORROR

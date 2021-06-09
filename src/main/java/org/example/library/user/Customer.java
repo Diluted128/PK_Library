@@ -18,6 +18,8 @@ public final class Customer extends User implements Serializable {
         this.rentedItems = new ArrayList<>();
         this.onBlacklist = false;
         this.penalty = 0;
+        this.roles = List.of(Role.CUSTOMER);
+        this.permissions = List.of(Permission.RESERVE, Permission.RENT, Permission.RETURN);
     }
 
     public List<Item> getRentedItems() {

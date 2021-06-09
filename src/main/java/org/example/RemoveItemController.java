@@ -52,11 +52,15 @@ public class RemoveItemController {
         setScene(root,ourStage);
     }
     public void removeItem(){
-
+    //"Incorrect ID"
     }
     public void setScene(Parent root, Stage ourStage){
         Scene LoginReminder = new Scene(root);
         ourStage.setScene(LoginReminder);
         ourStage.show();
+    }
+
+    public String getID() {
+        return ID.getText();
     }
 }

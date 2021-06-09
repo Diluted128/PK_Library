@@ -8,8 +8,8 @@ public class Book extends Item {
     private Cover cover;
     private Genre genre;
 
-    public Book(List<String> authors, String title, int numberOfPages, String publisher, Cover cover, Genre genre) {
-        super(authors, title, numberOfPages);
+    public Book(List<String> authors, String title, int numberOfPages, String ISBN, String publisher, Cover cover, Genre genre) {
+        super(authors, title, numberOfPages, ISBN);
         this.publisher = publisher;
         this.cover = cover;
         this.genre = genre;

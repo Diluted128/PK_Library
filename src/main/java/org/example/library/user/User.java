@@ -4,6 +4,7 @@ package org.example.library.user;
 import org.example.library.item.Item;
 
 import java.io.Serializable;
+import java.util.List;
 
 @SuppressWarnings("unused")
 public abstract class User implements Serializable {
@@ -13,8 +14,8 @@ public abstract class User implements Serializable {
     private String login;
     private String password;
     private String email;
-    private String roles; //enum
-    private String permissions; //enum
+    protected List<Role> roles;
+    protected List<Permission> permissions;
 
     public User(String firstName, String lastName, String login, String password, String email) {
         this.firstName = firstName;
@@ -22,6 +23,7 @@ public abstract class User implements Serializable {
         this.login = login;
         this.password = password;
         this.email = email;
+
     }
 
     public String getFirstName() {

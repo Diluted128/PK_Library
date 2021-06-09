@@ -72,4 +72,12 @@ public class RentItemController {
         ourStage.setScene(LoginReminder);
         ourStage.show();
     }
+
+    public void rentItem() {
+        //"Incorrect ID"
+    }
+
+    public String getIdField() {
+        return IdField.getText();
+    }
 }

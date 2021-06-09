@@ -52,11 +52,15 @@ public class PickupItemController {
         setScene(root,ourStage);
     }
     public void pickupItem(){
-
+        //"Incorrect ID"
     }
     public void setScene(Parent root, Stage ourStage){
         Scene LoginReminder = new Scene(root);
         ourStage.setScene(LoginReminder);
         ourStage.show();
+    }
+
+    public String getID() {
+        return ID.getText();
     }
 }
