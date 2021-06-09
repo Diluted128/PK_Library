@@ -27,27 +27,26 @@ public class HireWorkerController {
 
     public void changeSceneHireWorker(ActionEvent event) throws IOException {
         Parent root = FXMLLoader.load(getClass().getResource("[4] HireWorkerScene.fxml"));
-        Scene LoginReminder = new Scene(root);
         Stage ourStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        ourStage.setScene(LoginReminder);
-        ourStage.show();
+        setScene(root,ourStage);
     }
 
     public void changeSceneToFireWorker(ActionEvent event) throws IOException {
         Parent root = FXMLLoader.load(getClass().getResource("[4] FireWorkerScene.fxml"));
-        Scene LoginReminder = new Scene(root);
         Stage ourStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        ourStage.setScene(LoginReminder);
-        ourStage.show();
+        setScene(root,ourStage);
     }
     public void changeSceneToSignOut(ActionEvent event) throws IOException {
         Parent root = FXMLLoader.load(getClass().getResource("[1] LoginScene.fxml"));
-        Scene LoginReminder = new Scene(root);
         Stage ourStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        ourStage.setScene(LoginReminder);
-        ourStage.show();
+        setScene(root,ourStage);
     }
     public void hireWorker(){
 
+    }
+    public void setScene(Parent root, Stage ourStage){
+        Scene LoginReminder = new Scene(root);
+        ourStage.setScene(LoginReminder);
+        ourStage.show();
     }
 }

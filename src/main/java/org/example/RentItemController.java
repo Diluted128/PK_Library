@@ -46,32 +46,29 @@ public class RentItemController {
 
     public void changeSceneToRentItem(ActionEvent event) throws IOException {
         Parent root = FXMLLoader.load(getClass().getResource("[2] RentItemScene.fxml"));
-        Scene LoginReminder = new Scene(root);
         Stage ourStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        ourStage.setScene(LoginReminder);
-        ourStage.show();
+        setScene(root,ourStage);
     }
 
     public void changeSceneToMyProfile(ActionEvent event) throws IOException {
         Parent root = FXMLLoader.load(getClass().getResource("[2] MyProfileScene.fxml"));
-        Scene LoginReminder = new Scene(root);
         Stage ourStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        ourStage.setScene(LoginReminder);
-        ourStage.show();
+        setScene(root,ourStage);
     }
 
     public void changeSceneToSettings(ActionEvent event) throws IOException {
         Parent root = FXMLLoader.load(getClass().getResource("[2] SettingsScene.fxml"));
-        Scene LoginReminder = new Scene(root);
         Stage ourStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        ourStage.setScene(LoginReminder);
-        ourStage.show();
+        setScene(root,ourStage);
     }
 
     public void changeSceneToSignOut(ActionEvent event) throws IOException {
         Parent root = FXMLLoader.load(getClass().getResource("[1] LoginScene.fxml"));
-        Scene LoginReminder = new Scene(root);
         Stage ourStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        setScene(root,ourStage);
+    }
+    public void setScene(Parent root, Stage ourStage){
+        Scene LoginReminder = new Scene(root);
         ourStage.setScene(LoginReminder);
         ourStage.show();
     }
