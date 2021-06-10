@@ -1,17 +1,13 @@
-package org.example.controller;
+package org.example.controller.subclasses.home;
 
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXTextArea;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Node;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.control.ProgressBar;
-import javafx.stage.Stage;
 import org.example.SendEmail;
+import org.example.controller.abstraction.Controller;
 
 
 public class PasswordReminderController extends Controller {

@@ -1,4 +1,4 @@
-package org.example.controller;
+package org.example.controller.subclasses.home;
 
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXTextArea;
@@ -11,7 +11,10 @@ import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
-import org.example.db.ItemRepository;
+import org.example.controller.subclasses.worker.AddItemController;
+import org.example.controller.subclasses.manager.HireWorkerController;
+import org.example.controller.subclasses.customer.MyItemsController;
+import org.example.controller.abstraction.Controller;
 import org.example.db.UserRepository;
 import org.example.model.user.Customer;
 import org.example.model.user.Manager;
@@ -98,6 +101,7 @@ public class LoginSceneController extends Controller {
                 root =  fxmlLoader.load();
 
                 AddItemController addItemController = fxmlLoader.getController();
+                addItemController.setLoggedInUser(loggedInUser);
 
             }
 

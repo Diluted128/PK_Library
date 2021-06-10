@@ -11,7 +11,7 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="675.0" prefWidth="1050.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.controller.AddItemController">
+<AnchorPane prefHeight="675.0" prefWidth="1050.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.controller.subclasses.worker.AddItemController">
    <children>
       <ImageView fitHeight="675.0" fitWidth="1050.0" pickOnBounds="true" preserveRatio="true">
          <image>

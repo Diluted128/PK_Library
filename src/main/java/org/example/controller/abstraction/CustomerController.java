@@ -1,15 +1,16 @@
-package org.example.controller;
+package org.example.controller.abstraction;
 
 import javafx.event.ActionEvent;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Node;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
-import javafx.stage.Stage;
+import org.example.controller.*;
+import org.example.controller.subclasses.customer.MyCustomerProfileController;
+import org.example.controller.subclasses.customer.MyItemsController;
+import org.example.controller.subclasses.customer.RentItemController;
+import org.example.controller.subclasses.customer.SettingsController;
 
 import java.io.IOException;
 
-public class SettingsController extends Controller {
+public abstract class CustomerController extends Controller {
+
     public void changeSceneToMyItems(ActionEvent event) throws IOException {
         changeScene(event, "[2] MyItemsScene.fxml", MyItemsController.class);
     }
@@ -29,4 +30,5 @@ public class SettingsController extends Controller {
     public void changeSceneToSignOut(ActionEvent event) throws IOException {
         changeScene(event, "[1] LoginScene.fxml", SignoutController.class);
     }
+
 }

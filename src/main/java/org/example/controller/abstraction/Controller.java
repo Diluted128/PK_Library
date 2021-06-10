@@ -1,4 +1,4 @@
-package org.example.controller;
+package org.example.controller.abstraction;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
@@ -14,7 +14,7 @@ public abstract class Controller {
 
     protected User loggedInUser;
 
-    void setLoggedInUser(User user) {
+    public void setLoggedInUser(User user) {
         this.loggedInUser = user;
     }
 
