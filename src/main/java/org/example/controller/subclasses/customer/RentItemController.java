@@ -1,33 +1,28 @@
-package org.example.controller;
+package org.example.controller.subclasses.customer;
 
+import com.jfoenix.controls.JFXButton;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Node;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
-import javafx.scene.control.Label;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
+import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
-import javafx.stage.Stage;
+import org.example.controller.abstraction.CustomerController;
 import org.example.model.item.ArticleType;
 import org.example.model.item.Genre;
 import org.example.model.item.Item;
 import org.example.model.user.Customer;
 import org.example.model.user.User;
 
-import java.io.IOException;
-import java.lang.reflect.Constructor;
-import java.lang.reflect.InvocationTargetException;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.Collectors;
 
-public class MyItemsController extends Controller {
-
+public class RentItemController extends CustomerController {
+    @FXML
+    private JFXButton rentItemButton;
+    @FXML
+    private TextField IdField;
+    @FXML
+    private ScrollPane scrollPane;
     @FXML
     private TableView<Item> items;
     @FXML
@@ -52,39 +47,6 @@ public class MyItemsController extends Controller {
     private TableColumn<Item, Genre> genre;
     @FXML
     private TableColumn<Item, ArticleType> articleType;
-    @FXML
-    private Label rentedBooks;
-    @FXML
-    private Label rentedArticles;
-    @FXML
-    private Label rentedNewspapers;
-
-
-    public void changeSceneToMyItems(ActionEvent event) throws IOException {
-        changeScene(event, "[2] MyItemsScene.fxml", MyItemsController.class);
-    }
-
-    public void changeSceneToRentItem(ActionEvent event) throws IOException {
-        changeScene(event, "[2] RentItemScene.fxml", RentItemController.class);
-    }
-
-    public void changeSceneToMyProfile(ActionEvent event) throws IOException {
-        changeScene(event, "[2] MyProfileScene.fxml", MyCustomerProfileController.class);
-    }
-
-    public void changeSceneToSettings(ActionEvent event) throws IOException {
-        changeScene(event, "[2] SettingsScene.fxml", SettingsController.class);
-    }
-
-    public void changeSceneToSignOut(ActionEvent event) throws IOException {
-        changeScene(event, "[1] LoginScene.fxml", SignoutController.class);
-    }
-
-    public void setLoggedInUser(User user) {
-        this.loggedInUser = user;
-        setTableView();
-    }
-
 
     public void setTableView(){
 
@@ -108,21 +70,18 @@ public class MyItemsController extends Controller {
         observableItems.addAll(customerItems);
         items.setItems(observableItems);
 
-        this.rentedBooks.setText(String.valueOf(customerItems
-                .stream()
-                .filter(i -> i.getType().equals("Book"))
-                .collect(Collectors.toList()).size()));
-
-        this.rentedArticles.setText(String.valueOf(customerItems
-                .stream()
-                .filter(i -> i.getType().equals("Article"))
-                .collect(Collectors.toList()).size()));
-
-        this.rentedNewspapers.setText(String.valueOf(customerItems
-                .stream()
-                .filter(i -> i.getType().equals("Newspaper"))
-                .collect(Collectors.toList()).size()));
-
     }
 
+
+
+    public void rentItem() {
+        //"Incorrect ID"
+    }
+    public void setLoggedInUser(User user) {
+        super.setLoggedInUser(user);
+        setTableView();
+    }
+    public String getIdField() {
+        return IdField.getText();
+    }
 }

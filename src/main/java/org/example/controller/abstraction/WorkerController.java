@@ -1,22 +1,22 @@
-package org.example.controller;
+package org.example.controller.abstraction;
 
 import javafx.event.ActionEvent;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Node;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
-import javafx.stage.Stage;
+import org.example.controller.subclasses.worker.AddItemController;
+import org.example.controller.subclasses.worker.ConfirmRentalController;
+import org.example.controller.subclasses.worker.RemoveItemController;
+import org.example.controller.subclasses.customer.MyCustomerProfileController;
+import org.example.controller.subclasses.home.LoginSceneController;
 
 import java.io.IOException;
 
-public class MyWorkerProfileController extends Controller {
+public abstract class WorkerController extends Controller {
 
     public void changeSceneToAddItem(ActionEvent event) throws IOException {
         changeScene(event, "[3] AddItemScene.fxml", AddItemController.class);
     }
 
     public void changeSceneToRemoveItem(ActionEvent event) throws IOException {
-        changeScene(event, "[3] RemoveItemScene.fxml", RentItemController.class);
+        changeScene(event, "[3] RemoveItemScene.fxml", RemoveItemController.class);
     }
 
     public void changeSceneToConfirmRental(ActionEvent event) throws IOException {

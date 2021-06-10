@@ -1,19 +1,13 @@
-package org.example.controller;
+package org.example.controller.abstraction;
 
 import javafx.event.ActionEvent;
-import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Node;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
-import javafx.scene.control.TextField;
-import javafx.stage.Stage;
+import org.example.controller.subclasses.manager.FireWorkerController;
+import org.example.controller.subclasses.manager.HireWorkerController;
+import org.example.controller.subclasses.home.LoginSceneController;
 
 import java.io.IOException;
 
-public class FireWorkerController extends Controller {
-    @FXML
-    private TextField workerID;
+public abstract class ManagerController extends Controller {
 
     public void changeSceneHireWorker(ActionEvent event) throws IOException {
         changeScene(event, "[4] HireWorkerScene.fxml", HireWorkerController.class);
@@ -22,11 +16,9 @@ public class FireWorkerController extends Controller {
     public void changeSceneToFireWorker(ActionEvent event) throws IOException {
         changeScene(event, "[4] FireWorkerScene.fxml", FireWorkerController.class);
     }
+
     public void changeSceneToSignOut(ActionEvent event) throws IOException {
         changeScene(event, "[1] LoginScene.fxml", LoginSceneController.class);
-    }
-    public void fireWorker(){
-
     }
 
 }

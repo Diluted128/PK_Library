@@ -1,15 +1,11 @@
-package org.example.controller;
+package org.example.controller.subclasses.home;
 
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXTextArea;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Node;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.*;
-import javafx.stage.Stage;
+import org.example.controller.abstraction.Controller;
 import org.example.db.UserRepository;
 import org.example.model.user.Customer;
 
