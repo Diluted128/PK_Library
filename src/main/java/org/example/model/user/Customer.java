@@ -53,7 +53,8 @@ public final class Customer extends User implements Serializable {
                 " " + getLogin() +
                 "}";
     }
-    public void payPenalty(Double penalty) {
 
+    public void payPenalty(Double penalty) {
+        setPenalty(0.0);
     }
 }

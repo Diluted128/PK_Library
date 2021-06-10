@@ -53,5 +53,24 @@ public class UserRepository {
 
     }
 
+    public boolean removeUserAndReturnIfSuccessful(User user) {
+        ArrayList<User> users = getAllUsers();
+
+        if (users.stream().anyMatch(u -> u.getLogin().equals(user.getEmail()))) {
+            return false;
+        }
+
+
+        users.remove(user);
+
+        try (ObjectOutputStream outputStream = new ObjectOutputStream(new FileOutputStream(usersFile))) {
+            outputStream.writeObject(users);
+            return true;
+        } catch (IOException e) {
+            System.out.println(e.getMessage());
+            return false;
+        }
+
+    }
 
 }

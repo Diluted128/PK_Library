@@ -1,9 +1,12 @@
 package org.example.model.user;
 
+import org.example.db.ItemRepository;
+import org.example.db.UserRepository;
 import org.example.model.item.Item;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.NoSuchElementException;
 
 public class Manager extends Worker{
 
@@ -18,15 +21,32 @@ public class Manager extends Worker{
     }
 
     public void removeItem(Item item) {
-
+        if(ItemRepository.getItemRepository().removeItemAndReturnIfSuccessful(item)){
+            System.out.println("Successful");
+        }
+        else {
+            System.out.println("Something is wrong");
+        }
     }
 
     public void hireWorker(Worker worker) {
-
-    }
+        if( UserRepository.getUserRepository().addNewUserAndReturnIfSuccessful(worker))
+        {
+            System.out.println("Successful");
+        }
+        else {
+            System.out.println("Something is wrong");
+        }
+      }
 
     public void fireWorker(Worker worker) {
-
+        if( UserRepository.getUserRepository().removeUserAndReturnIfSuccessful(worker))
+        {
+            System.out.println("Successful");
+        }
+        else {
+            System.out.println("Something is wrong");
+        }
     }
 
     public void assignSubordinate(Worker worker) {
