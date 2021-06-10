@@ -15,19 +15,17 @@ import java.io.IOException;
 
 public class HireWorkerController extends Controller {
     @FXML
-    private TextField ID;
+    private TextField WorkerID;
     @FXML
-    private TextField firstName;
+    private TextField WorkerFirstName;
     @FXML
-    private TextField lastName;
+    private TextField WorkerLastName;
     @FXML
-    private TextField email;
+    private TextField WorkerEmail;
     @FXML
-    private TextField login;
+    private TextField WorkerLogin;
     @FXML
-    private TextField password;
-
-    private User loggedInUser;
+    private TextField WorkerPassword;
 
     public void changeSceneHireWorker(ActionEvent event) throws IOException {
         changeScene(event, "[4] HireWorkerScene.fxml", HireWorkerController.class);
@@ -36,10 +34,9 @@ public class HireWorkerController extends Controller {
     public void changeSceneToFireWorker(ActionEvent event) throws IOException {
         changeScene(event, "[4] FireWorkerScene.fxml", FireWorkerController.class);
     }
+
     public void changeSceneToSignOut(ActionEvent event) throws IOException {
         changeScene(event, "[1] LoginScene.fxml", LoginSceneController.class);
     }
-    public void hireWorker(){
 
-    }
 }

@@ -15,22 +15,68 @@ import java.io.IOException;
 public class AddItemController extends Controller {
 
     @FXML
-    private TextField IDField;
+    private TextField BookID;
     @FXML
-    private TextField typeField;
+    private TextField BookTitle;
     @FXML
-    private TextField titleField;
+    private TextField BookAuthors;
     @FXML
-    private TextField authorsField;
+    private TextField BookPages;
     @FXML
-    private TextField pagesField;
+    private TextField BookISBN;
     @FXML
-    private TextField ISBNField;
+    private TextField BookReservation;
     @FXML
-    private TextField isReservedField;
+    private TextField BookRental;
     @FXML
-    private TextField isRentedField;
+    private TextField BookPublisher;
+    @FXML
+    private TextField BookCover;
+    @FXML
+    private TextField BookGenre;
+    @FXML
+    private TextField ArticleID;
+    @FXML
+    private TextField ArticleTitle;
+    @FXML
+    private TextField ArticleAuthors;
+    @FXML
+    private TextField ArticlePages;
+    @FXML
+    private TextField ArticleISBN;
+    @FXML
+    private TextField ArticleReservation;
+    @FXML
+    private TextField ArticleRental;
+    @FXML
+    private TextField ArticleType;
+    @FXML
+    private TextField NewID;
+    @FXML
+    private TextField NewTitle;
+    @FXML
+    private TextField NewAuthors;
+    @FXML
+    private TextField NewPages;
+    @FXML
+    private TextField NewISBN;
+    @FXML
+    private TextField NewReservation;
+    @FXML
+    private TextField NewRental;
+    @FXML
+    private TextField NewPublishingFreq;
 
+
+    public void addBook(){
+
+    }
+    public void addArticle(){
+
+    }
+    public void addNewspaper(){
+
+    }
     public void changeSceneToAddItem(ActionEvent event) throws IOException {
         changeScene(event, "[3] AddItemScene.fxml", AddItemController.class);
     }
@@ -46,11 +92,9 @@ public class AddItemController extends Controller {
     public void changeSceneToMyProfile(ActionEvent event) throws IOException {
         changeScene(event, "[3] MyProfileScene.fxml", MyCustomerProfileController.class);
     }
+
     public void changeSceneToSignOut(ActionEvent event) throws IOException {
         changeScene(event, "[1] LoginScene.fxml", LoginSceneController.class);
-    }
-    public void addItem(){
-
     }
 
 }

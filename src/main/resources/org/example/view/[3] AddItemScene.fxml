@@ -18,12 +18,12 @@
             <Image url="@../../../../../src/main/java/org/example/images/AddItemBackground.png" />
          </image>
       </ImageView>
-      <Label layoutX="576.0" layoutY="547.0" prefHeight="20.0" prefWidth="193.0" text="Put details to add a new Item" textFill="#757575">
+      <Label layoutX="570.0" layoutY="162.0" prefHeight="20.0" prefWidth="199.0" text="Put details to add a new book" textFill="#757575">
          <font>
             <Font name="Open Sans Regular" size="14.0" />
          </font>
       </Label>
-      <JFXButton layoutX="573.0" layoutY="578.0" onAction="#addItem" prefHeight="35.0" prefWidth="199.0" ripplerFill="#ff03ff" style="-fx-background-color: #924da5;" text="Add Item" textFill="WHITE">
+      <JFXButton layoutX="570.0" layoutY="199.0" onAction="#addBook" prefHeight="35.0" prefWidth="199.0" ripplerFill="#ff03ff" style="-fx-background-color: #924da5;" text="Add book" textFill="WHITE">
          <font>
             <Font name="Open Sans Bold" size="14.0" />
          </font>
@@ -31,22 +31,6 @@
             <ColorAdjust contrast="0.24" hue="0.79" />
          </effect>
       </JFXButton>
-      <HBox layoutX="353.0" layoutY="493.0" prefHeight="35.0" prefWidth="632.0" style="-fx-background-color: #DCDBDB;">
-         <children>
-            <TextField fx:id="ID" opacity="0.75" prefHeight="35.0" prefWidth="52.0" promptText="ID">
-               <effect>
-                  <ColorAdjust brightness="0.1" hue="0.27" />
-               </effect>
-            </TextField>
-            <TextField fx:id="Type" opacity="0.75" prefHeight="35.0" prefWidth="66.0" promptText="Type" />
-            <TextField fx:id="Title" opacity="0.75" prefHeight="35.0" prefWidth="72.0" promptText="Title" />
-            <TextField fx:id="Authors" opacity="0.75" prefHeight="35.0" prefWidth="78.0" promptText="Authors" />
-            <TextField fx:id="Pages" opacity="0.75" prefHeight="35.0" prefWidth="70.0" promptText="Pages" />
-            <TextField fx:id="ISBN" opacity="0.75" prefHeight="35.0" prefWidth="81.0" promptText="ISBN" />
-            <TextField fx:id="Reservation" opacity="0.75" prefHeight="35.0" prefWidth="128.0" promptText="Reservation" />
-            <TextField fx:id="Rental" opacity="0.75" prefHeight="35.0" prefWidth="84.0" promptText="Rental" />
-         </children>
-      </HBox>
       <JFXButton buttonType="RAISED" cacheShape="false" focusTraversable="false" layoutX="55.0" layoutY="234.0" onAction="#changeSceneToAddItem" pickOnBounds="false" prefHeight="44.0" prefWidth="191.0" ripplerFill="#3b0257" text="-" textFill="#ae2a2a" textOverrun="CLIP">
          <font>
             <Font size="1.0" />
@@ -86,6 +70,82 @@
          <cursor>
             <Cursor fx:constant="HAND" />
          </cursor>
+      </JFXButton>
+      <HBox layoutX="363.0" layoutY="99.0" prefHeight="35.0" prefWidth="613.0" style="-fx-background-color: #DCDBDB;">
+         <children>
+            <TextField fx:id="BookID" opacity="0.75" prefHeight="35.0" prefWidth="28.0" promptText="ID">
+               <effect>
+                  <ColorAdjust brightness="0.1" hue="0.27" />
+               </effect>
+            </TextField>
+            <TextField fx:id="BookTitle" opacity="0.75" prefHeight="35.0" prefWidth="72.0" promptText="Title" />
+            <TextField fx:id="BookAuthors" opacity="0.75" prefHeight="35.0" prefWidth="78.0" promptText="Authors" />
+            <TextField fx:id="BookPages" opacity="0.75" prefHeight="35.0" prefWidth="49.0" promptText="Pages" />
+            <TextField fx:id="BookISBN" opacity="0.75" prefHeight="35.0" prefWidth="53.0" promptText="ISBN" />
+            <TextField fx:id="BookReservation" opacity="0.75" prefHeight="35.0" prefWidth="79.0" promptText="Reservation" />
+            <TextField fx:id="BookRental" opacity="0.75" prefHeight="35.0" prefWidth="47.0" promptText="Rental" />
+            <TextField fx:id="BookPublisher" opacity="0.75" prefHeight="35.0" prefWidth="70.0" promptText="Publisher" />
+            <TextField fx:id="BookCover" layoutX="506.0" layoutY="10.0" opacity="0.75" prefHeight="35.0" prefWidth="70.0" promptText="Cover" />
+            <TextField fx:id="BookGenre" layoutX="548.0" layoutY="10.0" opacity="0.75" prefHeight="35.0" prefWidth="70.0" promptText="Genre" />
+         </children>
+      </HBox>
+      <HBox layoutX="422.0" layoutY="285.0" prefHeight="35.0" prefWidth="495.0" style="-fx-background-color: #DCDBDB;">
+         <children>
+            <TextField fx:id="ArticleID" opacity="0.75" prefHeight="35.0" prefWidth="28.0" promptText="ID">
+               <effect>
+                  <ColorAdjust brightness="0.1" hue="0.27" />
+               </effect>
+            </TextField>
+            <TextField fx:id="ArticleTitle" opacity="0.75" prefHeight="35.0" prefWidth="72.0" promptText="Title" />
+            <TextField fx:id="ArticleAuthors" opacity="0.75" prefHeight="35.0" prefWidth="78.0" promptText="Authors" />
+            <TextField fx:id="ArticlePages" opacity="0.75" prefHeight="35.0" prefWidth="49.0" promptText="Pages" />
+            <TextField fx:id="ArticleISBN" opacity="0.75" prefHeight="35.0" prefWidth="53.0" promptText="ISBN" />
+            <TextField fx:id="ArticleReservation" opacity="0.75" prefHeight="35.0" prefWidth="80.0" promptText="Reservation" />
+            <TextField fx:id="ArticleRental" opacity="0.75" prefHeight="35.0" prefWidth="52.0" promptText="Rental" />
+            <TextField fx:id="ArticleType" opacity="0.75" prefHeight="35.0" prefWidth="88.0" promptText="Article type" />
+         </children>
+      </HBox>
+      <Label layoutX="566.0" layoutY="345.0" prefHeight="20.0" prefWidth="207.0" text="Put details to add a new article" textFill="#757575">
+         <font>
+            <Font name="Open Sans Regular" size="14.0" />
+         </font>
+      </Label>
+      <JFXButton layoutX="570.0" layoutY="378.0" onAction="#addArticle" prefHeight="35.0" prefWidth="199.0" ripplerFill="#ff03ff" style="-fx-background-color: #924da5;" text="Add article" textFill="WHITE">
+         <font>
+            <Font name="Open Sans Bold" size="14.0" />
+         </font>
+         <effect>
+            <ColorAdjust contrast="0.24" hue="0.79" />
+         </effect>
+      </JFXButton>
+      <HBox layoutX="403.0" layoutY="454.0" prefHeight="35.0" prefWidth="534.0" style="-fx-background-color: #DCDBDB;">
+         <children>
+            <TextField fx:id="NewID" opacity="0.75" prefHeight="35.0" prefWidth="28.0" promptText="ID">
+               <effect>
+                  <ColorAdjust brightness="0.1" hue="0.27" />
+               </effect>
+            </TextField>
+            <TextField fx:id="NewTitle" opacity="0.75" prefHeight="35.0" prefWidth="72.0" promptText="Title" />
+            <TextField fx:id="NewAuthors" opacity="0.75" prefHeight="35.0" prefWidth="78.0" promptText="Authors" />
+            <TextField fx:id="NewPages" opacity="0.75" prefHeight="35.0" prefWidth="49.0" promptText="Pages" />
+            <TextField fx:id="NewISBN" opacity="0.75" prefHeight="35.0" prefWidth="53.0" promptText="ISBN" />
+            <TextField fx:id="NewReservation" opacity="0.75" prefHeight="35.0" prefWidth="81.0" promptText="Reservation" />
+            <TextField fx:id="NewRental" opacity="0.75" prefHeight="35.0" prefWidth="52.0" promptText="Rental" />
+            <TextField fx:id="NewPublishingFreq" opacity="0.75" prefHeight="35.0" prefWidth="132.0" promptText="Publishing frequency" />
+         </children>
+      </HBox>
+      <Label layoutX="551.0" layoutY="520.0" prefHeight="20.0" prefWidth="237.0" text="Put details to add a new newspaper" textFill="#757575">
+         <font>
+            <Font name="Open Sans Regular" size="14.0" />
+         </font>
+      </Label>
+      <JFXButton layoutX="570.0" layoutY="553.0" onAction="#addNewspaper" prefHeight="35.0" prefWidth="199.0" ripplerFill="#ff03ff" style="-fx-background-color: #924da5;" text="Add newspaper" textFill="WHITE">
+         <font>
+            <Font name="Open Sans Bold" size="14.0" />
+         </font>
+         <effect>
+            <ColorAdjust contrast="0.24" hue="0.79" />
+         </effect>
       </JFXButton>
    </children>
 </AnchorPane>
