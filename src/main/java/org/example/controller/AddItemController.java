@@ -26,22 +26,68 @@ import java.util.stream.Collectors;
 public class AddItemController {
 
     @FXML
-    private TextField IDField;
+    private TextField BookID;
     @FXML
-    private TextField typeField;
+    private TextField BookTitle;
     @FXML
-    private TextField titleField;
+    private TextField BookAuthors;
     @FXML
-    private TextField authorsField;
+    private TextField BookPages;
     @FXML
-    private TextField pagesField;
+    private TextField BookISBN;
     @FXML
-    private TextField ISBNField;
+    private TextField BookReservation;
     @FXML
-    private TextField isReservedField;
+    private TextField BookRental;
     @FXML
-    private TextField isRentedField;
+    private TextField BookPublisher;
+    @FXML
+    private TextField BookCover;
+    @FXML
+    private TextField BookGenre;
+    @FXML
+    private TextField ArticleID;
+    @FXML
+    private TextField ArticleTitle;
+    @FXML
+    private TextField ArticleAuthors;
+    @FXML
+    private TextField ArticlePages;
+    @FXML
+    private TextField ArticleISBN;
+    @FXML
+    private TextField ArticleReservation;
+    @FXML
+    private TextField ArticleRental;
+    @FXML
+    private TextField ArticleType;
+    @FXML
+    private TextField NewID;
+    @FXML
+    private TextField NewTitle;
+    @FXML
+    private TextField NewAuthors;
+    @FXML
+    private TextField NewPages;
+    @FXML
+    private TextField NewISBN;
+    @FXML
+    private TextField NewReservation;
+    @FXML
+    private TextField NewRental;
+    @FXML
+    private TextField NewPublishingFreq;
 
+
+    public void addBook(){
+
+    }
+    public void addArticle(){
+
+    }
+    public void addNewspaper(){
+
+    }
     public void changeSceneToAddItem(ActionEvent event) throws IOException {
         Parent root = FXMLLoader.load(getClass().getResource("/org/example/view/[3] AddItemScene.fxml"));
         Stage ourStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
@@ -69,9 +115,6 @@ public class AddItemController {
         Parent root = FXMLLoader.load(getClass().getResource("/org/example/view/[1] LoginScene.fxml"));
         Stage ourStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         setScene(root,ourStage);
-    }
-    public void addItem(){
-
     }
     public void setScene(Parent root, Stage ourStage){
         Scene LoginReminder = new Scene(root);

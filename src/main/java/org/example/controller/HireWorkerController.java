@@ -15,20 +15,23 @@ import java.io.IOException;
 
 public class HireWorkerController {
     @FXML
-    private TextField ID;
+    private TextField WorkerID;
     @FXML
-    private TextField firstName;
+    private TextField WorkerFirstName;
     @FXML
-    private TextField lastName;
+    private TextField WorkerLastName;
     @FXML
-    private TextField email;
+    private TextField WorkerEmail;
     @FXML
-    private TextField login;
+    private TextField WorkerLogin;
     @FXML
-    private TextField password;
+    private TextField WorkerPassword;
 
     private User loggedInUser;
 
+    public void hireWorker(){
+
+    }
     public void changeSceneHireWorker(ActionEvent event) throws IOException {
         Parent root = FXMLLoader.load(getClass().getResource("/org/example/view/[4] HireWorkerScene.fxml"));
         Stage ourStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
@@ -44,9 +47,6 @@ public class HireWorkerController {
         Parent root = FXMLLoader.load(getClass().getResource("/org/example/view/[1] LoginScene.fxml"));
         Stage ourStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         setScene(root,ourStage);
-    }
-    public void hireWorker(){
-
     }
     public void setScene(Parent root, Stage ourStage){
         Scene LoginReminder = new Scene(root);

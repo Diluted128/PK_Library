@@ -60,12 +60,12 @@
             <Cursor fx:constant="HAND" />
          </cursor>
       </JFXButton>
-      <TextField fx:id="idField1" layoutX="460.0" layoutY="523.0" prefHeight="25.0" prefWidth="66.0" promptText="Item ID">
+      <TextField fx:id="idField1" layoutX="482.0" layoutY="523.0" prefHeight="25.0" prefWidth="66.0" promptText="Item ID">
          <effect>
-            <ColorAdjust brightness="0.1" hue="0.27" />
+            <ColorAdjust brightness="0.1" hue="0.51" />
          </effect>
       </TextField>
-      <JFXButton layoutX="393.0" layoutY="588.0" onAction="#confirmRental" prefHeight="35.0" prefWidth="199.0" ripplerFill="#ff03ff" style="-fx-background-color: #924da5;" text="Confirm rental" textFill="WHITE">
+      <JFXButton layoutX="416.0" layoutY="588.0" onAction="#confirmRental" prefHeight="35.0" prefWidth="199.0" ripplerFill="#ff03ff" style="-fx-background-color: #924da5;" text="Confirm rental" textFill="WHITE">
          <font>
             <Font name="Open Sans Bold" size="14.0" />
          </font>
@@ -73,7 +73,7 @@
             <ColorAdjust contrast="0.24" hue="0.79" />
          </effect>
       </JFXButton>
-      <Label layoutX="413.0" layoutY="557.0" prefHeight="20.0" prefWidth="160.0" text="Put ID to confirm rental" textFill="#757575">
+      <Label layoutX="435.0" layoutY="557.0" prefHeight="20.0" prefWidth="160.0" text="Put ID to confirm rental" textFill="#757575">
          <font>
             <Font name="Open Sans Regular" size="14.0" />
          </font>
@@ -100,12 +100,12 @@
             </TableView>
          </content>
       </ScrollPane>
-      <TextField fx:id="idField2" layoutX="769.0" layoutY="523.0" prefHeight="25.0" prefWidth="66.0" promptText="Item ID">
+      <TextField fx:id="idField2" layoutX="790.0" layoutY="523.0" prefHeight="25.0" prefWidth="66.0" promptText="Item ID">
          <effect>
-            <ColorAdjust brightness="0.1" hue="0.27" />
+            <ColorAdjust brightness="0.1" hue="0.51" />
          </effect>
       </TextField>
-      <JFXButton layoutX="703.0" layoutY="588.0" onAction="#confirmPickup" prefHeight="35.0" prefWidth="199.0" ripplerFill="#ff03ff" style="-fx-background-color: #924da5;" text="Confirm pick up" textFill="WHITE">
+      <JFXButton layoutX="724.0" layoutY="588.0" onAction="#confirmPickup" prefHeight="35.0" prefWidth="199.0" ripplerFill="#ff03ff" style="-fx-background-color: #924da5;" text="Confirm pick up" textFill="WHITE">
          <font>
             <Font name="Open Sans Bold" size="14.0" />
          </font>
@@ -113,7 +113,7 @@
             <ColorAdjust contrast="0.24" hue="0.79" />
          </effect>
       </JFXButton>
-      <Label layoutX="728.0" layoutY="557.0" prefHeight="20.0" prefWidth="148.0" text="Put ID to pick up item" textFill="#757575">
+      <Label layoutX="749.0" layoutY="557.0" prefHeight="20.0" prefWidth="148.0" text="Put ID to pick up item" textFill="#757575">
          <font>
             <Font name="Open Sans Regular" size="14.0" />
          </font>

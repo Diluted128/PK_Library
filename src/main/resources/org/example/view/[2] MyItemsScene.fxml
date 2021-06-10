@@ -108,21 +108,21 @@
       </HBox>
     <AnchorPane layoutX="311.0" layoutY="283.0" minHeight="0.0" minWidth="0.0" prefHeight="346.0" prefWidth="703.0">
          <children>
-            <ScrollPane prefHeight="347.0" prefWidth="709.0">
+            <ScrollPane prefHeight="347.0" prefWidth="727.0">
                <content>
-                  <TableView fx:id="items" prefHeight="347.0" prefWidth="695.0">
+                  <TableView fx:id="items" prefHeight="347.0" prefWidth="719.0">
                     <columns>
                       <TableColumn fx:id="ID" prefWidth="30.0" text="ID" />
                       <TableColumn fx:id="type" prefWidth="60.0" text="Type" />
-                        <TableColumn fx:id="title" text="Title" />
-                        <TableColumn fx:id="authors" prefWidth="75.0" text="Authors" />
+                        <TableColumn fx:id="title" prefWidth="75.0" text="Title" />
+                        <TableColumn fx:id="authors" prefWidth="74.0" text="Authors" />
                         <TableColumn fx:id="pages" prefWidth="43.0" text="Pages" />
-                        <TableColumn fx:id="ISBN" prefWidth="47.0" text="ISBN" />
-                        <TableColumn fx:id="isReserved" minWidth="0.0" prefWidth="76.0" text="Reservation" />
-                        <TableColumn fx:id="isRented" prefWidth="53.0" text="Rental" />
-                        <TableColumn fx:id="publisher" prefWidth="89.0" text="Publisher" />
-                        <TableColumn fx:id="genre" prefWidth="77.0" text="Genre" />
-                        <TableColumn fx:id="articleType" prefWidth="87.0" text="Article type" />
+                        <TableColumn fx:id="ISBN" prefWidth="48.0" text="ISBN" />
+                        <TableColumn fx:id="isReserved" minWidth="0.0" prefWidth="72.0" text="Reservation" />
+                        <TableColumn fx:id="isRented" prefWidth="48.0" text="Rental" />
+                        <TableColumn fx:id="publisher" prefWidth="95.0" text="Publisher" />
+                        <TableColumn fx:id="genre" prefWidth="71.0" text="Genre" />
+                        <TableColumn fx:id="articleType" prefWidth="101.0" text="Article type" />
                     </columns>
                   </TableView>
                </content>

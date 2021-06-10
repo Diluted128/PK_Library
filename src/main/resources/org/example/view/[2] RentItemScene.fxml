@@ -22,7 +22,7 @@
       </ImageView>
       <TextField fx:id="IdField" layoutX="636.0" layoutY="512.0" prefHeight="25.0" prefWidth="66.0" promptText="Item ID">
          <effect>
-            <ColorAdjust brightness="0.1" hue="0.27" />
+            <ColorAdjust brightness="-0.19" contrast="0.15" hue="0.41" />
          </effect>
       </TextField>
       <JFXButton fx:id="rentItemButton" layoutX="570.0" layoutY="582.0" prefHeight="35.0" prefWidth="199.0" ripplerFill="#ff03ff" style="-fx-background-color: #924da5;" text="Reserve Item" textFill="WHITE">

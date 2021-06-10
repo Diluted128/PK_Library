@@ -42,7 +42,7 @@
             <Cursor fx:constant="HAND" />
          </cursor>
       </JFXButton>
-      <JFXButton fx:id="hireWorker" layoutX="554.0" layoutY="602.0" onAction="#hireWorker" prefHeight="35.0" prefWidth="199.0" ripplerFill="#ff03ff" style="-fx-background-color: #924da5;" text="Hire worker" textFill="WHITE">
+      <JFXButton fx:id="hireWorker" layoutX="558.0" layoutY="382.0" onAction="#hireWorker" prefHeight="35.0" prefWidth="199.0" ripplerFill="#ff03ff" style="-fx-background-color: #924da5;" text="Hire worker" textFill="WHITE">
          <font>
             <Font name="Open Sans Bold" size="14.0" />
          </font>
@@ -50,7 +50,7 @@
             <ColorAdjust contrast="0.24" hue="0.79" />
          </effect>
       </JFXButton>
-      <Label layoutX="575.0" layoutY="566.0" prefHeight="20.0" prefWidth="156.0" text="Put data to hire worker" textFill="#757575">
+      <Label layoutX="579.0" layoutY="347.0" prefHeight="20.0" prefWidth="156.0" text="Put data to hire worker" textFill="#757575">
          <font>
             <Font name="Open Sans Regular" size="14.0" />
          </font>
@@ -60,18 +60,18 @@
             <Font name="Open Sans Regular" size="24.0" />
          </font>
       </Label>
-      <HBox layoutX="353.0" layoutY="511.0" prefHeight="35.0" prefWidth="632.0" style="-fx-background-color: #DCDBDB;">
+      <HBox layoutX="341.0" layoutY="262.0" prefHeight="35.0" prefWidth="632.0" style="-fx-background-color: #DCDBDB;">
          <children>
-            <TextField fx:id="ID" opacity="0.75" prefHeight="35.0" prefWidth="52.0" promptText="ID">
+            <TextField fx:id="WorkerID" opacity="0.75" prefHeight="35.0" prefWidth="52.0" promptText="ID">
                <effect>
                   <ColorAdjust brightness="0.1" hue="0.27" />
                </effect>
             </TextField>
-            <TextField fx:id="firstName" opacity="0.75" prefHeight="35.0" prefWidth="110.0" promptText="First name" />
-            <TextField fx:id="lastName" opacity="0.75" prefHeight="35.0" prefWidth="102.0" promptText="Last name" />
-            <TextField fx:id="email" opacity="0.75" prefHeight="35.0" prefWidth="179.0" promptText="Email" />
-            <TextField fx:id="login" opacity="0.75" prefHeight="35.0" prefWidth="100.0" promptText="Login" />
-            <TextField fx:id="password" opacity="0.75" prefHeight="35.0" prefWidth="91.0" promptText="Password" />
+            <TextField fx:id="WorkerFirstName" opacity="0.75" prefHeight="35.0" prefWidth="110.0" promptText="First name" />
+            <TextField fx:id="WorkerLastName" opacity="0.75" prefHeight="35.0" prefWidth="102.0" promptText="Last name" />
+            <TextField fx:id="WorkerEmail" opacity="0.75" prefHeight="35.0" prefWidth="179.0" promptText="Email" />
+            <TextField fx:id="WorkerLogin" opacity="0.75" prefHeight="35.0" prefWidth="100.0" promptText="Login" />
+            <TextField fx:id="WorkerPassword" opacity="0.75" prefHeight="35.0" prefWidth="91.0" promptText="Password" />
          </children>
       </HBox>
    </children>

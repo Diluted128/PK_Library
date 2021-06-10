@@ -60,12 +60,12 @@
             <Cursor fx:constant="HAND" />
          </cursor>
       </JFXButton>
-      <TextField fx:id="IdField" layoutX="612.0" layoutY="535.0" prefHeight="25.0" prefWidth="66.0" promptText="Item ID">
+      <TextField fx:id="IdField" layoutX="615.0" layoutY="535.0" prefHeight="25.0" prefWidth="66.0" promptText="Item ID">
          <effect>
-            <ColorAdjust brightness="0.1" hue="0.27" />
+            <ColorAdjust brightness="0.1" hue="0.53" />
          </effect>
       </TextField>
-      <JFXButton layoutX="554.0" layoutY="602.0" onAction="#removeItem" prefHeight="35.0" prefWidth="199.0" ripplerFill="#ff03ff" style="-fx-background-color: #924da5;" text="Remove item" textFill="WHITE">
+      <JFXButton layoutX="548.0" layoutY="602.0" onAction="#removeItem" prefHeight="35.0" prefWidth="199.0" ripplerFill="#ff03ff" style="-fx-background-color: #924da5;" text="Remove item" textFill="WHITE">
          <font>
             <Font name="Open Sans Bold" size="14.0" />
          </font>
@@ -73,7 +73,7 @@
             <ColorAdjust contrast="0.24" hue="0.79" />
          </effect>
       </JFXButton>
-      <Label layoutX="576.0" layoutY="569.0" prefHeight="20.0" prefWidth="154.0" text="Put ID to remove item" textFill="#757575">
+      <Label layoutX="577.0" layoutY="569.0" prefHeight="20.0" prefWidth="154.0" text="Put ID to remove item" textFill="#757575">
          <font>
             <Font name="Open Sans Regular" size="14.0" />
          </font>
