@@ -13,7 +13,7 @@ import org.example.model.user.User;
 
 import java.io.IOException;
 
-public class HireWorkerController {
+public class HireWorkerController extends Controller {
     @FXML
     private TextField ID;
     @FXML
@@ -30,31 +30,16 @@ public class HireWorkerController {
     private User loggedInUser;
 
     public void changeSceneHireWorker(ActionEvent event) throws IOException {
-        Parent root = FXMLLoader.load(getClass().getResource("/org/example/view/[4] HireWorkerScene.fxml"));
-        Stage ourStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        setScene(root,ourStage);
+        changeScene(event, "[4] HireWorkerScene.fxml", HireWorkerController.class);
     }
 
     public void changeSceneToFireWorker(ActionEvent event) throws IOException {
-        Parent root = FXMLLoader.load(getClass().getResource("/org/example/view/[4] FireWorkerScene.fxml"));
-        Stage ourStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        setScene(root,ourStage);
+        changeScene(event, "[4] FireWorkerScene.fxml", FireWorkerController.class);
     }
     public void changeSceneToSignOut(ActionEvent event) throws IOException {
-        Parent root = FXMLLoader.load(getClass().getResource("/org/example/view/[1] LoginScene.fxml"));
-        Stage ourStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        setScene(root,ourStage);
+        changeScene(event, "[1] LoginScene.fxml", LoginSceneController.class);
     }
     public void hireWorker(){
 
-    }
-    public void setScene(Parent root, Stage ourStage){
-        Scene LoginReminder = new Scene(root);
-        ourStage.setScene(LoginReminder);
-        ourStage.show();
-    }
-
-    public void setLoggedInUser(User user) {
-        this.loggedInUser = user;
     }
 }

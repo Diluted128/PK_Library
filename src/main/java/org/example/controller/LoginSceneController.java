@@ -22,7 +22,7 @@ import java.util.ArrayList;
 import java.util.Optional;
 
 
-public class LoginSceneController {
+public class LoginSceneController extends Controller {
 
     @FXML
     private AnchorPane ap;
@@ -46,25 +46,14 @@ public class LoginSceneController {
     UserRepository userRepository = new UserRepository();
 
     public void ForgotPasswordFunctions(ActionEvent event) throws Exception {
-        Parent root = FXMLLoader.load(getClass().getResource("/org/example/view/[1] PasswordReminderScene.fxml"));
-        Scene LoginReminder = new Scene(root);
-
-        Stage ourStage = (Stage)((Node)event.getSource()).getScene().getWindow();
-
-        ourStage.setScene(LoginReminder);
-        ourStage.show();
+        changeScene(event, "[1] PasswordReminderScene.fxml", PasswordReminderController.class);
 
     }
     public void SignUpFunctions(ActionEvent event) throws Exception {
-        Parent root = FXMLLoader.load(getClass().getResource("/org/example/view/[1] CreateAccountScene.fxml"));
-        Scene LoginReminder = new Scene(root);
-
-        Stage ourStage = (Stage)((Node)event.getSource()).getScene().getWindow();
-
-        ourStage.setScene(LoginReminder);
-        ourStage.show();
-
+        changeScene(event, "[1] CreateAccountScene.fxml", CreateAccountController.class);
     }
+
+
     //-----------------------------------------------------------------------
     public void LoginButtonFunctions(ActionEvent event) throws IOException {
 
@@ -107,6 +96,9 @@ public class LoginSceneController {
             } else{
                 fxmlLoader = new FXMLLoader(getClass().getResource("/org/example/view/[3] AddItemScene.fxml"));
                 root =  fxmlLoader.load();
+
+                AddItemController addItemController = fxmlLoader.getController();
+
             }
 
             Scene LoginReminder = new Scene(root);

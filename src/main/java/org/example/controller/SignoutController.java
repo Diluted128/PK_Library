@@ -1,4 +1,4 @@
 package org.example.controller;
 
-public class SignoutController {
+public class SignoutController extends Controller {
 }

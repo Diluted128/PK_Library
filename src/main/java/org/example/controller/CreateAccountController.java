@@ -16,7 +16,7 @@ import org.example.model.user.Customer;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
-public class CreateAccountController {
+public class CreateAccountController extends Controller {
     @FXML
     private JFXButton CreateAccountButton;
     @FXML
@@ -50,13 +50,7 @@ public class CreateAccountController {
 
 
     public void ReturnFunctions(ActionEvent event) throws Exception {
-        Parent root = FXMLLoader.load(getClass().getResource("/org/example/view/[1] LoginScene.fxml"));
-        Scene LoginReminder = new Scene(root);
-
-        Stage ourStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-
-        ourStage.setScene(LoginReminder);
-        ourStage.show();
+        changeScene(event, "[1] LoginScene.fxml", LoginSceneController.class);
 
     }
 

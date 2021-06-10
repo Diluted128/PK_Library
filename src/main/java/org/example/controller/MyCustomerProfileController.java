@@ -14,7 +14,7 @@ import org.example.model.user.User;
 
 import java.io.IOException;
 
-public class MyCustomerProfileController {
+public class MyCustomerProfileController extends Controller{
     @FXML
     private Label firstNameField;
     @FXML
@@ -28,43 +28,31 @@ public class MyCustomerProfileController {
     @FXML
     private JFXButton payPenalty;
 
-    private User loggedInUser;
-
     public void changeSceneToMyItems(ActionEvent event) throws IOException {
-        Parent root = FXMLLoader.load(getClass().getResource("/org/example/view/[2] MyItemsScene.fxml"));
-        Stage ourStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        setScene(root,ourStage);
+        changeScene(event, "[2] MyItemsScene.fxml", MyItemsController.class);
     }
 
     public void changeSceneToRentItem(ActionEvent event) throws IOException {
-        Parent root = FXMLLoader.load(getClass().getResource("/org/example/view/[2] RentItemScene.fxml"));
-        Stage ourStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        setScene(root,ourStage);
+        changeScene(event, "[2] RentItemScene.fxml", RentItemController.class);
     }
 
     public void changeSceneToMyProfile(ActionEvent event) throws IOException {
-        Parent root = FXMLLoader.load(getClass().getResource("/org/example/view/[2] MyProfileScene.fxml"));
-        Stage ourStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        setScene(root,ourStage);
+        changeScene(event, "[2] MyProfileScene.fxml", MyCustomerProfileController.class);
     }
 
     public void changeSceneToSettings(ActionEvent event) throws IOException {
-        Parent root = FXMLLoader.load(getClass().getResource("/org/example/view/[2] SettingsScene.fxml"));
-        Stage ourStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        setScene(root,ourStage);
+        changeScene(event, "[2] SettingsScene.fxml", SettingsController.class);
     }
 
     public void changeSceneToSignOut(ActionEvent event) throws IOException {
-        Parent root = FXMLLoader.load(getClass().getResource("/org/example/view/[1] LoginScene.fxml"));
-        Stage ourStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        setScene(root,ourStage);
+        changeScene(event, "[1] LoginScene.fxml", LoginSceneController.class);
     }
     public void payPenalty(){
 
     }
 
     public void setLoggedInUser(User user) {
-        this.loggedInUser = user;
+        super.setLoggedInUser(user);
         this.firstNameField.setText(user.getFirstName());
         this.lastNameField.setText(user.getLastName());
         this.userNameField.setText(user.getLogin());
@@ -75,9 +63,5 @@ public class MyCustomerProfileController {
             this.balanceField.setText("0.0");
         }
     }
-    public void setScene(Parent root, Stage ourStage){
-        Scene LoginReminder = new Scene(root);
-        ourStage.setScene(LoginReminder);
-        ourStage.show();
-    }
+
 }

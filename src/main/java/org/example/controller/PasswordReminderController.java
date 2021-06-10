@@ -14,7 +14,7 @@ import javafx.stage.Stage;
 import org.example.SendEmail;
 
 
-public class PasswordReminderController {
+public class PasswordReminderController extends Controller {
 
     @FXML
     private JFXTextArea PasswordReminderEmail;
@@ -34,14 +34,9 @@ public class PasswordReminderController {
         m_th.start();
     }
     public void ForgotPasswordReturn(ActionEvent event) throws Exception {
-
-        Parent root = FXMLLoader.load(getClass().getResource("/org/example/view/[1] LoginScene.fxml"));
-        Scene LoginScene = new Scene(root);
-
-        Stage ourStage = (Stage)((Node)event.getSource()).getScene().getWindow();
-        ourStage.setScene(LoginScene);
-        ourStage.show();
+        changeScene(event, "[1] LoginScene.fxml", LoginSceneController.class);
     }
+
     class  MailSending_Thread implements Runnable {
 
         @Override

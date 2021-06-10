@@ -23,7 +23,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
-public class RentItemController {
+public class RentItemController extends Controller {
     @FXML
     private JFXButton rentItemButton;
     @FXML
@@ -55,9 +55,6 @@ public class RentItemController {
     @FXML
     private TableColumn<Item, ArticleType> articleType;
 
-
-    private User loggedInUser;
-
     public void setTableView(){
 
         ID.setCellValueFactory(new PropertyValueFactory<>("itemID"));
@@ -83,47 +80,31 @@ public class RentItemController {
     }
 
     public void changeSceneToMyItems(ActionEvent event) throws IOException {
-        Parent root = FXMLLoader.load(getClass().getResource("/org/example/view/[2] MyItemsScene.fxml"));
-        Scene LoginReminder = new Scene(root);
-        Stage ourStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        ourStage.setScene(LoginReminder);
-        ourStage.show();
+        changeScene(event, "[2] MyItemsScene.fxml", MyItemsController.class);
     }
 
     public void changeSceneToRentItem(ActionEvent event) throws IOException {
-        Parent root = FXMLLoader.load(getClass().getResource("/org/example/view/[2] RentItemScene.fxml"));
-        Stage ourStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        setScene(root,ourStage);
+        changeScene(event, "[2] RentItemScene.fxml", RentItemController.class);
     }
 
     public void changeSceneToMyProfile(ActionEvent event) throws IOException {
-        Parent root = FXMLLoader.load(getClass().getResource("/org/example/view/[2] MyProfileScene.fxml"));
-        Stage ourStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        setScene(root,ourStage);
+        changeScene(event, "[2] MyProfileScene.fxml", MyCustomerProfileController.class);
     }
 
     public void changeSceneToSettings(ActionEvent event) throws IOException {
-        Parent root = FXMLLoader.load(getClass().getResource("/org/example/view/[2] SettingsScene.fxml"));
-        Stage ourStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        setScene(root,ourStage);
+        changeScene(event, "[2] SettingsScene.fxml", SettingsController.class);
     }
 
     public void changeSceneToSignOut(ActionEvent event) throws IOException {
-        Parent root = FXMLLoader.load(getClass().getResource("/org/example/view/[1] LoginScene.fxml"));
-        Stage ourStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        setScene(root,ourStage);
+        changeScene(event, "[1] LoginScene.fxml", SignoutController.class);
     }
-    public void setScene(Parent root, Stage ourStage){
-        Scene LoginReminder = new Scene(root);
-        ourStage.setScene(LoginReminder);
-        ourStage.show();
-    }
+
 
     public void rentItem() {
         //"Incorrect ID"
     }
     public void setLoggedInUser(User user) {
-        this.loggedInUser = user;
+        super.setLoggedInUser(user);
         setTableView();
     }
     public String getIdField() {

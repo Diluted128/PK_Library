@@ -11,47 +11,33 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 
-public class RemoveItemController {
+public class RemoveItemController extends Controller{
     @FXML
     private TextField ID;
 
     public void changeSceneToAddItem(ActionEvent event) throws IOException {
-        Parent root = FXMLLoader.load(getClass().getResource("/org/example/view/[3] AddItemScene.fxml"));
-        Stage ourStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        setScene(root,ourStage);
+        changeScene(event, "[3] AddItemScene.fxml", AddItemController.class);
     }
 
     public void changeSceneToRemoveItem(ActionEvent event) throws IOException {
-        Parent root = FXMLLoader.load(getClass().getResource("/org/example/view/[3] RemoveItemScene.fxml"));
-        Stage ourStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        setScene(root,ourStage);
+        changeScene(event, "[3] RemoveItemScene.fxml", RemoveItemController.class);
     }
 
     public void changeSceneToConfirmRental(ActionEvent event) throws IOException {
-
-        Parent root = FXMLLoader.load(getClass().getResource("/org/example/view/[3] ConfirmRentalScene.fxml"));
-        Stage ourStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        setScene(root,ourStage);
+        changeScene(event, "[3] ConfirmRentalScene.fxml", ConfirmRentalController.class);
     }
 
     public void changeSceneToMyProfile(ActionEvent event) throws IOException {
-        Parent root = FXMLLoader.load(getClass().getResource("/org/example/view/[3] MyProfileScene.fxml"));
-        Stage ourStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        setScene(root,ourStage);
+        changeScene(event, "[3] MyProfileScene.fxml", MyCustomerProfileController.class);
     }
     public void changeSceneToSignOut(ActionEvent event) throws IOException {
-        Parent root = FXMLLoader.load(getClass().getResource("/org/example/view/[1] LoginScene.fxml"));
-        Stage ourStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        setScene(root,ourStage);
+        changeScene(event, "[1] LoginScene.fxml", LoginSceneController.class);
     }
+
     public void removeItem(){
     //"Incorrect ID"
     }
-    public void setScene(Parent root, Stage ourStage){
-        Scene LoginReminder = new Scene(root);
-        ourStage.setScene(LoginReminder);
-        ourStage.show();
-    }
+
 
     public String getID() {
         return ID.getText();

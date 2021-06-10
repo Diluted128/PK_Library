@@ -13,7 +13,6 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
-import org.example.model.item.Article;
 import org.example.model.item.ArticleType;
 import org.example.model.item.Genre;
 import org.example.model.item.Item;
@@ -21,11 +20,13 @@ import org.example.model.user.Customer;
 import org.example.model.user.User;
 
 import java.io.IOException;
+import java.lang.reflect.Constructor;
+import java.lang.reflect.InvocationTargetException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
-public class MyItemsController {
+public class MyItemsController extends Controller {
 
     @FXML
     private TableView<Item> items;
@@ -58,7 +59,32 @@ public class MyItemsController {
     @FXML
     private Label rentedNewspapers;
 
-    private User loggedInUser;
+
+    public void changeSceneToMyItems(ActionEvent event) throws IOException {
+        changeScene(event, "[2] MyItemsScene.fxml", MyItemsController.class);
+    }
+
+    public void changeSceneToRentItem(ActionEvent event) throws IOException {
+        changeScene(event, "[2] RentItemScene.fxml", RentItemController.class);
+    }
+
+    public void changeSceneToMyProfile(ActionEvent event) throws IOException {
+        changeScene(event, "[2] MyProfileScene.fxml", MyCustomerProfileController.class);
+    }
+
+    public void changeSceneToSettings(ActionEvent event) throws IOException {
+        changeScene(event, "[2] SettingsScene.fxml", SettingsController.class);
+    }
+
+    public void changeSceneToSignOut(ActionEvent event) throws IOException {
+        changeScene(event, "[1] LoginScene.fxml", SignoutController.class);
+    }
+
+    public void setLoggedInUser(User user) {
+        this.loggedInUser = user;
+        setTableView();
+    }
+
 
     public void setTableView(){
 
@@ -98,48 +124,5 @@ public class MyItemsController {
                 .collect(Collectors.toList()).size()));
 
     }
-    public void changeSceneToMyItems(ActionEvent event) throws IOException {
-        Parent root = FXMLLoader.load(getClass().getResource("/org/example/view/[2] MyItemsScene.fxml"));
-        Stage ourStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        setScene(root,ourStage);
-    }
 
-    public void changeSceneToRentItem(ActionEvent event) throws IOException {
-        Parent root = FXMLLoader.load(getClass().getResource("/org/example/view/[2] RentItemScene.fxml"));
-        Stage ourStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        setScene(root,ourStage);
-    }
-
-    public void changeSceneToMyProfile(ActionEvent event) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/org/example/view/[2] MyProfileScene.fxml"));
-        Stage ourStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        Parent root = fxmlLoader.load();
-
-        MyCustomerProfileController myCustomerProfileController = fxmlLoader.getController();
-        myCustomerProfileController.setLoggedInUser(loggedInUser);
-
-        setScene(root,ourStage);
-    }
-
-    public void changeSceneToSettings(ActionEvent event) throws IOException {
-        Parent root = FXMLLoader.load(getClass().getResource("/org/example/view/[2] SettingsScene.fxml"));
-        Stage ourStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        setScene(root,ourStage);
-    }
-
-    public void changeSceneToSignOut(ActionEvent event) throws IOException {
-        Parent root = FXMLLoader.load(getClass().getResource("/org/example/view/[1] LoginScene.fxml"));
-        Stage ourStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        setScene(root,ourStage);
-    }
-
-    public void setLoggedInUser(User user) {
-        this.loggedInUser = user;
-        setTableView();
-    }
-    public void setScene(Parent root, Stage ourStage){
-        Scene LoginReminder = new Scene(root);
-        ourStage.setScene(LoginReminder);
-        ourStage.show();
-    }
 }
