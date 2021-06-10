@@ -3,7 +3,6 @@
 <?import com.jfoenix.controls.JFXButton?>
 <?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
@@ -78,28 +77,21 @@
             <Font name="Open Sans Regular" size="14.0" />
          </font>
       </Label>
-      <ScrollPane layoutX="308.0" layoutY="118.0" prefHeight="383.0" prefWidth="728.0">
-         <effect>
-            <ColorAdjust contrast="0.14" />
-         </effect>
-         <content>
-            <TableView fx:id="items" prefHeight="375.0" prefWidth="729.0">
-               <columns>
-                  <TableColumn fx:id="ID" prefWidth="30.0" text="ID" />
-                  <TableColumn fx:id="type" prefWidth="60.0" text="Type" />
-                  <TableColumn fx:id="title" text="Title" />
-                  <TableColumn fx:id="authors" prefWidth="75.0" text="Authors" />
-                  <TableColumn fx:id="pages" prefWidth="43.0" text="Pages" />
-                  <TableColumn fx:id="ISBN" prefWidth="47.0" text="ISBN" />
-                  <TableColumn fx:id="isReserved" minWidth="0.0" prefWidth="76.0" text="Reservation" />
-                  <TableColumn fx:id="isRented" prefWidth="53.0" text="Rental" />
-                  <TableColumn fx:id="publisher" prefWidth="89.0" text="Publisher" />
-                  <TableColumn fx:id="genre" prefWidth="77.0" text="Genre" />
-                  <TableColumn fx:id="articleType" prefWidth="87.0" text="Article type" />
-               </columns>
-            </TableView>
-         </content>
-      </ScrollPane>
+      <TableView fx:id="items" layoutX="319.0" layoutY="134.0" prefHeight="375.0" prefWidth="717.0">
+         <columns>
+            <TableColumn fx:id="ID" prefWidth="30.0" text="ID" />
+            <TableColumn fx:id="type" prefWidth="60.0" text="Type" />
+            <TableColumn fx:id="title" text="Title" />
+            <TableColumn fx:id="authors" prefWidth="75.0" text="Authors" />
+            <TableColumn fx:id="pages" prefWidth="43.0" text="Pages" />
+            <TableColumn fx:id="ISBN" prefWidth="47.0" text="ISBN" />
+            <TableColumn fx:id="isReserved" minWidth="0.0" prefWidth="76.0" text="Reservation" />
+            <TableColumn fx:id="isRented" prefWidth="53.0" text="Rental" />
+            <TableColumn fx:id="publisher" prefWidth="89.0" text="Publisher" />
+            <TableColumn fx:id="genre" prefWidth="77.0" text="Genre" />
+            <TableColumn fx:id="articleType" prefWidth="87.0" text="Article type" />
+         </columns>
+      </TableView>
       <TextField fx:id="idField2" layoutX="790.0" layoutY="523.0" prefHeight="25.0" prefWidth="66.0" promptText="Item ID">
          <effect>
             <ColorAdjust brightness="0.1" hue="0.51" />

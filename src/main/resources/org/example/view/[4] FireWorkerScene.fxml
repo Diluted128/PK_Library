@@ -3,7 +3,6 @@
 <?import com.jfoenix.controls.JFXButton?>
 <?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
@@ -45,23 +44,16 @@
             <Cursor fx:constant="HAND" />
          </cursor>
       </JFXButton>
-      <ScrollPane layoutX="362.0" layoutY="119.0" prefHeight="383.0" prefWidth="632.0">
-         <content>
-            <TableView prefHeight="382.0" prefWidth="625.0">
-               <columns>
-                  <TableColumn prefWidth="60.0" text="ID" />
-                  <TableColumn prefWidth="93.0" text="Firstname" />
-                  <TableColumn prefWidth="98.0" text="Lastname" />
-                  <TableColumn prefWidth="139.0" text="Email" />
-                  <TableColumn minWidth="0.0" prefWidth="111.0" text="Login" />
-                  <TableColumn prefWidth="123.0" text="Password" />
-               </columns>
-            </TableView>
-         </content>
-         <effect>
-            <ColorAdjust contrast="0.14" />
-         </effect>
-      </ScrollPane>
+      <TableView layoutX="363.0" layoutY="130.0" prefHeight="382.0" prefWidth="632.0">
+         <columns>
+            <TableColumn prefWidth="60.0" text="ID" />
+            <TableColumn prefWidth="93.0" text="Firstname" />
+            <TableColumn prefWidth="98.0" text="Lastname" />
+            <TableColumn prefWidth="139.0" text="Email" />
+            <TableColumn minWidth="0.0" prefWidth="111.0" text="Login" />
+            <TableColumn prefWidth="123.0" text="Password" />
+         </columns>
+      </TableView>
       <HBox layoutX="362.0" layoutY="120.0" prefHeight="35.0" prefWidth="632.0" style="-fx-background-color: #DCDBDB;">
          <children>
             <Label prefHeight="35.0" prefWidth="54.0" text="     ID">

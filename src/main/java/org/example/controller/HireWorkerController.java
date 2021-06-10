@@ -38,5 +38,7 @@ public class HireWorkerController extends Controller {
     public void changeSceneToSignOut(ActionEvent event) throws IOException {
         changeScene(event, "[1] LoginScene.fxml", LoginSceneController.class);
     }
-
+    public void hireWorker(){
+        
+    }
 }
