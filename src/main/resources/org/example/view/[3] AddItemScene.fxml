@@ -23,7 +23,7 @@
             <Font name="Open Sans Regular" size="14.0" />
          </font>
       </Label>
-      <JFXButton layoutX="570.0" layoutY="199.0" onAction="#addBook" prefHeight="35.0" prefWidth="199.0" ripplerFill="#ff03ff" style="-fx-background-color: #924da5;" text="Add book" textFill="WHITE">
+      <JFXButton focusTraversable="false" layoutX="570.0" layoutY="199.0" onAction="#addBook" prefHeight="35.0" prefWidth="199.0" ripplerFill="#ff03ff" style="-fx-background-color: #924da5;" text="Add book" textFill="WHITE">
          <font>
             <Font name="Open Sans Bold" size="14.0" />
          </font>
@@ -110,7 +110,7 @@
             <Font name="Open Sans Regular" size="14.0" />
          </font>
       </Label>
-      <JFXButton layoutX="570.0" layoutY="378.0" onAction="#addArticle" prefHeight="35.0" prefWidth="199.0" ripplerFill="#ff03ff" style="-fx-background-color: #924da5;" text="Add article" textFill="WHITE">
+      <JFXButton focusTraversable="false" layoutX="570.0" layoutY="378.0" onAction="#addArticle" prefHeight="35.0" prefWidth="199.0" ripplerFill="#ff03ff" style="-fx-background-color: #924da5;" text="Add article" textFill="WHITE">
          <font>
             <Font name="Open Sans Bold" size="14.0" />
          </font>
@@ -139,7 +139,7 @@
             <Font name="Open Sans Regular" size="14.0" />
          </font>
       </Label>
-      <JFXButton layoutX="570.0" layoutY="553.0" onAction="#addNewspaper" prefHeight="35.0" prefWidth="199.0" ripplerFill="#ff03ff" style="-fx-background-color: #924da5;" text="Add newspaper" textFill="WHITE">
+      <JFXButton focusTraversable="false" layoutX="570.0" layoutY="553.0" onAction="#addNewspaper" prefHeight="35.0" prefWidth="199.0" ripplerFill="#ff03ff" style="-fx-background-color: #924da5;" text="Add newspaper" textFill="WHITE">
          <font>
             <Font name="Open Sans Bold" size="14.0" />
          </font>

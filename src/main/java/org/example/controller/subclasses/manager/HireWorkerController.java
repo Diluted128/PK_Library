@@ -24,6 +24,7 @@ public class HireWorkerController extends ManagerController {
     @FXML
     private TextField WorkerPassword;
 
+    public void hireWorker(){
 
-
+    }
 }

@@ -55,7 +55,7 @@
             <Cursor fx:constant="HAND" />
          </cursor>
       </JFXButton>
-      <JFXButton layoutX="615.0" layoutY="294.0" prefHeight="25.0" prefWidth="108.0" text="-">
+      <JFXButton focusTraversable="false" layoutX="615.0" layoutY="294.0" prefHeight="25.0" prefWidth="108.0" text="-">
          <font>
             <Font size="1.0" />
          </font>

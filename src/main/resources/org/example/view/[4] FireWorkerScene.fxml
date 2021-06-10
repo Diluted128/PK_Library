@@ -10,7 +10,6 @@
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.HBox?>
 <?import javafx.scene.text.Font?>
 
 <AnchorPane prefHeight="675.0" prefWidth="1050.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.controller.subclasses.manager.FireWorkerController">
@@ -44,50 +43,16 @@
             <Cursor fx:constant="HAND" />
          </cursor>
       </JFXButton>
-      <TableView layoutX="363.0" layoutY="130.0" prefHeight="382.0" prefWidth="632.0">
+      <TableView layoutX="363.0" layoutY="130.0" prefHeight="382.0" prefWidth="638.0">
          <columns>
             <TableColumn prefWidth="60.0" text="ID" />
             <TableColumn prefWidth="93.0" text="Firstname" />
             <TableColumn prefWidth="98.0" text="Lastname" />
-            <TableColumn prefWidth="139.0" text="Email" />
-            <TableColumn minWidth="0.0" prefWidth="111.0" text="Login" />
-            <TableColumn prefWidth="123.0" text="Password" />
+            <TableColumn prefWidth="169.0" text="Email" />
+            <TableColumn minWidth="0.0" prefWidth="114.0" text="Login" />
+            <TableColumn prefWidth="103.0" text="Password" />
          </columns>
       </TableView>
-      <HBox layoutX="362.0" layoutY="120.0" prefHeight="35.0" prefWidth="632.0" style="-fx-background-color: #DCDBDB;">
-         <children>
-            <Label prefHeight="35.0" prefWidth="54.0" text="     ID">
-               <font>
-                  <Font name="Open Sans Bold" size="14.0" />
-               </font>
-            </Label>
-            <Label prefHeight="35.0" prefWidth="109.0" text="    First name">
-               <font>
-                  <Font name="Open Sans Bold" size="14.0" />
-               </font>
-            </Label>
-            <Label prefHeight="35.0" prefWidth="103.0" text="   Last name" textAlignment="CENTER">
-               <font>
-                  <Font name="Open Sans Bold" size="14.0" />
-               </font>
-            </Label>
-            <Label prefHeight="35.0" prefWidth="138.0" text="             Email">
-               <font>
-                  <Font name="Open Sans Bold" size="14.0" />
-               </font>
-            </Label>
-            <Label prefHeight="35.0" prefWidth="98.0" text="       Login">
-               <font>
-                  <Font name="Open Sans Bold" size="14.0" />
-               </font>
-            </Label>
-            <Label prefHeight="35.0" prefWidth="124.0" text="         Password">
-               <font>
-                  <Font name="Open Sans Bold" size="14.0" />
-               </font>
-            </Label>
-         </children>
-      </HBox>
       <TextField fx:id="workerID" layoutX="645.0" layoutY="532.0" prefHeight="25.0" prefWidth="66.0" promptText="Worker ID">
          <effect>
             <ColorAdjust brightness="0.1" hue="0.27" />
