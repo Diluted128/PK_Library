@@ -34,6 +34,14 @@ public class ItemRepository {
         return items;
     }
 
+    public void saveItemsToFile(List<Item> items) {
+        try (ObjectOutputStream outputStream = new ObjectOutputStream(new FileOutputStream(itemsFile))) {
+            outputStream.writeObject(items);
+        } catch (IOException e) {
+            System.out.println(e.getMessage());
+        }
+    }
+
     public boolean addNewItemAndReturnIfSuccessful(Item newItem) {
         ArrayList<Item> items = getAllItems();
 

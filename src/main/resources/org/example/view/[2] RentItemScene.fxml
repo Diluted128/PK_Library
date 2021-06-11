@@ -24,7 +24,7 @@
             <ColorAdjust brightness="-0.19" contrast="0.15" hue="0.41" />
          </effect>
       </TextField>
-      <JFXButton fx:id="rentItemButton" layoutX="570.0" layoutY="582.0" prefHeight="35.0" prefWidth="199.0" ripplerFill="#ff03ff" style="-fx-background-color: #924da5;" text="Reserve Item" textFill="WHITE">
+      <JFXButton fx:id="rentItemButton" onAction="#reserveItem" layoutX="570.0" layoutY="582.0" prefHeight="35.0" prefWidth="199.0" ripplerFill="#ff03ff" style="-fx-background-color: #924da5;" text="Reserve Item" textFill="WHITE">
          <font>
             <Font name="Open Sans Bold" size="14.0" />
          </font>

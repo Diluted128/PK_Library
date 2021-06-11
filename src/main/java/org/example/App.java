@@ -103,24 +103,24 @@ public class App extends Application {
             );
 
 
-
-
-
-
-
-
             List<Item> items = new ArrayList<>(List.of(bookOne, bookTwo, bookThree, article, newspaper));
-            customer.setRentedItems(items);
+//            customer.setRentedItems(items);
 
 
             UserRepository userRepository = new UserRepository();
             ItemRepository itemRepository = new ItemRepository();
+            if (!new File("./src/main/java/org/example/db/users.bin").exists()) {
+                userRepository.addNewUserAndReturnIfSuccessful(manager);
+                userRepository.addNewUserAndReturnIfSuccessful(worker);
+                userRepository.addNewUserAndReturnIfSuccessful(customer);
+            }
 
-            userRepository.addNewUserAndReturnIfSuccessful(manager);
-            userRepository.addNewUserAndReturnIfSuccessful(worker);
-            userRepository.addNewUserAndReturnIfSuccessful(customer);
+            if (!new File("./src/main/java/org/example/db/items.bin").exists()) {
+                itemRepository.addNewItemsAndReturnIfSuccessful(items);
+            }
 
-            itemRepository.addNewItemsAndReturnIfSuccessful(items);
+
+
         }
 
 }

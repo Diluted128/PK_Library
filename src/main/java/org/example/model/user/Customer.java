@@ -9,6 +9,7 @@ import java.util.List;
 public final class Customer extends User implements Serializable {
 
     private List<Item> rentedItems;
+    private List<Item> reservedItems;
     private boolean onBlacklist;
     private double penalty;
 
@@ -16,6 +17,7 @@ public final class Customer extends User implements Serializable {
     public Customer(String firstName, String lastName, String login, String password, String email) {
         super(firstName, lastName, login, password, email);
         this.rentedItems = new ArrayList<>();
+        this.reservedItems = new ArrayList<>();
         this.onBlacklist = false;
         this.penalty = 0;
         this.roles = List.of(Role.CUSTOMER);
@@ -24,6 +26,26 @@ public final class Customer extends User implements Serializable {
 
     public List<Item> getRentedItems() {
         return rentedItems;
+    }
+
+    public List<Item> getReservedItems() {
+        return reservedItems;
+    }
+
+    public void addReservedItem(Item item) {
+        this.reservedItems.add(item);
+    }
+
+    public void removeReservedItem(Item item) {
+        this.reservedItems.remove(item);
+    }
+
+    public void addRentedItem(Item item) {
+        this.rentedItems.add(item);
+    }
+
+    public void removeRentedItem(Item item) {
+        this.rentedItems.remove(item);
     }
 
     public void setRentedItems(List<Item> rentedItems) {

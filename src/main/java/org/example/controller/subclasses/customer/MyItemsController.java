@@ -8,9 +8,11 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import org.example.controller.abstraction.CustomerController;
+import org.example.db.ItemRepository;
 import org.example.model.item.ArticleType;
 import org.example.model.item.Genre;
 import org.example.model.item.Item;
+import org.example.model.item.ItemDTO;
 import org.example.model.user.Customer;
 import org.example.model.user.User;
 
@@ -21,7 +23,7 @@ import java.util.stream.Collectors;
 public class MyItemsController extends CustomerController {
 
     @FXML
-    private TableView<Item> items;
+    private TableView<ItemDTO> items;
     @FXML
     private TableColumn<Item,Integer> ID;
     @FXML
@@ -51,6 +53,8 @@ public class MyItemsController extends CustomerController {
     @FXML
     private Label rentedNewspapers;
 
+    ItemRepository itemRepository = new ItemRepository();
+
 
     public void setLoggedInUser(User user) {
         this.loggedInUser = user;
@@ -73,10 +77,14 @@ public class MyItemsController extends CustomerController {
 
         List<Item> customerItems = new ArrayList<>();
         if(loggedInUser instanceof Customer){
-            customerItems = ((Customer)loggedInUser).getRentedItems();
+//            customerItems = ((Customer)loggedInUser).getRentedItems();
+            customerItems = itemRepository.getAllItems().stream()
+                    .filter(i -> ((Customer) loggedInUser).getRentedItems().stream()
+                            .anyMatch(ri -> ri.getItemID() == i.getItemID())).collect(Collectors.toList());;
         }
-        ObservableList<Item> observableItems = FXCollections.observableArrayList();
-        observableItems.addAll(customerItems);
+        List<ItemDTO> itemsDTO = ItemDTO.getList(customerItems);
+        ObservableList<ItemDTO> observableItems = FXCollections.observableArrayList();
+        observableItems.addAll(itemsDTO);
         items.setItems(observableItems);
 
         this.rentedBooks.setText(String.valueOf(customerItems

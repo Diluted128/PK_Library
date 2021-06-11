@@ -7,5 +7,6 @@ public enum ArticleType {
     RESEARCH,
     REPORT,
     POPULAR_SCIENCE,
-    ESSAY;
+    ESSAY,
+    X;
 }

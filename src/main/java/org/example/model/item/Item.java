@@ -70,7 +70,7 @@ public abstract class Item implements Serializable {
         return isRented;
     }
 
-    public void setRented(boolean rented) {
+    public void setIsRented(boolean rented) {
         isRented = rented;
     }
 
@@ -78,7 +78,7 @@ public abstract class Item implements Serializable {
         return isReserved;
     }
 
-    public void setReserved(boolean reserved) {
+    public void setIsReserved(boolean reserved) {
         isReserved = reserved;
     }
 

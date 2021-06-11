@@ -7,5 +7,6 @@ public enum PublishingFrequency {
     MONTH,
     QUARTER,
     HALF_YEAR,
-    YEAR;
+    YEAR,
+    X;
 }

@@ -7,14 +7,20 @@ import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import org.example.controller.abstraction.CustomerController;
-import org.example.model.item.ArticleType;
-import org.example.model.item.Genre;
-import org.example.model.item.Item;
+import org.example.db.ActionRepository;
+import org.example.db.ItemRepository;
+import org.example.db.UserRepository;
+import org.example.model.action.Action;
+import org.example.model.action.Reservation;
+import org.example.model.item.*;
 import org.example.model.user.Customer;
+import org.example.model.user.Role;
 import org.example.model.user.User;
 
+import java.time.Instant;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 public class RentItemController extends CustomerController {
     @FXML
@@ -24,7 +30,7 @@ public class RentItemController extends CustomerController {
     @FXML
     private ScrollPane scrollPane;
     @FXML
-    private TableView<Item> items;
+    private TableView<ItemDTO> items;
     @FXML
     private TableColumn<Item,Integer> ID;
     @FXML
@@ -48,6 +54,12 @@ public class RentItemController extends CustomerController {
     @FXML
     private TableColumn<Item, ArticleType> articleType;
 
+    private int passedId;
+
+    private UserRepository userRepository = new UserRepository();
+    private ItemRepository itemRepository = new ItemRepository();
+    private ActionRepository actionRepository = new ActionRepository();
+
     public void setTableView(){
 
         ID.setCellValueFactory(new PropertyValueFactory<>("itemID"));
@@ -62,20 +74,53 @@ public class RentItemController extends CustomerController {
         genre.setCellValueFactory(new PropertyValueFactory<>("genre"));
         articleType.setCellValueFactory(new PropertyValueFactory<>("articleType"));
 
-        List<Item> customerItems = new ArrayList<>();
-        if(loggedInUser instanceof Customer){
-            customerItems = ((Customer)loggedInUser).getRentedItems();
-        }
-        ObservableList<Item> observableItems = FXCollections.observableArrayList();
-        observableItems.addAll(customerItems);
+        List<Item> allItems = itemRepository.getAllItems();
+        List<ItemDTO> itemsDTO = ItemDTO.getList(allItems);
+
+        ObservableList<ItemDTO> observableItems = FXCollections.observableArrayList();
+        observableItems.addAll(itemsDTO);
         items.setItems(observableItems);
 
     }
 
 
 
-    public void rentItem() {
+    public void reserveItem() {
         //"Incorrect ID"
+        passedId = Integer.parseInt(IdField.getText());
+
+        List<User> users = userRepository.getAllUsers();
+        List<Item> items = itemRepository.getAllItems();
+        List<Action> actions = actionRepository.getAllActions();
+
+        Optional<Item> optionalItem = items.stream().filter(i -> i.getItemID() == passedId).findFirst();
+        User user = users.stream().filter(u -> u.getLogin().equals(loggedInUser.getLogin())).findFirst().get();
+        Item item;
+        if (optionalItem.isPresent()) {
+            item = optionalItem.get();
+        } else {
+            //todo: do what program has to do when bad is is passed
+            return;
+        }
+
+        Customer customer = (Customer)user;
+
+        Long positionInQueue = users.stream()
+                .filter(u -> u.getRoles().contains(Role.CUSTOMER))
+                .filter(u -> ((Customer)u).getReservedItems().contains(item))
+                .count();
+
+        item.setIsReserved(true);
+        customer.addReservedItem(item);
+        actions.add(new Reservation(Instant.now(), user, item, positionInQueue + 1));
+
+        itemRepository.saveItemsToFile(items);
+        actionRepository.saveActionsToFile(actions);
+        userRepository.saveUsersToFile(users);
+
+        setTableView();
+
+
     }
     public void setLoggedInUser(User user) {
         super.setLoggedInUser(user);

@@ -1,9 +1,11 @@
 package org.example.db;
 
+import org.example.model.action.Action;
 import org.example.model.user.User;
 
 import java.io.*;
 import java.util.ArrayList;
+import java.util.List;
 
 public class UserRepository {
 
@@ -31,6 +33,14 @@ public class UserRepository {
             System.out.println(e.getMessage());
         }
         return users;
+    }
+
+    public void saveUsersToFile(List<User> users) {
+        try (ObjectOutputStream outputStream = new ObjectOutputStream(new FileOutputStream(usersFile))) {
+            outputStream.writeObject(users);
+        } catch (IOException e) {
+            System.out.println(e.getMessage());
+        }
     }
 
     public boolean addNewUserAndReturnIfSuccessful(User newUser) {

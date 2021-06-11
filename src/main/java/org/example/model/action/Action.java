@@ -3,9 +3,10 @@ package org.example.model.action;
 import org.example.model.item.Item;
 import org.example.model.user.User;
 
+import java.io.Serializable;
 import java.time.Instant;
 
-public abstract class Action {
+public abstract class Action implements Serializable {
 
 
     private Instant time;
@@ -50,5 +51,27 @@ public abstract class Action {
 
     public void setActionType(ActionType actionType) {
         this.actionType = actionType;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        Action action = (Action) o;
+
+        if (time != null ? !time.equals(action.time) : action.time != null) return false;
+        if (user != null ? !user.equals(action.user) : action.user != null) return false;
+        if (item != null ? !item.equals(action.item) : action.item != null) return false;
+        return actionType == action.actionType;
+    }
+
+    @Override
+    public int hashCode() {
+        int result = time != null ? time.hashCode() : 0;
+        result = 31 * result + (user != null ? user.hashCode() : 0);
+        result = 31 * result + (item != null ? item.hashCode() : 0);
+        result = 31 * result + (actionType != null ? actionType.hashCode() : 0);
+        return result;
     }
 }

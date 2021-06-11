@@ -7,18 +7,18 @@ import java.time.Instant;
 
 public class Reservation extends Action {
 
-    private int positionInQueue;
+    private Long positionInQueue;
 
-    public Reservation(Instant time, User user, Item item, int positionInQueue) {
+    public Reservation(Instant time, User user, Item item, Long positionInQueue) {
         super(time, user, item, ActionType.RESERVATION);
         this.positionInQueue = positionInQueue;
     }
 
-    public int getPositionInQueue() {
+    public Long getPositionInQueue() {
         return positionInQueue;
     }
 
-    public void setPositionInQueue(int positionInQueue) {
+    public void setPositionInQueue(Long positionInQueue) {
         this.positionInQueue = positionInQueue;
     }
 }

@@ -4,5 +4,6 @@ public enum Cover {
 
     HARD,
     HALF_HARD,
-    PAPERBACK;
+    PAPERBACK,
+    X;
 }

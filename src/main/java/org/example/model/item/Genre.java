@@ -9,5 +9,6 @@ public enum Genre {
     HISTORY,
     ACTION,
     CLASSIC,
-    ROMANCE;
+    ROMANCE,
+    X;
 }
