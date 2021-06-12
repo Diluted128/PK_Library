@@ -63,6 +63,7 @@ public class CreateAccountController extends Controller {
         boolean emptyAgree = false;
         boolean wrongEmail = false;
         boolean userAlreadyExists = false;
+
         Pattern passwordPattern = Pattern.compile("^(?=.*\\d)(?=.*[#$@!%&*.?])[A-Za-z\\d#$@!%&.*?]{8,}$");
         Pattern emailPattern = Pattern.compile("[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,4}");
         Matcher matcherPassword = passwordPattern.matcher(PasswordTextField.getText());
@@ -99,7 +100,7 @@ public class CreateAccountController extends Controller {
                             PasswordTextField.getText(),
                             EmailAddressTextField.getText()
                     ));
-           if(!userAlreadyExists) {
+           if(userAlreadyExists) {
                FirstNameTextField.clear();
                LastNameTextField.clear();
                EmailAddressTextField.clear();
@@ -108,10 +109,8 @@ public class CreateAccountController extends Controller {
                CheckBox.fire();
            }
         }
-        else {
             Thread warningThread = new Thread(new warning_Thread(emptyFields, wrongPassword, emptyAgree, wrongEmail,userAlreadyExists));
             warningThread.start();
-        }
     }
 
     class warning_Thread implements Runnable {
@@ -178,7 +177,7 @@ public class CreateAccountController extends Controller {
                 }
                 wrongEmailLabel.setVisible(false);
             }
-            else if(usernameAlreadyTaken){
+            else if(!usernameAlreadyTaken){
                 UsernameAlreadyTaken.setVisible(true);
                 try {
                     Thread.sleep(5000);
