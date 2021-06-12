@@ -120,7 +120,6 @@ public class RentItemController extends CustomerController {
 
         setTableView();
 
-
     }
     public void setLoggedInUser(User user) {
         super.setLoggedInUser(user);
