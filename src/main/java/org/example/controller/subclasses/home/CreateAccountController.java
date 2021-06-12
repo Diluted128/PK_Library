@@ -11,6 +11,8 @@ import org.example.model.user.Customer;
 
 import java.util.LinkedHashMap;
 import java.util.Map;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class CreateAccountController extends Controller {
     @FXML
@@ -56,6 +58,10 @@ public class CreateAccountController extends Controller {
         boolean emptyFields = false;
         boolean emptyAgree = false;
 
+        //Pattern pattern = Pattern.compile(".*[A-Z].*[0-9].*");
+        //Pattern passwordPattern = Pattern.compile("^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])[a-zA-Z0-9]{8,}");
+        //Pattern emailPattern = Pattern.compile("[a-z0-9_.-]+@[a-z0-9_.-]+/./w{2,4}");
+
         accountData.put("FirstName", FirstNameTextField.getText());
         accountData.put("LastName", LastNameTextField.getText());
         accountData.put("EmailAddress", EmailAddressTextField.getText());
@@ -74,13 +80,18 @@ public class CreateAccountController extends Controller {
 
         boolean wasUserAdded = false;
         if (!emptyFields && !emptyAgree) {
-            wasUserAdded = userRepository.addNewUserAndReturnIfSuccessful(new Customer(
-                    FirstNameTextField.getText(),
-                    LastNameTextField.getText(),
-                    UsernameTextField.getText(),
-                    PasswordTextField.getText(),
-                    EmailAddressTextField.getText()
-            ));
+            //Matcher matcherPassword = passwordPattern.matcher(PasswordTextField.getText());
+            //Matcher matcherEmail = passwordPattern.matcher(EmailAddressTextField.getText());
+
+            //if(matcherPassword.matches() && matcherEmail.matches()) {
+                    wasUserAdded = userRepository.addNewUserAndReturnIfSuccessful(new Customer(
+                            FirstNameTextField.getText(),
+                            LastNameTextField.getText(),
+                            UsernameTextField.getText(),
+                            PasswordTextField.getText(),
+                            EmailAddressTextField.getText()
+                    ));
+            //}
         }
 
         if (wasUserAdded) {
@@ -97,9 +108,6 @@ public class CreateAccountController extends Controller {
             Thread warningThread = new Thread(new warning_Thread(emptyFields, wrongPassword, emptyAgree, !wasUserAdded));
             warningThread.start();
         }
-        //Pattern pattern = Pattern.compile(".*[A-Z].*[0-9].*");
-        // add pattern for password
-
     }
 
     class warning_Thread implements Runnable {
