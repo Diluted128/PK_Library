@@ -63,8 +63,8 @@ public class CreateAccountController extends Controller {
         boolean emptyAgree = false;
         boolean wrongEmail = false;
         boolean userAlreadyExists = false;
-        Pattern passwordPattern = Pattern.compile("^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])[a-zA-Z0-9]{8,}");
-        Pattern emailPattern = Pattern.compile("[a-z0-9_.-]+@[a-z0-9_.-]+/./w{2,4}");
+        Pattern passwordPattern = Pattern.compile("^(?=.*\\d)(?=.*[#$@!%&*.?])[A-Za-z\\d#$@!%&.*?]{8,}$");
+        Pattern emailPattern = Pattern.compile("[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,4}");
         Matcher matcherPassword = passwordPattern.matcher(PasswordTextField.getText());
         Matcher matcherEmail = emailPattern.matcher(EmailAddressTextField.getText());
 
