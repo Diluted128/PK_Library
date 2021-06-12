@@ -1,7 +1,9 @@
 package org.example.db;
 
 import org.example.model.action.Action;
+import org.example.model.user.Role;
 import org.example.model.user.User;
+import org.example.model.user.Worker;
 
 import java.io.*;
 import java.util.ArrayList;
@@ -82,5 +84,43 @@ public class UserRepository {
         }
 
     }
+    // wj
+    //------------
+    public ArrayList<User> returnAllWorkers(){
+        ArrayList<User> users = getAllUsers();
+        ArrayList<User> workers =  new ArrayList<>();
+        for(User user : users){
+            if(user instanceof Worker)
+                workers.add(user);
+        }
+        return  workers;
+    }
 
+    public boolean addWorkerIfSuccessful(User worker){
+        ArrayList<User> workers = returnAllWorkers();
+
+        workers.add(worker);
+
+        try (ObjectOutputStream outputStream = new ObjectOutputStream(new FileOutputStream(usersFile))) {
+            outputStream.writeObject(workers);
+            return true;
+        } catch (IOException e) {
+            System.out.println(e.getMessage());
+            return false;
+        }
+    }
+
+    public boolean removeWorkerIfSuccessful(User worker){
+        ArrayList<User> workers = returnAllWorkers();
+
+        workers.remove(worker);
+
+        try (ObjectOutputStream outputStream = new ObjectOutputStream(new FileOutputStream(usersFile))) {
+            outputStream.writeObject(workers);
+            return true;
+        } catch (IOException e) {
+            System.out.println(e.getMessage());
+            return false;
+        }
+    }
 }
