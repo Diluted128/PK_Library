@@ -11,7 +11,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="672.0" prefWidth="1050.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.controller.subclasses.home.CreateAccountController">
+<AnchorPane prefHeight="675.0" prefWidth="1050.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.controller.subclasses.home.CreateAccountController">
    <children>
       <ImageView fitHeight="680.0" fitWidth="1050.0" pickOnBounds="true" preserveRatio="true">
          <image>
@@ -29,9 +29,24 @@
          </effect>
       </ProgressBar>
       <Label fx:id="EmptyFields" layoutX="552.0" layoutY="135.0" text="Fields can't be empty." textFill="RED" visible="false" />
-      <Label fx:id="UsernameAlreadyTaken" layoutX="552.0" layoutY="135.0" text="That username is already taken." textFill="RED" visible="false" />
+      <Label fx:id="UsernameAlreadyTaken" layoutX="552.0" layoutY="135.0" text="Data is bound with other account." textFill="RED" visible="false" />
       <Label fx:id="EmptyAgreement" layoutX="552.0" layoutY="135.0" text="You must agree to the Terms of Service. " textFill="RED" visible="false" />
       <Label fx:id="SuccesfulLabel" disable="true" layoutX="552.0" layoutY="136.0" text="Account has been created successfuly" textFill="#00ff15" visible="false">
+         <font>
+            <Font name="Roboto Bold" size="13.0" />
+         </font>
+      </Label>
+      <Label fx:id="wrongPasswordLabel" disable="true" layoutX="552.0" layoutY="107.0" prefHeight="77.0" prefWidth="453.0" text="Wrong password" textFill="RED" visible="false">
+         <font>
+            <Font name="Roboto Bold" size="13.0" />
+         </font>
+      </Label>
+      <Label fx:id="wrongEmailLabel" disable="true" layoutX="552.0" layoutY="145.0" text="Wrong email address." textFill="RED" visible="false">
+         <font>
+            <Font name="Roboto Bold" size="13.0" />
+         </font>
+      </Label>
+      <Label fx:id="UsernameAlreadyTaken" disable="true" layoutX="562.0" layoutY="155.0" text="This Login creadentials are used by other account." textFill="RED" visible="false">
          <font>
             <Font name="Roboto Bold" size="13.0" />
          </font>

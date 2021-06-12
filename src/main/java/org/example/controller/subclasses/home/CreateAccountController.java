@@ -41,6 +41,10 @@ public class CreateAccountController extends Controller {
     private Label SuccesfulLabel;
     @FXML
     private Label UsernameAlreadyTaken;
+    @FXML
+    private Label wrongPasswordLabel;
+    @FXML
+    private Label wrongEmailLabel;
 
     private Map<String, String> accountData = new LinkedHashMap<>();
 
@@ -57,10 +61,12 @@ public class CreateAccountController extends Controller {
         boolean wrongPassword = false;
         boolean emptyFields = false;
         boolean emptyAgree = false;
-
-        //Pattern pattern = Pattern.compile(".*[A-Z].*[0-9].*");
-        //Pattern passwordPattern = Pattern.compile("^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])[a-zA-Z0-9]{8,}");
-        //Pattern emailPattern = Pattern.compile("[a-z0-9_.-]+@[a-z0-9_.-]+/./w{2,4}");
+        boolean wrongEmail = false;
+        boolean userAlreadyExists = false;
+        Pattern passwordPattern = Pattern.compile("^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])[a-zA-Z0-9]{8,}");
+        Pattern emailPattern = Pattern.compile("[a-z0-9_.-]+@[a-z0-9_.-]+/./w{2,4}");
+        Matcher matcherPassword = passwordPattern.matcher(PasswordTextField.getText());
+        Matcher matcherEmail = emailPattern.matcher(EmailAddressTextField.getText());
 
         accountData.put("FirstName", FirstNameTextField.getText());
         accountData.put("LastName", LastNameTextField.getText());
@@ -77,35 +83,33 @@ public class CreateAccountController extends Controller {
         if(!CheckBox.isSelected())
             emptyAgree = true;
 
+        if(!matcherPassword.matches()){
+                wrongPassword = true;
+        }
 
-        boolean wasUserAdded = false;
-        if (!emptyFields && !emptyAgree) {
-            //Matcher matcherPassword = passwordPattern.matcher(PasswordTextField.getText());
-            //Matcher matcherEmail = passwordPattern.matcher(EmailAddressTextField.getText());
+        if(!matcherEmail.matches()) {
+                wrongEmail = true;
+        }
 
-            //if(matcherPassword.matches() && matcherEmail.matches()) {
-                    wasUserAdded = userRepository.addNewUserAndReturnIfSuccessful(new Customer(
+        if(!wrongPassword && !emptyFields && !wrongEmail && !emptyAgree){
+           userAlreadyExists  = userRepository.addNewUserAndReturnIfSuccessful(new Customer(
                             FirstNameTextField.getText(),
                             LastNameTextField.getText(),
                             UsernameTextField.getText(),
                             PasswordTextField.getText(),
                             EmailAddressTextField.getText()
                     ));
-            //}
+           if(!userAlreadyExists) {
+               FirstNameTextField.clear();
+               LastNameTextField.clear();
+               EmailAddressTextField.clear();
+               UsernameTextField.clear();
+               PasswordTextField.clear();
+               CheckBox.fire();
+           }
         }
-
-        if (wasUserAdded) {
-            FirstNameTextField.clear();
-            LastNameTextField.clear();
-            EmailAddressTextField.clear();
-            UsernameTextField.clear();
-            PasswordTextField.clear();
-            CheckBox.fire();
-
-            SuccesfulLabel.setVisible(true);
-
-        } else {
-            Thread warningThread = new Thread(new warning_Thread(emptyFields, wrongPassword, emptyAgree, !wasUserAdded));
+        else {
+            Thread warningThread = new Thread(new warning_Thread(emptyFields, wrongPassword, emptyAgree, wrongEmail,userAlreadyExists));
             warningThread.start();
         }
     }
@@ -115,14 +119,17 @@ public class CreateAccountController extends Controller {
         boolean EmptyField;
         boolean WrongPassword;
         boolean emptyAgreement;
+        boolean WrongEmail;
         boolean usernameAlreadyTaken;
 
-        public warning_Thread(boolean a, boolean b, boolean c, boolean d){
+        public warning_Thread(boolean a, boolean b, boolean c, boolean d, boolean e){
             EmptyField = a;
             WrongPassword = b;
             emptyAgreement = c;
-            usernameAlreadyTaken = d;
+            WrongEmail = d;
+            usernameAlreadyTaken = e;
         }
+
         public synchronized void run() {
             System.out.println(emptyAgreement);
             progressBar.setProgress(0.0);
@@ -153,7 +160,25 @@ public class CreateAccountController extends Controller {
                     e.printStackTrace();
                 }
                 EmptyAgreement.setVisible(false);
-            } else if (usernameAlreadyTaken) {
+            } else if (WrongPassword) {
+                wrongPasswordLabel.setVisible(true);
+                try {
+                    Thread.sleep(5000);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+                wrongPasswordLabel.setVisible(false);
+            }
+            else if(WrongEmail){
+                wrongEmailLabel.setVisible(true);
+                try {
+                    Thread.sleep(5000);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+                wrongEmailLabel.setVisible(false);
+            }
+            else if(usernameAlreadyTaken){
                 UsernameAlreadyTaken.setVisible(true);
                 try {
                     Thread.sleep(5000);
@@ -161,14 +186,8 @@ public class CreateAccountController extends Controller {
                     e.printStackTrace();
                 }
                 UsernameAlreadyTaken.setVisible(false);
-            } else {
-                FirstNameTextField.clear();
-                LastNameTextField.clear();
-                EmailAddressTextField.clear();
-                UsernameTextField.clear();
-                PasswordTextField.clear();
-                CheckBox.fire();
-
+            }
+            else {
                 SuccesfulLabel.setVisible(true);
                 try {
                     Thread.sleep(5000);
