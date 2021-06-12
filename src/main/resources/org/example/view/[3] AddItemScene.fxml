@@ -102,7 +102,7 @@
             <TextField fx:id="ArticleISBN" opacity="0.75" prefHeight="35.0" prefWidth="53.0" promptText="ISBN" />
             <TextField fx:id="ArticleReservation" opacity="0.75" prefHeight="35.0" prefWidth="80.0" promptText="Reservation" />
             <TextField fx:id="ArticleRental" opacity="0.75" prefHeight="35.0" prefWidth="52.0" promptText="Rental" />
-            <TextField fx:id="ArticleType" opacity="0.75" prefHeight="35.0" prefWidth="88.0" promptText="Article type" />
+            <TextField fx:id="ItemArticleType" opacity="0.75" prefHeight="35.0" prefWidth="88.0" promptText="Article type" />
          </children>
       </HBox>
       <Label layoutX="566.0" layoutY="345.0" prefHeight="20.0" prefWidth="207.0" text="Put details to add a new article" textFill="#757575">

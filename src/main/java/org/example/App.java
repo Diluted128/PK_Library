@@ -109,15 +109,24 @@ public class App extends Application {
 
             UserRepository userRepository = new UserRepository();
             ItemRepository itemRepository = new ItemRepository();
-            if (!new File("./src/main/java/org/example/db/users.bin").exists()) {
-                userRepository.addNewUserAndReturnIfSuccessful(manager);
-                userRepository.addNewUserAndReturnIfSuccessful(worker);
-                userRepository.addNewUserAndReturnIfSuccessful(customer);
-            }
 
-            if (!new File("./src/main/java/org/example/db/items.bin").exists()) {
-                itemRepository.addNewItemsAndReturnIfSuccessful(items);
-            }
+            List<File> files = List.of(
+            new File("./src/main/java/org/example/db/users.bin"),
+            new File("./src/main/java/org/example/db/items.bin"),
+            new File("./src/main/java/org/example/db/actions.bin")
+            );
+            files.forEach(f -> {
+                if (f.exists()) {
+                    f.delete();
+                }
+            });
+
+            userRepository.addNewUserAndReturnIfSuccessful(manager);
+            userRepository.addNewUserAndReturnIfSuccessful(worker);
+            userRepository.addNewUserAndReturnIfSuccessful(customer);
+
+            itemRepository.addNewItemsAndReturnIfSuccessful(items);
+
 
 
 

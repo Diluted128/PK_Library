@@ -1,15 +1,13 @@
 package org.example.controller.subclasses.worker;
 
 
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.TextField;
-import org.example.controller.abstraction.Controller;
 import org.example.controller.abstraction.WorkerController;
-import org.example.controller.subclasses.customer.MyCustomerProfileController;
-import org.example.controller.subclasses.home.LoginSceneController;
+import org.example.db.ItemRepository;
+import org.example.model.item.*;
 
-import java.io.IOException;
+import java.util.Arrays;
 
 
 public class AddItemController extends WorkerController {
@@ -34,6 +32,8 @@ public class AddItemController extends WorkerController {
     private TextField BookCover;
     @FXML
     private TextField BookGenre;
+
+
     @FXML
     private TextField ArticleID;
     @FXML
@@ -49,7 +49,8 @@ public class AddItemController extends WorkerController {
     @FXML
     private TextField ArticleRental;
     @FXML
-    private TextField ArticleType;
+    private TextField ItemArticleType;
+
     @FXML
     private TextField NewID;
     @FXML
@@ -67,14 +68,52 @@ public class AddItemController extends WorkerController {
     @FXML
     private TextField NewPublishingFreq;
 
+    private ItemRepository itemRepository = new ItemRepository();
+
 
     public void addBook(){
+
+        Book newBook = new Book(
+                Arrays.asList(BookAuthors.getText().split(",")),
+                BookTitle.getText(),
+                Integer.parseInt(BookPages.getText()),
+                BookISBN.getText(),
+                BookPublisher.getText(),
+                Cover.valueOf(BookCover.getText()),
+                Genre.valueOf(BookGenre.getText())
+                );
+
+
+        itemRepository.addNewItemAndReturnIfSuccessful(newBook);
+
+
 
     }
     public void addArticle(){
 
+        Article newArticle = new Article(
+                Arrays.asList(ArticleAuthors.getText().split(",")),
+                ArticleTitle.getText(),
+                Integer.parseInt(ArticlePages.getText()),
+                ArticleISBN.getText(),
+                ArticleType.valueOf(ItemArticleType.getText())
+        );
+
+
+        itemRepository.addNewItemAndReturnIfSuccessful(newArticle);
+
     }
     public void addNewspaper(){
+
+        Newspaper newNewspaper = new Newspaper(
+                Arrays.asList(NewAuthors.getText().split(",")),
+                NewTitle.getText(),
+                Integer.parseInt(NewPages.getText()),
+                NewISBN.getText(),
+                PublishingFrequency.valueOf(NewPublishingFreq.getText())
+        );
+
+        itemRepository.addNewItemAndReturnIfSuccessful(newNewspaper);
 
     }
 

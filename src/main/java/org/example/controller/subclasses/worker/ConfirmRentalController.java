@@ -143,7 +143,7 @@ public class ConfirmRentalController extends WorkerController {
         articleType.setCellValueFactory(new PropertyValueFactory<>("articleType"));
 
         List<Item> customerItems = itemRepository.getAllItems().stream()
-                .filter(Item::getIsReserved).collect(Collectors.toList());
+                .filter(i -> i.getIsReserved() || i.getIsRented()).collect(Collectors.toList());
         List<ItemDTO> itemsDTO = ItemDTO.getList(customerItems);
         ObservableList<ItemDTO> observableItems = FXCollections.observableArrayList();
         observableItems.addAll(itemsDTO);
