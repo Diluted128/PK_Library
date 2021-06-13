@@ -86,7 +86,7 @@ public class RentItemController extends CustomerController {
 
 
     public void reserveItem() {
-        //"Incorrect ID"
+        //"Incorrect ID Exception"
         passedId = Integer.parseInt(IdField.getText());
 
         List<User> users = userRepository.getAllUsers();
