@@ -24,6 +24,16 @@ public final class Customer extends User implements Serializable {
         this.permissions = List.of(Permission.RESERVE, Permission.RENT, Permission.RETURN);
     }
 
+    public Customer(String firstName, String lastName, String login, String password, String email, double penalty) {
+        super(firstName, lastName, login, password, email);
+        this.rentedItems = new ArrayList<>();
+        this.reservedItems = new ArrayList<>();
+        this.onBlacklist = false;
+        this.roles = List.of(Role.CUSTOMER);
+        this.permissions = List.of(Permission.RESERVE, Permission.RENT, Permission.RETURN);
+        this.penalty = penalty;
+    }
+
     public List<Item> getRentedItems() {
         return rentedItems;
     }

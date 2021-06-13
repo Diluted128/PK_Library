@@ -24,7 +24,7 @@ public class App extends Application {
         public static void main(String[] args)  {
             addInitalData();
             launch(args);
-        }
+       }
 
         @Override
         public void start(Stage splashScreen) throws IOException{
@@ -56,7 +56,8 @@ public class App extends Application {
                     "Brown",
                     "customer",
                     "customer",
-                    "customer@gmail.com"
+                    "customer@gmail.com",
+                    25.50
             );
 
             Book bookOne = new Book(

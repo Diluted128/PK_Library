@@ -13,7 +13,7 @@ import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import org.example.controller.subclasses.worker.AddItemController;
 import org.example.controller.subclasses.manager.HireWorkerController;
-import org.example.controller.subclasses.customer.MyItemsController;
+import org.example.customer.MyItemsController;
 import org.example.controller.abstraction.Controller;
 import org.example.db.UserRepository;
 import org.example.model.user.Customer;

@@ -8,7 +8,7 @@ module org.example {
     opens org.example to javafx.fxml, com.jfoenix, javafx.base;
 
     opens org.example.controller.subclasses.home to javafx.fxml, com.jfoenix, javafx.base;
-    opens org.example.controller.subclasses.customer to javafx.fxml, com.jfoenix, javafx.base;
+    opens org.example.customer to javafx.fxml, com.jfoenix, javafx.base;
     opens org.example.controller.subclasses.worker to javafx.fxml, com.jfoenix, javafx.base;
     opens org.example.controller.subclasses.manager to javafx.fxml, com.jfoenix, javafx.base;
 

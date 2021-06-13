@@ -2,10 +2,10 @@ package org.example.controller.abstraction;
 
 import javafx.event.ActionEvent;
 import org.example.controller.*;
-import org.example.controller.subclasses.customer.MyCustomerProfileController;
-import org.example.controller.subclasses.customer.MyItemsController;
-import org.example.controller.subclasses.customer.RentItemController;
-import org.example.controller.subclasses.customer.SettingsController;
+import org.example.customer.MyCustomerProfileController;
+import org.example.customer.MyItemsController;
+import org.example.customer.RentItemController;
+import org.example.customer.SettingsController;
 
 import java.io.IOException;
 

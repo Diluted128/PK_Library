@@ -4,7 +4,7 @@ import javafx.event.ActionEvent;
 import org.example.controller.subclasses.worker.AddItemController;
 import org.example.controller.subclasses.worker.ConfirmRentalController;
 import org.example.controller.subclasses.worker.RemoveItemController;
-import org.example.controller.subclasses.customer.MyCustomerProfileController;
+import org.example.customer.MyCustomerProfileController;
 import org.example.controller.subclasses.home.LoginSceneController;
 
 import java.io.IOException;

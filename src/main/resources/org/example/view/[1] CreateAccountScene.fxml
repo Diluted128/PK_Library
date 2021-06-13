@@ -23,7 +23,7 @@
             <ColorAdjust brightness="0.15" contrast="0.05" hue="0.12" saturation="-1.0" />
          </effect>
       </CheckBox>
-      <ProgressBar fx:id="progressBar" cacheShape="false" focusTraversable="false" layoutX="-2.0" layoutY="664.0" opacity="0.7" prefHeight="15.0" prefWidth="487.0" progress="0.0" style="-fx-background-image: 10;">
+      <ProgressBar fx:id="progressBar" cacheShape="false" focusTraversable="false" layoutX="-2.0" layoutY="664.0" opacity="0.7" prefHeight="15.0" prefWidth="487.0" progress="0.0" style="-fx-background-color: rgba(210,210,210,0.3);">
          <effect>
             <ColorAdjust brightness="0.19" contrast="1.0" hue="-0.1" saturation="0.01" />
          </effect>

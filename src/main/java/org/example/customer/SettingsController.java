@@ -1,4 +1,4 @@
-package org.example.controller.subclasses.customer;
+package org.example.customer;
 
 import org.example.controller.abstraction.CustomerController;
 

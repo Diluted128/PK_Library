@@ -1,18 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import com.jfoenix.controls.JFXButton?>
-<?import javafx.scene.Cursor?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.control.TableColumn?>
-<?import javafx.scene.control.TableView?>
-<?import javafx.scene.control.TextField?>
-<?import javafx.scene.effect.ColorAdjust?>
-<?import javafx.scene.image.Image?>
-<?import javafx.scene.image.ImageView?>
-<?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.text.Font?>
+<?import com.jfoenix.controls.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.effect.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 
-<AnchorPane prefHeight="675.0" prefWidth="1050.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.controller.subclasses.worker.ConfirmRentalController">
+<AnchorPane prefHeight="675.0" prefWidth="1050.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.controller.subclasses.worker.ConfirmRentalController">
    <children>
       <ImageView fitHeight="675.0" fitWidth="1050.0" pickOnBounds="true" preserveRatio="true">
          <image>
@@ -35,7 +31,7 @@
             <Cursor fx:constant="HAND" />
          </cursor>
       </JFXButton>
-      <JFXButton buttonType="RAISED" focusTraversable="false" layoutX="61.0" layoutY="345.0" onAction="#changeSceneToConfirmRental" prefHeight="100.0" prefWidth="184.0" ripplerFill="#5a0383" text="-" textFill="WHITE">
+      <JFXButton fx:id="changeSceneToConfirmRental" buttonType="RAISED" focusTraversable="false" layoutX="61.0" layoutY="345.0" onAction="#changeSceneToConfirmRental" prefHeight="100.0" prefWidth="184.0" ripplerFill="#5a0383" text="-" textFill="WHITE">
          <font>
             <Font size="1.0" />
          </font>
@@ -51,7 +47,7 @@
             <Cursor fx:constant="HAND" />
          </cursor>
       </JFXButton>
-      <JFXButton buttonType="RAISED" focusTraversable="false" layoutX="57.0" layoutY="500.0" onAction="#changeSceneToSignOut" prefHeight="35.0" prefWidth="178.0" ripplerFill="#4c026f" text="-" textFill="WHITE">
+      <JFXButton fx:id="signOutButton" buttonType="RAISED" focusTraversable="false" layoutX="57.0" layoutY="500.0" onAction="#changeSceneToSignOut" prefHeight="35.0" prefWidth="178.0" ripplerFill="#4c026f" text="-" textFill="WHITE">
          <font>
             <Font size="1.0" />
          </font>
@@ -59,7 +55,7 @@
             <Cursor fx:constant="HAND" />
          </cursor>
       </JFXButton>
-      <JFXButton layoutX="416.0" layoutY="588.0" onAction="#confirmRental" prefHeight="35.0" prefWidth="199.0" ripplerFill="#ff03ff" style="-fx-background-color: #924da5;" text="Confirm rental" textFill="WHITE">
+      <JFXButton fx:id="confirmRentalButton" layoutX="416.0" layoutY="588.0" onAction="#confirmRental" prefHeight="35.0" prefWidth="199.0" ripplerFill="#ff03ff" style="-fx-background-color: #924da5;" text="Confirm rental" textFill="WHITE">
          <font>
             <Font name="Open Sans Bold" size="14.0" />
          </font>
@@ -102,12 +98,12 @@
             <ColorAdjust brightness="0.1" hue="0.51" />
          </effect>
       </TextField>
-      <TextField fx:id="pickupItemId" layoutX="790.0" layoutY="523.0" prefHeight="25.0" prefWidth="66.0" promptText="Item ID">
+      <TextField id="pikcupItemId" fx:id="pickupItemId" layoutX="790.0" layoutY="523.0" prefHeight="25.0" prefWidth="66.0" promptText="Item ID">
          <effect>
             <ColorAdjust brightness="0.1" hue="0.51" />
          </effect>
       </TextField>
-      <JFXButton layoutX="724.0" layoutY="588.0" onAction="#confirmPickup" prefHeight="35.0" prefWidth="199.0" ripplerFill="#ff03ff" style="-fx-background-color: #924da5;" text="Confirm pick up" textFill="WHITE">
+      <JFXButton fx:id="confirmPickupButton" layoutX="724.0" layoutY="588.0" onAction="#confirmPickup" prefHeight="35.0" prefWidth="199.0" ripplerFill="#ff03ff" style="-fx-background-color: #924da5;" text="Confirm pick up" textFill="WHITE">
          <font>
             <Font name="Open Sans Bold" size="14.0" />
          </font>

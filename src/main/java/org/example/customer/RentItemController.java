@@ -1,4 +1,4 @@
-package org.example.controller.subclasses.customer;
+package org.example.customer;
 
 import com.jfoenix.controls.JFXButton;
 import javafx.collections.FXCollections;
@@ -7,8 +7,6 @@ import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import org.example.controller.abstraction.CustomerController;
-import org.example.controller.subclasses.home.PasswordReminderController;
-import org.example.controller.subclasses.worker.ConfirmRentalController;
 import org.example.db.ActionRepository;
 import org.example.db.ItemRepository;
 import org.example.db.UserRepository;
@@ -22,7 +20,6 @@ import org.example.model.user.Role;
 import org.example.model.user.User;
 
 import java.time.Instant;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 

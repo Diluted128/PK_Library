@@ -1,4 +1,4 @@
-package org.example.controller.subclasses.customer;
+package org.example;
 
 import javafx.scene.Node;
 import javafx.scene.input.KeyCode;
@@ -19,6 +19,7 @@ public abstract class TextFXBase extends ApplicationTest {
 
     @Before
     public void setUpClass() throws Exception {
+        App.addInitalData();
         ApplicationTest.launch(App.class);
     }
 

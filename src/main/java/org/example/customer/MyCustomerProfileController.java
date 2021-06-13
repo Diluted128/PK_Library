@@ -1,11 +1,14 @@
-package org.example.controller.subclasses.customer;
+package org.example.customer;
 
 import com.jfoenix.controls.JFXButton;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import org.example.controller.abstraction.CustomerController;
+import org.example.db.UserRepository;
 import org.example.model.user.Customer;
 import org.example.model.user.User;
+
+import java.util.ArrayList;
 
 public class MyCustomerProfileController extends CustomerController {
     @FXML
@@ -18,12 +21,19 @@ public class MyCustomerProfileController extends CustomerController {
     private Label emailField;
     @FXML
     private Label balanceField;
-    @FXML
-    private JFXButton payPenalty;
+
+
+    private UserRepository userRepository = new UserRepository();
 
 
     public void payPenalty(){
-
+        ArrayList<User> allUsers = userRepository.getAllUsers();
+        allUsers.stream()
+                .filter(u -> u.getLogin().equals(loggedInUser.getLogin()))
+                .forEach(u -> ((Customer) u).setPenalty(0.0));
+        ((Customer)loggedInUser).setPenalty(0.0);
+        userRepository.saveUsersToFile(allUsers);
+        setLoggedInUser(loggedInUser);
     }
 
     public void setLoggedInUser(User user) {
