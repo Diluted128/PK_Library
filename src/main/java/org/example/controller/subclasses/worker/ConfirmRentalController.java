@@ -167,7 +167,7 @@ public class ConfirmRentalController extends WorkerController {
             item = items.stream().filter(i -> i.getItemID() == passedPickupItemId).findFirst().get();
         } catch (IncorrectIdException | TextFieldEmptyException | RentedBookException e){
             System.out.println(e.getMessage());
-
+            IDwarning = true;
             Thread confirm_t = new Thread(new Confirm_Thread(rentedWarning, IDwarning));
             confirm_t.start();
             return;
