@@ -16,6 +16,8 @@ import org.example.db.ActionRepository;
 import org.example.db.UserRepository;
 import org.example.model.item.Item;
 import org.example.model.item.ItemDTO;
+import org.example.model.user.Customer;
+import org.example.model.user.Role;
 import org.example.model.user.User;
 
 import java.io.IOException;
@@ -77,7 +79,17 @@ public class FireWorkerController extends ManagerController {
         WorkerPassword.setCellValueFactory(new PropertyValueFactory<>("email"));
 
         ObservableList<User> observableItems = FXCollections.observableArrayList();
-        observableItems.addAll(UserRepository.getUserRepository().returnAllWorkers());
+        observableItems.addAll(UserRepository.getUserRepository().getAllUsers().stream()
+                .filter(u -> !u.getRoles().contains(Role.MANAGER))
+                .filter(u -> {
+                    if (u instanceof Customer) {
+                        return ((Customer)u).getRentedItems().isEmpty();
+                    } else {
+                        return true;
+                    }
+                })
+                .collect(Collectors.toList())
+        );
         workersTable.setItems(observableItems);
     }
 }
