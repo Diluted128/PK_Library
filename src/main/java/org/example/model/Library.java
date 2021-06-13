@@ -6,18 +6,24 @@ import org.example.model.user.Customer;
 import org.example.model.user.User;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Objects;
 
 public class Library {
+    private HashMap<Integer, String> id;
     private String name;
     private List<Customer> blacklist;
     private List<User> users;
     private List<Item> items;
     private List<Action> actions;
+    private static int libraryId = 1;
 
     public Library(String name) {
         this.name = name;
+        id = new HashMap<>();
+        id.put(libraryId++, name);
+
         blacklist = new ArrayList<>();
         users = new ArrayList<>();
         items = new ArrayList<>();
