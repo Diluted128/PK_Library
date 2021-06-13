@@ -10,6 +10,7 @@ import org.example.db.UserRepository;
 import org.example.model.item.*;
 import org.example.model.user.Customer;
 import org.example.model.user.Manager;
+import org.example.model.user.User;
 import org.example.model.user.Worker;
 
 import java.io.*;
@@ -193,32 +194,32 @@ public class App extends Application {
 
             List<Item> items = new ArrayList<>(List.of(bookOne, bookTwo, bookThree,bookFour,bookFive, bookSix,bookSeven,bookEight,
                     article,articleTwo, articleThree, articleFour, newspaper, newspaperTwo, newspaperThree, newspaperFour));
-//            customer.setRentedItems(items);
+
+            List<User> users = new ArrayList<>(List.of(customer, worker, manager));
 
 
             UserRepository userRepository = new UserRepository();
             ItemRepository itemRepository = new ItemRepository();
 
+
+
             List<File> files = List.of(
             new File("./src/main/java/org/example/db/users.bin"),
-            new File("./src/main/java/org/example/db/items.xml"),
-            new File("./src/main/java/org/example/db/actions.xml")
+            new File("./src/main/java/org/example/db/items.bin"),
+            new File("./src/main/java/org/example/db/actions.bin")
             );
             files.forEach(f -> {
                 if (f.exists()) {
                     f.delete();
                 }
+                try {
+                    f.createNewFile();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
             });
 
-            userRepository.addNewUserAndReturnIfSuccessful(manager);
-            userRepository.addNewUserAndReturnIfSuccessful(worker);
-            userRepository.addNewUserAndReturnIfSuccessful(customer);
-
-            itemRepository.addNewItemsAndReturnIfSuccessful(items);
-
-
-
-
+            userRepository.saveUsersToFile(users);
+            itemRepository.saveItemsToFile(items);
         }
-
 }

@@ -18,7 +18,7 @@ import java.util.stream.Collectors;
 
 public class ActionRepository {
 
-    private static final File actionsFile = new File("./src/main/java/org/example/db/actions.xml");
+    private static final File actionsFile = new File("./src/main/java/org/example/db/actions.bin");
     private static ActionRepository actionRepository = createSingletonInstance();
 
     private static ActionRepository createSingletonInstance() {

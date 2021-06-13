@@ -17,7 +17,7 @@ import java.util.stream.Collectors;
 
 public class ItemRepository {
 
-    private static final File itemsFile = new File("./src/main/java/org/example/db/items.xml");
+    private static final File itemsFile = new File("./src/main/java/org/example/db/items.bin");
     private static ItemRepository itemRepository = createSingletonInstance();
 
     private static ItemRepository createSingletonInstance() {
