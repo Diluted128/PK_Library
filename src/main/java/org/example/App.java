@@ -85,7 +85,51 @@ public class App extends Application {
                     Cover.PAPERBACK,
                     Genre.HORROR
             );
-
+            Book bookFour = new Book(
+                    List.of("Walter Isaacson"),
+                    "Steve Jobs",
+                    735,
+                    "9788365312205",
+                    "Insignis",
+                    Cover.HALF_HARD,
+                    Genre.BIOGRAPHY
+            );
+            Book bookFive = new Book(
+                    List.of("Karolina Wasilewska"),
+                    "Cyfrodziewczyny, Pionierki Polskiej Informatyki",
+                    300,
+                    "9788366232877",
+                    "Krytyki Politycznej",
+                    Cover.HALF_HARD,
+                    Genre.HISTORY
+            );
+            Book bookSix = new Book(
+                    List.of("Piotr Kowieski"),
+                    "W pogoni za metallica",
+                    350,
+                    "9788363885359",
+                    "ANAKONDA",
+                    Cover.HARD,
+                    Genre.BIOGRAPHY
+            );
+            Book bookSeven = new Book(
+                    List.of("Andrzej Sapkowski"),
+                    "Szpony i Kły",
+                    400,
+                    "9788375781557",
+                    "SUPERNOWA",
+                    Cover.HALF_HARD,
+                    Genre.FANTASY
+            );
+            Book bookEight = new Book(
+                    List.of("Mariusz Szczygieł"),
+                    "Niedziela, ktora zdarzyla się w srodę",
+                    171,
+                    "9788380494312",
+                    "ZARNE",
+                    Cover.HARD,
+                    Genre.CLASSIC
+            );
             Article article = new Article(
                     List.of("John Doe"),
                     "World",
@@ -94,6 +138,28 @@ public class App extends Application {
                     ArticleType.CASE_STUDY
             );
 
+            Article articleTwo = new Article(
+                    List.of("Carolyn Burdett"),
+                    "Aestheticism and decadence",
+                    9,
+                    "7453466357457",
+                    ArticleType.ESSAY
+            );
+            Article articleThree = new Article(
+                    List.of("John Sutherland"),
+                    "A reflection on sonnets: ‘When life was sweet beca...",
+                    11,
+                    "1423466312457",
+                    ArticleType.ESSAY
+            );
+
+            Article articleFour = new Article(
+                    List.of("Mark Lander"),
+                    "America May Be ‘Back’ in Europe, but How Much Has Really Changed?",
+                    14,
+                    "1423466312457",
+                    ArticleType.ESSAY
+            );
             Newspaper newspaper = new Newspaper(
                     List.of("Matthew Patrick"),
                     "New York Times",
@@ -101,9 +167,32 @@ public class App extends Application {
                     "3463464573457457",
                     PublishingFrequency.DAY
             );
+            Newspaper newspaperTwo = new Newspaper(
+                    List.of("Roula Khalaf"),
+                    "The Sunday Times",
+                    17,
+                    "5463464921457457",
+                    PublishingFrequency.WEEK
+            );
+            Newspaper newspaperThree = new Newspaper(
+                    List.of("Chris Evans"),
+                    "The Daily Telegraph",
+                    13,
+                    "2363464926757457",
+                    PublishingFrequency.DAY
+            );
+            Newspaper newspaperFour= new Newspaper(
+                    List.of("Roula Khalaf"),
+                    "Financial Times",
+                    14,
+                    "2373056126757457",
+                    PublishingFrequency.DAY
+            );
 
 
-            List<Item> items = new ArrayList<>(List.of(bookOne, bookTwo, bookThree, article, newspaper));
+
+            List<Item> items = new ArrayList<>(List.of(bookOne, bookTwo, bookThree,bookFour,bookFive, bookSix,bookSeven,bookEight,
+                    article,articleTwo, articleThree, articleFour, newspaper, newspaperTwo, newspaperThree, newspaperFour));
 //            customer.setRentedItems(items);
 
 

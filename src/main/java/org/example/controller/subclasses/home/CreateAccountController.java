@@ -53,7 +53,6 @@ public class CreateAccountController extends Controller {
 
     public void ReturnFunctions(ActionEvent event) throws Exception {
         changeScene(event, "[1] LoginScene.fxml", LoginSceneController.class);
-
     }
 
     public void CreateAccountFunctions(ActionEvent event) throws Exception {
@@ -130,7 +129,7 @@ public class CreateAccountController extends Controller {
         }
 
         public synchronized void run() {
-            System.out.println(emptyAgreement);
+            //System.out.println(emptyAgreement);
             progressBar.setProgress(0.0);
             for (int i = 0; i <= 100; i++) {
                 progressBar.setProgress(0.01 * i);
