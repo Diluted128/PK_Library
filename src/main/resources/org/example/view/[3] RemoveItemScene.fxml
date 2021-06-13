@@ -79,12 +79,12 @@
       </Label>
       <TableView fx:id="items" layoutX="312.0" layoutY="143.0" prefHeight="375.0" prefWidth="718.0">
          <columns>
-            <TableColumn fx:id="ID1" prefWidth="30.0" text="ID" />
+            <TableColumn fx:id="Id" prefWidth="30.0" text="ID" />
             <TableColumn fx:id="type" prefWidth="60.0" text="Type" />
             <TableColumn fx:id="title" text="Title" />
             <TableColumn fx:id="authors" prefWidth="75.0" text="Authors" />
             <TableColumn fx:id="pages" prefWidth="43.0" text="Pages" />
-            <TableColumn fx:id="ISBN1" prefWidth="47.0" text="ISBN" />
+            <TableColumn fx:id="ISBN" prefWidth="47.0" text="ISBN" />
             <TableColumn fx:id="isReserved" minWidth="0.0" prefWidth="76.0" text="Reservation" />
             <TableColumn fx:id="isRented" prefWidth="53.0" text="Rental" />
             <TableColumn fx:id="publisher" prefWidth="89.0" text="Publisher" />
