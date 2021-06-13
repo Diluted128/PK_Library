@@ -34,7 +34,9 @@ public class LoginSceneController extends Controller {
     @FXML
     private JFXTextArea LoginPassword;
     @FXML
-    private Label WarnningEmpty;
+    private Label WarnningEmptyFields;
+    @FXML
+    private Label WarnigUserNotExist;
     @FXML
     private JFXButton LoginButton;
     @FXML
@@ -42,9 +44,10 @@ public class LoginSceneController extends Controller {
     @FXML
     private JFXButton SignupButton;
 
-
     String passedLogin;
     String passedPassword;
+    boolean emptyFields = false;
+    boolean userNotExists = false;
 
     UserRepository userRepository = new UserRepository();
 
@@ -74,11 +77,16 @@ public class LoginSceneController extends Controller {
             loggedInUser = foundUser.get();
         }
 
-
         System.out.println("Login: " + passedLogin + " Password: " + passedPassword);
 
         if (loggedInUser == null || passedLogin.equals("") || passedPassword.equals("")) {
-            Thread th = new Thread(new bg_Thread());
+            if(passedLogin.equals("") || passedPassword.equals("")){
+                emptyFields = true;
+            }
+            else {
+                userNotExists = true;
+            }
+            Thread th = new Thread(new bg_Thread(emptyFields,userNotExists));
             th.start();
         }
         else {
@@ -98,7 +106,7 @@ public class LoginSceneController extends Controller {
               hireWorkerController.setLoggedInUser(loggedInUser);
             } else{
                 fxmlLoader = new FXMLLoader(getClass().getResource("/org/example/view/[3] AddItemScene.fxml"));
-                root =  fxmlLoader.load();
+                root = fxmlLoader.load();
 
                 AddItemController addItemController = fxmlLoader.getController();
                 addItemController.setLoggedInUser(loggedInUser);
@@ -113,15 +121,31 @@ public class LoginSceneController extends Controller {
     }
     class bg_Thread implements Runnable{
 
+        boolean emptyField;
+        boolean userNotExists;
+
+        public bg_Thread(boolean a, boolean b){
+            emptyField = a;
+            userNotExists = b;
+        }
+
         @Override
         public void run() {
-            WarnningEmpty.setVisible(true);
+            WarnigUserNotExist.setVisible(false);
+            WarnningEmptyFields.setVisible(false);
+
+            if(userNotExists) {
+                WarnigUserNotExist.setVisible(true);
+            }
+            else {
+                WarnningEmptyFields.setVisible(true);
+            }
             try {
                 Thread.sleep(5000);
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
-            WarnningEmpty.setVisible(false);
+           //WarnningEmpty.setVisible(false);
         }
     }
 }

@@ -29,7 +29,7 @@
          </effect>
       </ProgressBar>
       <Label fx:id="EmptyFields" layoutX="552.0" layoutY="135.0" text="Fields can't be empty." textFill="RED" visible="false" />
-      <Label fx:id="UsernameAlreadyTaken" layoutX="552.0" layoutY="135.0" text="Data is bound with other account." textFill="RED" visible="false" />
+<!--  <Label fx:id="UsernameAlreadyTaken" layoutX="552.0" layoutY="135.0" text="Data is bound with other account." textFill="RED" visible="false" />-->
       <Label fx:id="EmptyAgreement" layoutX="552.0" layoutY="135.0" text="You must agree to the Terms of Service. " textFill="RED" visible="false" />
       <Label fx:id="SuccesfulLabel" disable="true" layoutX="552.0" layoutY="136.0" text="Account has been created successfuly" textFill="#00ff15" visible="false">
          <font>
@@ -46,7 +46,7 @@
             <Font name="Roboto Bold" size="13.0" />
          </font>
       </Label>
-      <Label fx:id="UsernameAlreadyTaken" disable="true" layoutX="552.0" layoutY="136.0" prefHeight="25.0" prefWidth="306.0" text="This Login creadentials are used by other account." textFill="RED">
+      <Label fx:id="UsernameAlreadyTaken" disable="true" layoutX="552.0" layoutY="136.0" prefHeight="25.0" prefWidth="306.0" text="This Login creadentials are used by other account." textFill="RED" visible="false">
          <font>
             <Font name="Roboto Bold" size="13.0" />
          </font>
