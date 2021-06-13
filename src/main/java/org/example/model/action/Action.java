@@ -8,16 +8,27 @@ import java.time.Instant;
 
 public abstract class Action implements Serializable {
 
+    private static int idCounter = 1;
+    private int actionID;
     private Instant time;
     private User user;
     private Item item;
     private ActionType actionType;
 
     public Action(Instant time, User user, Item item, ActionType actionType) {
+        this.actionID = idCounter++;
         this.time = time;
         this.user = user;
         this.item = item;
         this.actionType = actionType;
+    }
+
+    public int getActionID() {
+        return actionID;
+    }
+
+    public void setActionID(int actionID) {
+        this.actionID = actionID;
     }
 
     public Instant getTime() {

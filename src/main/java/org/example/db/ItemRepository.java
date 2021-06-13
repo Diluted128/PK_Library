@@ -1,10 +1,19 @@
 package org.example.db;
 
+import org.example.model.action.Action;
+import org.example.model.item.Article;
+import org.example.model.item.Book;
 import org.example.model.item.Item;
+import org.example.model.item.Newspaper;
+import org.example.model.user.Customer;
+import org.example.model.user.Manager;
+import org.example.model.user.User;
 
 import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
+import java.util.stream.Collectors;
 
 public class ItemRepository {
 
@@ -69,4 +78,46 @@ public class ItemRepository {
         itemList.removeAll(items);
         return saveItemsToFile(items);
     }
+
+    public List<Item> removeItemById(List<Item> items, Item item) {
+        return items.stream().filter(i -> i.getItemID() != item.getItemID()).collect(Collectors.toList());
+    }
+
+    public boolean updateItemInfo(Item updatedItem) {
+        List<Item> items = getAllItems();
+
+        Item itemToBeUpdated;
+        Optional<Item> optionalItem = items.stream().filter(i -> i.getItemID() == updatedItem.getItemID()).findFirst();
+        if (optionalItem.isEmpty()) {
+            return false;
+        }
+        itemToBeUpdated = optionalItem.get();
+
+
+        items = removeItemById(items, itemToBeUpdated);
+
+        itemToBeUpdated.setISBN(updatedItem.getISBN());
+        itemToBeUpdated.setIsRented(updatedItem.getIsRented());
+        itemToBeUpdated.setIsReserved(updatedItem.getIsReserved());
+        itemToBeUpdated.setAuthors(itemToBeUpdated.getAuthors());
+        itemToBeUpdated.setNumberOfPages(updatedItem.getNumberOfPages());
+        itemToBeUpdated.setTitle(updatedItem.getTitle());
+        itemToBeUpdated.setType(updatedItem.getType());
+
+        if (itemToBeUpdated instanceof Book) {
+            ((Book) itemToBeUpdated).setCover(((Book) itemToBeUpdated).getCover());
+            ((Book) itemToBeUpdated).setGenre(((Book) itemToBeUpdated).getGenre());
+            ((Book) itemToBeUpdated).setPublisher(((Book) itemToBeUpdated).getPublisher());
+        }
+        if (itemToBeUpdated instanceof Article) {
+            ((Article) itemToBeUpdated).setArticleType(((Article) itemToBeUpdated).getArticleType());
+        }
+        if (itemToBeUpdated instanceof Newspaper) {
+            ((Newspaper) itemToBeUpdated).setPublishingFrequency(((Newspaper) itemToBeUpdated).getPublishingFrequency());
+        }
+
+        items.add(itemToBeUpdated);
+        return true;
+    }
+
 }

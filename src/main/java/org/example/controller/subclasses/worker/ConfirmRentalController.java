@@ -15,9 +15,7 @@ import org.example.controller.subclasses.home.LoginSceneController;
 import org.example.db.ActionRepository;
 import org.example.db.ItemRepository;
 import org.example.db.UserRepository;
-import org.example.model.action.Action;
-import org.example.model.action.Rental;
-import org.example.model.action.Reservation;
+import org.example.model.action.*;
 import org.example.model.item.ArticleType;
 import org.example.model.item.Genre;
 import org.example.model.item.Item;
@@ -28,17 +26,20 @@ import org.example.model.user.User;
 
 import java.io.IOException;
 import java.time.Instant;
+import java.time.temporal.Temporal;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
+
+import static java.time.temporal.ChronoUnit.DAYS;
 
 public class ConfirmRentalController extends WorkerController {
 
     @FXML
     private TextField rentalItemId;
     @FXML
-    private TextField idField2;
+    private TextField pickupItemId;
     @FXML
     private TableView<ItemDTO> items;
     @FXML
@@ -65,6 +66,7 @@ public class ConfirmRentalController extends WorkerController {
     private TableColumn<Item, ArticleType> articleType;
 
     private int passedRentItemId;
+    private int passedPickupItemId;
     private UserRepository userRepository = new UserRepository();
     private ItemRepository itemRepository = new ItemRepository();
     private ActionRepository actionRepository = new ActionRepository();
@@ -90,8 +92,6 @@ public class ConfirmRentalController extends WorkerController {
                 .forEach(a -> ((Reservation)a).setPositionInQueue(((Reservation) a).getPositionInQueue() - 1));
 
 
-
-
         item.setIsReserved(false);
         item.setIsRented(true);
 
@@ -102,8 +102,6 @@ public class ConfirmRentalController extends WorkerController {
                 .filter(u -> u.getLogin().equals(user.getLogin()))
                 .forEach(u -> ((Customer)u).addRentedItem(item));
 
-//        ((Customer)user).removeReservedItem(item);
-//        ((Customer)user).addRentedItem(item);
 
         actions.add(new Rental(Instant.now(), user, item, 30, true));
 
@@ -116,6 +114,67 @@ public class ConfirmRentalController extends WorkerController {
 
     }
     public void confirmPickup() {
+
+        passedPickupItemId = Integer.parseInt(pickupItemId.getText());
+
+        List<User> users = userRepository.getAllUsers();
+        List<Item> items = itemRepository.getAllItems();
+        List<Action> actions = actionRepository.getAllActions();
+
+        Item item = items.stream().filter(i -> i.getItemID() == passedPickupItemId).findFirst().get();
+
+        User user = actions.stream()
+                .filter(a -> a.getItem().getItemID() == item.getItemID())
+                .filter(a -> a.getActionType().equals(ActionType.RENTAL))
+                .filter(a -> ((Rental)a).isActive())
+                .map(a -> a.getUser()).findFirst().get();
+
+
+        Action action = actions.stream()
+                .filter(a -> a.getItem().getItemID() == item.getItemID())
+                .filter(a -> a.getUser().getUserID() == user.getUserID())
+                .filter(a -> a.getActionType().equals(ActionType.RENTAL))
+                .findFirst().get();
+
+        long between = DAYS.between(Instant.now().adjustInto(Instant.now()), Instant.now().adjustInto(action.getTime()));
+        int daysDuration = ((Rental) action).getDaysDuration();
+
+
+        item.setIsReserved(false);
+        item.setIsRented(false);
+
+        ((Customer)user).removeRentedItem(item);
+
+
+        users.stream()
+                .filter(u -> u.getLogin().equals(user.getLogin()))
+                .forEach(u -> ((Customer)u).removeRentedItem(item));
+
+        double penalty = 0;
+        boolean tooLate = false;
+        if (between > daysDuration) {
+            penalty = between - daysDuration;
+            tooLate = true;
+            ((Customer) user).setPenalty(((Customer) user).getPenalty() + penalty);
+            if (((Customer) user).getPenalty() > 100) {
+                ((Customer) user).setOnBlacklist(true);
+            }
+        }
+
+
+        actions.add(new Return(Instant.now(), user, item, tooLate, penalty));
+
+
+        itemRepository.updateItemInfo(item);
+        userRepository.updateUserInfo(user);
+
+
+
+        itemRepository.saveItemsToFile(items);
+        actionRepository.saveActionsToFile(actions);
+        userRepository.saveUsersToFile(users);
+
+        setTableView();
 
     }
 

@@ -53,4 +53,11 @@ public class Manager extends Worker{
         this.subordinates.add(worker);
     }
 
+    public List<Worker> getSubordinates() {
+        return subordinates;
+    }
+
+    public void setSubordinates(List<Worker> subordinates) {
+        this.subordinates = subordinates;
+    }
 }

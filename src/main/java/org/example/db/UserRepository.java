@@ -1,13 +1,13 @@
 package org.example.db;
 
 import org.example.model.action.Action;
-import org.example.model.user.Role;
-import org.example.model.user.User;
-import org.example.model.user.Worker;
+import org.example.model.user.*;
 
 import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
+import java.util.stream.Collectors;
 
 public class UserRepository {
 
@@ -67,6 +67,43 @@ public class UserRepository {
         ArrayList<User> users = getAllUsers();
         users.remove(user);
         return saveUsersToFile(users);
+    }
+
+    public List<User> removeUserById(List<User> users, User user) {
+        return users.stream().filter(u -> u.getUserID() != user.getUserID()).collect(Collectors.toList());
+    }
+
+    public boolean updateUserInfo(User updatedUser) {
+        List<User> users = getAllUsers();
+
+        User userToBeUpdated;
+        Optional<User> optionalUser = users.stream().filter(u -> u.getUserID() == updatedUser.getUserID()).findFirst();
+        if (optionalUser.isEmpty()) {
+            return false;
+        }
+        userToBeUpdated = optionalUser.get();
+
+
+        users = removeUserById(users, userToBeUpdated);
+
+        userToBeUpdated.setLogin(updatedUser.getLogin());
+        userToBeUpdated.setPassword(updatedUser.getPassword());
+        userToBeUpdated.setFirstName(updatedUser.getFirstName());
+        userToBeUpdated.setLastName(updatedUser.getLastName());
+        userToBeUpdated.setEmail(updatedUser.getEmail());
+        userToBeUpdated.setPermissions(updatedUser.getPermissions());
+        userToBeUpdated.setRoles(updatedUser.getRoles());
+
+        if (updatedUser instanceof Customer) {
+            ((Customer) userToBeUpdated).setOnBlacklist(((Customer) updatedUser).isOnBlacklist());
+            ((Customer) userToBeUpdated).setPenalty(((Customer) updatedUser).getPenalty());
+            ((Customer) userToBeUpdated).setRentedItems(((Customer) updatedUser).getRentedItems());
+        }
+        if (updatedUser instanceof Manager) {
+            ((Manager) userToBeUpdated).setSubordinates(((Manager) updatedUser).getSubordinates());
+        }
+        users.add(userToBeUpdated);
+        return true;
     }
 
 

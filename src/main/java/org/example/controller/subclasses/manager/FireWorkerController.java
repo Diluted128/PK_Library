@@ -19,12 +19,13 @@ import org.example.model.item.ItemDTO;
 import org.example.model.user.User;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
 public class FireWorkerController extends ManagerController {
     @FXML
-    private TextField workerID;
+    private TextField workerToFireID;
     @FXML
     private TableView<User> workersTable;
     @FXML
@@ -43,24 +44,40 @@ public class FireWorkerController extends ManagerController {
 
     public void fireWorker(){
 
+        if (Integer.parseInt(workerToFireID.getText()) == loggedInUser.getUserID()) {
+            //TODO: handle passing currently logged in user
+        }
+
+        List<User> allUsers = userRepository.getAllUsers();
+
+        if (allUsers.stream().noneMatch(u -> u.getUserID() == Integer.parseInt(workerToFireID.getText()))) {
+            //TODO: handle passing id of user that does not exist
+        }
+
+
+        allUsers = allUsers.stream()
+                .filter(u -> u.getUserID() != Integer.parseInt(workerToFireID.getText()))
+                .collect(Collectors.toList());
+
+        userRepository.saveUsersToFile(allUsers);
+        setTableView();
     }
+
     public void setLoggedInUser(User user) {
         super.setLoggedInUser(user);
         setTableView();
     }
-    public void setTableView(){
 
-       // WorkerID.setCellValueFactory(new PropertyValueFactory<>("itemID"));
+    public void setTableView(){
+        WorkerID.setCellValueFactory(new PropertyValueFactory<>("userID"));
         WorkerFirstName.setCellValueFactory(new PropertyValueFactory<>("firstName"));
         WorkerLastName.setCellValueFactory(new PropertyValueFactory<>("lastName"));
         WorkerEmail.setCellValueFactory(new PropertyValueFactory<>("login"));
         WorkerLogin.setCellValueFactory(new PropertyValueFactory<>("password"));
         WorkerPassword.setCellValueFactory(new PropertyValueFactory<>("email"));
 
-
         ObservableList<User> observableItems = FXCollections.observableArrayList();
         observableItems.addAll(UserRepository.getUserRepository().returnAllWorkers());
         workersTable.setItems(observableItems);
-
     }
 }

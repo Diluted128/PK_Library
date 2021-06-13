@@ -23,6 +23,7 @@ import org.example.model.user.User;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Optional;
+import java.util.logging.Level;
 
 
 public class LoginSceneController extends Controller {
@@ -75,7 +76,7 @@ public class LoginSceneController extends Controller {
         }
 
 
-        System.out.println("Login: " + passedLogin + " Password: " + passedPassword);
+        userLogger.log(Level.INFO, "[New login, username: " + passedLogin + ", password: " + passedPassword + "]");
 
         if (loggedInUser == null || passedLogin.equals("") || passedPassword.equals("")) {
             Thread th = new Thread(new bg_Thread());

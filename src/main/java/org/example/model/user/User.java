@@ -9,6 +9,8 @@ import java.util.Objects;
 
 @SuppressWarnings("unused")
 public abstract class User implements Serializable {
+
+    private static int idCounter = 1;
     private int userID;
     private String firstName;
     private String lastName;
@@ -19,6 +21,7 @@ public abstract class User implements Serializable {
     protected List<Permission> permissions;
 
     public User(String firstName, String lastName, String login, String password, String email) {
+        this.userID = idCounter++;
         this.firstName = firstName;
         this.lastName = lastName;
         this.login = login;

@@ -6,13 +6,19 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import org.example.model.action.Action;
+import org.example.model.item.Item;
 import org.example.model.user.User;
+import java.util.logging.Logger;
 
 import java.io.IOException;
 
 public abstract class Controller {
 
     protected User loggedInUser;
+    protected final Logger userLogger = Logger.getLogger(User.class.getName());
+    protected final Logger itemLogger = Logger.getLogger(Item.class.getName());
+    protected final Logger actionLogger = Logger.getLogger(Action.class.getName());
 
     public void setLoggedInUser(User user) {
         this.loggedInUser = user;

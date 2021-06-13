@@ -3,6 +3,7 @@ module org.example {
     requires javafx.fxml;
     requires java.mail;
     requires com.jfoenix;
+    requires java.logging;
 
     opens org.example to javafx.fxml, com.jfoenix, javafx.base;
 

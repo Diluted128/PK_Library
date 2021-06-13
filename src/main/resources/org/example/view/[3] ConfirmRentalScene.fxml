@@ -92,7 +92,7 @@
             <TableColumn fx:id="articleType" prefWidth="87.0" text="Article type" />
          </columns>
       </TableView>
-      <TextField fx:id="idField2" layoutX="790.0" layoutY="523.0" prefHeight="25.0" prefWidth="66.0" promptText="Item ID">
+      <TextField fx:id="pickupItemId" layoutX="790.0" layoutY="523.0" prefHeight="25.0" prefWidth="66.0" promptText="Item ID">
          <effect>
             <ColorAdjust brightness="0.1" hue="0.51" />
          </effect>
