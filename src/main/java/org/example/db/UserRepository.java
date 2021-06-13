@@ -106,9 +106,6 @@ public class UserRepository {
         return true;
     }
 
-
-    // wj
-    //------------
     public ArrayList<User> returnAllWorkers(){
         ArrayList<User> users = getAllUsers();
         ArrayList<User> workers =  new ArrayList<>();
@@ -118,5 +115,13 @@ public class UserRepository {
         }
         return workers;
     }
-
+    public String ReturnPasswordIfEmailSuccessful(String email){
+        ArrayList<User> users = getAllUsers();
+        for(User user : users){
+            if(user.getEmail().equals(email)){
+                return user.getPassword();
+            }
+        }
+        return null;
+    }
 }

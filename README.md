@@ -8,7 +8,21 @@
  ### Initial interface
 ![window](https://user-images.githubusercontent.com/67759414/120695303-8bde8580-c4ab-11eb-81f0-c6f3866ac1f8.png)
 
+We devided the graphical inteface into four groups:
+- Basic interface
+- Customer interface
+- Worker interface
+- Administrator interface
 
+### Basic interface
+The basic interface is first what the user can see. In this GUI, users can log in to their library accounts, create new ones or use reminder if users forgot their passwords. 
+If the client had a book too long then he can pay the penalty in his account settings.
+### Customer interface
+If a user logged into his account he can see all of the items he rented, profile details or rent a new item.
+### Worker interface
+This interface is used by a worker in a library. The worker can add or delete items, accept renting a book or check the pickup.
+### Administrator
+Interface which belongs to the owner of the library. When recruiting new workers he can add their details to a system or fire some workers.
 
 ## Rules and regulations :page_with_curl:
 - User can rent an item for a month.

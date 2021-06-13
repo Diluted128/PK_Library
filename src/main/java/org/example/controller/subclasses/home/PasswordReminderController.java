@@ -4,10 +4,12 @@ import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXTextArea;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.Cursor;
 import javafx.scene.control.Label;
 import javafx.scene.control.ProgressBar;
 import org.example.SendEmail;
 import org.example.controller.abstraction.Controller;
+import org.example.db.UserRepository;
 
 
 public class PasswordReminderController extends Controller {
@@ -17,16 +19,17 @@ public class PasswordReminderController extends Controller {
     @FXML
     private Label MailSentSuccessfully;
     @FXML
+    private Label MailNotFound;
+    @FXML
     private ProgressBar myProgressBar;
     @FXML
-    private JFXButton PasswordReminderButton;
-    @FXML
-    private JFXButton ReturnButton;
+    private Label PleaseWaitMessage;
 
     public void ForgotPasswordSubmit() throws Exception {
+        String pom = null;
+        pom = UserRepository.getUserRepository().ReturnPasswordIfEmailSuccessful(PasswordReminderEmail.getText());
 
-        SendEmail.sendMail(PasswordReminderEmail.getText());
-        Thread m_th = new Thread(new MailSending_Thread());
+        Thread m_th = new Thread(new MailSending_Thread(pom));
         m_th.start();
     }
     public void ForgotPasswordReturn(ActionEvent event) throws Exception {
@@ -35,6 +38,11 @@ public class PasswordReminderController extends Controller {
 
     class  MailSending_Thread implements Runnable {
 
+        private String password;
+
+        public MailSending_Thread(String a){
+            password = a;
+        }
         @Override
         public  void run() {
             for (int i = 0; i <= 100; i=i+25) {
@@ -45,13 +53,34 @@ public class PasswordReminderController extends Controller {
                     e.printStackTrace();
                 }
             }
-            MailSentSuccessfully.setVisible(true);
-            try {
-                Thread.sleep(8000);
-            } catch (InterruptedException e) {
-                e.printStackTrace();
+
+            if(password!=null){
+                PasswordReminderEmail.getScene().setCursor(Cursor.WAIT);
+                PleaseWaitMessage.setVisible(true);
+                try {
+                    SendEmail.sendMail(PasswordReminderEmail.getText(), password);
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+                PasswordReminderEmail.getScene().setCursor(Cursor.DEFAULT);
+                PleaseWaitMessage.setVisible(false);
+                MailSentSuccessfully.setVisible(true);
+                try {
+                    Thread.sleep(8000);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+                MailSentSuccessfully.setVisible(false);
             }
-            MailSentSuccessfully.setVisible(false);
+            else{
+                MailNotFound.setVisible(true);
+                try {
+                    Thread.sleep(8000);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+                MailNotFound.setVisible(false);
+            }
         }
     }
 }
