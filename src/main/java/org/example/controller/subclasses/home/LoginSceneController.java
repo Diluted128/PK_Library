@@ -16,6 +16,7 @@ import org.example.controller.subclasses.manager.HireWorkerController;
 import org.example.controller.subclasses.customer.MyItemsController;
 import org.example.controller.abstraction.Controller;
 import org.example.db.UserRepository;
+import org.example.exception.TextFieldEmptyException;
 import org.example.model.user.Customer;
 import org.example.model.user.Manager;
 import org.example.model.user.User;
@@ -63,61 +64,62 @@ public class LoginSceneController extends Controller {
 
     //-----------------------------------------------------------------------
     public void LoginButtonFunctions(ActionEvent event) throws IOException {
+        try {
+            passedLogin = LoginEmail.getText();
+            passedPassword = LoginPassword.getText();
 
-        passedLogin = LoginEmail.getText();
-        passedPassword = LoginPassword.getText();
+            ArrayList<User> usersList = userRepository.getAllUsers();
+            User loggedInUser = null;
 
-        ArrayList<User> usersList = userRepository.getAllUsers();
-        User loggedInUser = null;
+            Optional<User> foundUser = usersList.stream()
+                    .filter(u -> u.areCredentialsEqual(passedLogin, passedPassword))
+                    .findFirst();
 
-        Optional<User> foundUser = usersList.stream()
-                .filter(u -> u.areCredentialsEqual(passedLogin, passedPassword))
-                .findFirst();
-
-        if (foundUser.isPresent()) {
-            loggedInUser = foundUser.get();
-        }
-
-        userLogger.log(Level.INFO, "[New login, username: " + passedLogin + ", password: " + passedPassword + "]");
-
-        if (loggedInUser == null || passedLogin.equals("") || passedPassword.equals("")) {
-            if(passedLogin.equals("") || passedPassword.equals("")){
-                emptyFields = true;
+            if (foundUser.isPresent()) {
+                loggedInUser = foundUser.get();
             }
-            else {
-                userNotExists = true;
+
+            userLogger.log(Level.INFO, "[New login, username: " + passedLogin + ", password: " + passedPassword + "]");
+
+            if (loggedInUser == null || passedLogin.equals("") || passedPassword.equals("")) {
+                if (passedLogin.equals("") || passedPassword.equals("")) {
+                    emptyFields = true;
+                } else {
+                    userNotExists = true;
+                }
+                throw new TextFieldEmptyException();
+            } else {
+
+                FXMLLoader fxmlLoader;
+                Parent root;
+                if (loggedInUser instanceof Customer) {
+                    fxmlLoader = new FXMLLoader(getClass().getResource("/org/example/view/[2] MyItemsScene.fxml"));
+                    root = fxmlLoader.load();
+                    MyItemsController myItemsController = fxmlLoader.getController();
+                    myItemsController.setLoggedInUser(loggedInUser);
+                } else if (loggedInUser instanceof Manager) {
+                    fxmlLoader = new FXMLLoader(getClass().getResource("/org/example/view/[4] HireWorkerScene.fxml"));
+                    root = fxmlLoader.load();
+
+                    HireWorkerController hireWorkerController = fxmlLoader.getController();
+                    hireWorkerController.setLoggedInUser(loggedInUser);
+                } else {
+                    fxmlLoader = new FXMLLoader(getClass().getResource("/org/example/view/[3] AddItemScene.fxml"));
+                    root = fxmlLoader.load();
+
+                    AddItemController addItemController = fxmlLoader.getController();
+                    addItemController.setLoggedInUser(loggedInUser);
+
+                }
+
+                Scene LoginReminder = new Scene(root);
+                Stage ourStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+                ourStage.setScene(LoginReminder);
+                ourStage.show();
             }
+        } catch(TextFieldEmptyException e) {
             Thread th = new Thread(new bg_Thread(emptyFields,userNotExists));
             th.start();
-        }
-        else {
-
-            FXMLLoader fxmlLoader;
-            Parent root;
-            if(loggedInUser instanceof Customer){
-               fxmlLoader = new FXMLLoader(getClass().getResource("/org/example/view/[2] MyItemsScene.fxml"));
-               root =  fxmlLoader.load();
-                MyItemsController myItemsController = fxmlLoader.getController();
-                myItemsController.setLoggedInUser(loggedInUser);
-            } else if(loggedInUser instanceof Manager){
-                fxmlLoader = new FXMLLoader(getClass().getResource("/org/example/view/[4] HireWorkerScene.fxml"));
-                root =  fxmlLoader.load();
-
-              HireWorkerController hireWorkerController = fxmlLoader.getController();
-              hireWorkerController.setLoggedInUser(loggedInUser);
-            } else{
-                fxmlLoader = new FXMLLoader(getClass().getResource("/org/example/view/[3] AddItemScene.fxml"));
-                root = fxmlLoader.load();
-
-                AddItemController addItemController = fxmlLoader.getController();
-                addItemController.setLoggedInUser(loggedInUser);
-
-            }
-
-            Scene LoginReminder = new Scene(root);
-            Stage ourStage = (Stage)((Node)event.getSource()).getScene().getWindow();
-            ourStage.setScene(LoginReminder);
-            ourStage.show();
         }
     }
     class bg_Thread implements Runnable{
