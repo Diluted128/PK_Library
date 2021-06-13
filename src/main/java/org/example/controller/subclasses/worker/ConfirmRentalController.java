@@ -15,6 +15,7 @@ import org.example.controller.subclasses.home.LoginSceneController;
 import org.example.db.ActionRepository;
 import org.example.db.ItemRepository;
 import org.example.db.UserRepository;
+import org.example.exception.RentedBookException;
 import org.example.model.action.*;
 import org.example.model.item.ArticleType;
 import org.example.model.item.Genre;
@@ -120,8 +121,16 @@ public class ConfirmRentalController extends WorkerController {
         List<User> users = userRepository.getAllUsers();
         List<Item> items = itemRepository.getAllItems();
         List<Action> actions = actionRepository.getAllActions();
-
         Item item = items.stream().filter(i -> i.getItemID() == passedPickupItemId).findFirst().get();
+
+        try{
+            if (item.getIsRented()) {
+                throw new RentedBookException();
+            }
+        } catch (RentedBookException e) {
+            System.out.println(e.getMessage());
+            //todo wyswietlic na ekranie
+        }
 
         User user = actions.stream()
                 .filter(a -> a.getItem().getItemID() == item.getItemID())
@@ -144,7 +153,6 @@ public class ConfirmRentalController extends WorkerController {
         item.setIsRented(false);
 
         ((Customer)user).removeRentedItem(item);
-
 
         users.stream()
                 .filter(u -> u.getLogin().equals(user.getLogin()))

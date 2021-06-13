@@ -1,7 +1,7 @@
 package org.example.exception;
 
 public class TextFieldEmptyException extends RuntimeException {
-    public TextFieldEmptyException(String message) {
+    public TextFieldEmptyException() {
         super("Text Field is empty!");
     }
 }
