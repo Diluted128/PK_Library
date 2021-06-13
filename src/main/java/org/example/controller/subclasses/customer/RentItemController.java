@@ -7,9 +7,13 @@ import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import org.example.controller.abstraction.CustomerController;
+import org.example.controller.subclasses.home.PasswordReminderController;
+import org.example.controller.subclasses.worker.ConfirmRentalController;
 import org.example.db.ActionRepository;
 import org.example.db.ItemRepository;
 import org.example.db.UserRepository;
+import org.example.exception.IncorrectIdException;
+import org.example.exception.TextFieldEmptyException;
 import org.example.model.action.Action;
 import org.example.model.action.Reservation;
 import org.example.model.item.*;
@@ -27,6 +31,8 @@ public class RentItemController extends CustomerController {
     private JFXButton rentItemButton;
     @FXML
     private TextField IdField;
+    @FXML
+    private Label WarningId;
     @FXML
     private ScrollPane scrollPane;
     @FXML
@@ -83,203 +89,74 @@ public class RentItemController extends CustomerController {
 
     }
 
-
-
     public void reserveItem() {
-        //"Incorrect ID"
-        passedId = getFromTextField();
 
+        try {
+            String id = IdField.getText();
 
-        List<User> users = userRepository.getAllUsers();
-        List<Item> items = itemRepository.getAllItems();
-        List<Action> actions = actionRepository.getAllActions();
+            if (id.equals("")) {
+                throw new TextFieldEmptyException();
+            }
+            passedId = Integer.parseInt(id);
 
-        Optional<Item> optionalItem = items.stream().filter(i -> i.getItemID() == passedId).findFirst();
-        User user = users.stream().filter(u -> u.getLogin().equals(loggedInUser.getLogin())).findFirst().get();
-        Item item;
-        if (optionalItem.isPresent()) {
-            item = optionalItem.get();
-        } else {
-            //todo: do what program has to do when bad id is passed
-            return;
+            //"Incorrect ID Exception"
+            passedId = Integer.parseInt(IdField.getText());
+
+            List<User> users = userRepository.getAllUsers();
+            List<Item> items = itemRepository.getAllItems();
+            List<Action> actions = actionRepository.getAllActions();
+
+            Optional<Item> optionalItem = items.stream().filter(i -> i.getItemID() == passedId).findFirst();
+            User user = users.stream().filter(u -> u.getLogin().equals(loggedInUser.getLogin())).findFirst().get();
+            Item item;
+            if (optionalItem.isPresent()) {
+                item = optionalItem.get();
+            } else {
+                throw new IncorrectIdException();
+            }
+
+            Customer customer = (Customer) user;
+
+            Long positionInQueue = users.stream()
+                    .filter(u -> u.getRoles().contains(Role.CUSTOMER))
+                    .filter(u -> ((Customer) u).getReservedItems().contains(item))
+                    .count();
+
+            item.setIsReserved(true);
+            customer.addReservedItem(item);
+            actions.add(new Reservation(Instant.now(), user, item, positionInQueue + 1));
+
+            itemRepository.saveItemsToFile(items);
+            actionRepository.saveActionsToFile(actions);
+            userRepository.saveUsersToFile(users);
+
+            setTableView();
         }
-
-        Customer customer = (Customer)user;
-
-        Long positionInQueue = users.stream()
-                .filter(u -> u.getRoles().contains(Role.CUSTOMER))
-                .filter(u -> ((Customer)u).getReservedItems().contains(item))
-                .count();
-
-        item.setIsReserved(true);
-        customer.addReservedItem(item);
-        actions.add(new Reservation(Instant.now(), user, item, positionInQueue + 1));
-
-        itemRepository.saveItemsToFile(items);
-        actionRepository.saveActionsToFile(actions);
-        userRepository.saveUsersToFile(users);
-
-        setTableView();
-
-    }
-
-    public int getFromTextField() {
-        return Integer.parseInt(IdField.getText());
+        catch(TextFieldEmptyException | IncorrectIdException e){
+            System.out.println(e.getMessage());
+            Thread rent_t = new Thread(new Rent_Thread());
+            rent_t.start();
+        }
     }
 
     public void setLoggedInUser(User user) {
         super.setLoggedInUser(user);
         setTableView();
     }
-    public TextField getIdField() {
-        return IdField;
-    }
 
-    public UserRepository getUserRepository() {
-        return userRepository;
-    }
 
-    public ItemRepository getItemRepository() {
-        return itemRepository;
-    }
 
-    public JFXButton getRentItemButton() {
-        return rentItemButton;
-    }
+    class Rent_Thread implements Runnable {
 
-    public void setRentItemButton(JFXButton rentItemButton) {
-        this.rentItemButton = rentItemButton;
-    }
-
-    public void setIdField(String value) {
-        IdField.setText(value);
-    }
-
-    public ScrollPane getScrollPane() {
-        return scrollPane;
-    }
-
-    public void setScrollPane(ScrollPane scrollPane) {
-        this.scrollPane = scrollPane;
-    }
-
-    public TableView<ItemDTO> getItems() {
-        return items;
-    }
-
-    public void setItems(TableView<ItemDTO> items) {
-        this.items = items;
-    }
-
-    public TableColumn<Item, Integer> getID() {
-        return ID;
-    }
-
-    public void setID(TableColumn<Item, Integer> ID) {
-        this.ID = ID;
-    }
-
-    public TableColumn<Item, String> getType() {
-        return type;
-    }
-
-    public void setType(TableColumn<Item, String> type) {
-        this.type = type;
-    }
-
-    public TableColumn<Item, String> getTitle() {
-        return title;
-    }
-
-    public void setTitle(TableColumn<Item, String> title) {
-        this.title = title;
-    }
-
-    public TableColumn<Item, List<String>> getAuthors() {
-        return authors;
-    }
-
-    public void setAuthors(TableColumn<Item, List<String>> authors) {
-        this.authors = authors;
-    }
-
-    public TableColumn<Item, Integer> getPages() {
-        return pages;
-    }
-
-    public void setPages(TableColumn<Item, Integer> pages) {
-        this.pages = pages;
-    }
-
-    public TableColumn<Item, String> getISBN() {
-        return ISBN;
-    }
-
-    public void setISBN(TableColumn<Item, String> ISBN) {
-        this.ISBN = ISBN;
-    }
-
-    public TableColumn<Item, Boolean> getIsReserved() {
-        return isReserved;
-    }
-
-    public void setIsReserved(TableColumn<Item, Boolean> isReserved) {
-        this.isReserved = isReserved;
-    }
-
-    public TableColumn<Item, Boolean> getIsRented() {
-        return isRented;
-    }
-
-    public void setIsRented(TableColumn<Item, Boolean> isRented) {
-        this.isRented = isRented;
-    }
-
-    public TableColumn<Item, String> getPublisher() {
-        return publisher;
-    }
-
-    public void setPublisher(TableColumn<Item, String> publisher) {
-        this.publisher = publisher;
-    }
-
-    public TableColumn<Item, Genre> getGenre() {
-        return genre;
-    }
-
-    public void setGenre(TableColumn<Item, Genre> genre) {
-        this.genre = genre;
-    }
-
-    public TableColumn<Item, ArticleType> getArticleType() {
-        return articleType;
-    }
-
-    public void setArticleType(TableColumn<Item, ArticleType> articleType) {
-        this.articleType = articleType;
-    }
-
-    public int getPassedId() {
-        return passedId;
-    }
-
-    public void setPassedId(int passedId) {
-        this.passedId = passedId;
-    }
-
-    public void setUserRepository(UserRepository userRepository) {
-        this.userRepository = userRepository;
-    }
-
-    public void setItemRepository(ItemRepository itemRepository) {
-        this.itemRepository = itemRepository;
-    }
-
-    public ActionRepository getActionRepository() {
-        return actionRepository;
-    }
-
-    public void setActionRepository(ActionRepository actionRepository) {
-        this.actionRepository = actionRepository;
+        @Override
+        public  void run() {
+            WarningId.setVisible(true);
+            try {
+                Thread.sleep(5000);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+            WarningId.setVisible(false);
+        }
     }
 }

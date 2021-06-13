@@ -2,18 +2,22 @@ package org.example.controller.subclasses.worker;
 
 
 import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
+import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.TextField;
 import org.example.controller.abstraction.WorkerController;
 import org.example.db.ItemRepository;
 import org.example.model.item.*;
 
+import java.net.URL;
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.ResourceBundle;
 
 
-public class AddItemController extends WorkerController {
+public class AddItemController extends WorkerController implements Initializable {
 
-    @FXML
-    private TextField BookID;
+
     @FXML
     private TextField BookTitle;
     @FXML
@@ -23,19 +27,13 @@ public class AddItemController extends WorkerController {
     @FXML
     private TextField BookISBN;
     @FXML
-    private TextField BookReservation;
-    @FXML
-    private TextField BookRental;
-    @FXML
     private TextField BookPublisher;
     @FXML
-    private TextField BookCover;
+    private ChoiceBox<String> BookCover;
     @FXML
-    private TextField BookGenre;
+    private ChoiceBox<String> BookGenre;
 
 
-    @FXML
-    private TextField ArticleID;
     @FXML
     private TextField ArticleTitle;
     @FXML
@@ -45,14 +43,8 @@ public class AddItemController extends WorkerController {
     @FXML
     private TextField ArticleISBN;
     @FXML
-    private TextField ArticleReservation;
-    @FXML
-    private TextField ArticleRental;
-    @FXML
-    private TextField ItemArticleType;
+    private ChoiceBox<String> ItemArticleType;
 
-    @FXML
-    private TextField NewID;
     @FXML
     private TextField NewTitle;
     @FXML
@@ -62,15 +54,51 @@ public class AddItemController extends WorkerController {
     @FXML
     private TextField NewISBN;
     @FXML
-    private TextField NewReservation;
-    @FXML
-    private TextField NewRental;
-    @FXML
-    private TextField NewPublishingFreq;
+    private ChoiceBox<String> NewPublishingFreq;
 
     private ItemRepository itemRepository = new ItemRepository();
 
 
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+        ArrayList<String> bookCovers =  new ArrayList<>();
+        bookCovers.add("PAPERBACK");
+        bookCovers.add("HALF_HARD");
+        bookCovers.add("HARD");
+
+        ArrayList<String> bookGenre =  new ArrayList<>();
+        bookGenre.add("SCI_FI");
+        bookGenre.add("HORROR");
+        bookGenre.add("HORROR");
+        bookGenre.add("BIOGRAPHY");
+        bookGenre.add("HISTORY");
+        bookGenre.add("ACTION");
+        bookGenre.add("CLASSIC");
+        bookGenre.add("ROMANCE");
+
+        ArrayList<String> articleType = new ArrayList<>();
+        articleType.add("CASE_STUDY");
+        articleType.add("REVIEW");
+        articleType.add("RESEARCH");
+        articleType.add("REPORT");
+        articleType.add("POPULAR_SCIENCE");
+        articleType.add("ESSAY");
+
+        ArrayList<String> publishingFreg = new ArrayList<>();
+
+        publishingFreg.add("DAY");
+        publishingFreg.add("WEEK");
+        publishingFreg.add("TWO_WEEKS");
+        publishingFreg.add("MONTH");
+        publishingFreg.add("QUARTER");
+        publishingFreg.add("HALF_YEAR");
+        publishingFreg.add("YEAR");
+
+        BookCover.getItems().addAll(bookCovers);
+        BookGenre.getItems().addAll(bookGenre);
+        ItemArticleType.getItems().addAll(articleType);
+        NewPublishingFreq.getItems().addAll(publishingFreg);
+    }
     public void addBook(){
 
         Book newBook = new Book(
@@ -79,14 +107,12 @@ public class AddItemController extends WorkerController {
                 Integer.parseInt(BookPages.getText()),
                 BookISBN.getText(),
                 BookPublisher.getText(),
-                Cover.valueOf(BookCover.getText()),
-                Genre.valueOf(BookGenre.getText())
+                Cover.valueOf(BookCover.getValue()),
+                Genre.valueOf(BookGenre.getValue())
                 );
 
 
         itemRepository.addNewItemAndReturnIfSuccessful(newBook);
-
-
 
     }
     public void addArticle(){
@@ -96,7 +122,7 @@ public class AddItemController extends WorkerController {
                 ArticleTitle.getText(),
                 Integer.parseInt(ArticlePages.getText()),
                 ArticleISBN.getText(),
-                ArticleType.valueOf(ItemArticleType.getText())
+                ArticleType.valueOf(ItemArticleType.getValue())
         );
 
 
@@ -110,12 +136,10 @@ public class AddItemController extends WorkerController {
                 NewTitle.getText(),
                 Integer.parseInt(NewPages.getText()),
                 NewISBN.getText(),
-                PublishingFrequency.valueOf(NewPublishingFreq.getText())
+                PublishingFrequency.valueOf(NewPublishingFreq.getValue())
         );
 
         itemRepository.addNewItemAndReturnIfSuccessful(newNewspaper);
 
     }
-
-
 }

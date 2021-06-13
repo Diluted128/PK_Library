@@ -14,10 +14,8 @@ public class RemoveItemController extends WorkerController {
     @FXML
     private TextField ID;
 
-
-
     public void removeItem(){
-    //"Incorrect ID"
+    //"Incorrect ID exception"
     }
 
 
