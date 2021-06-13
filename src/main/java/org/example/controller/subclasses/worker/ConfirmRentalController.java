@@ -83,11 +83,13 @@ public class ConfirmRentalController extends WorkerController {
 
         User user = actions.stream()
                 .filter(a -> a.getItem().getItemID() == item.getItemID())
+                .filter(a -> a.getActionType().equals(ActionType.RESERVATION))
                 .filter(a -> ((Reservation) a).getPositionInQueue() == 1)
                 .map(a -> a.getUser()).findFirst().get();
 
         actions.stream()
                 .filter(a -> a.getItem().equals(item))
+                .filter(a -> a.getActionType().equals(ActionType.RESERVATION))
                 .filter(a -> ((Reservation) a).getPositionInQueue() > 1)
                 .forEach(a -> ((Reservation)a).setPositionInQueue(((Reservation) a).getPositionInQueue() - 1));
 

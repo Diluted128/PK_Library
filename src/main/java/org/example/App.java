@@ -198,6 +198,7 @@ public class App extends Application {
             List<User> users = new ArrayList<>(List.of(customer, worker, manager));
 
 
+
             UserRepository userRepository = new UserRepository();
             ItemRepository itemRepository = new ItemRepository();
 

@@ -20,6 +20,44 @@
 ## Project Structure
 ![diagram](assets/diagram.png)
 
+## VM Options
+
+There are few VM options required to make application running possible
+
+- Main application
+
+```
+--add-opens=java.base/java.lang.reflect=com.jfoenix
+--add-opens
+org.example/org.example.controller.subclasses.worker=ALL-UNNAMED
+--add-opens
+org.example/org.example.db=ALL-UNNAMED
+--add-opens
+org.example/org.example.model.item=ALL-UNNAMED
+--add-opens
+org.example/org.example.model.action=ALL-UNNAMED
+--add-opens
+org.example/org.example.model.user=ALL-UNNAMED
+--add-opens
+org.example/org.example.model.user=javafx.base
+--add-exports
+org.example/org.example.controller.subclasses.manager=ALL-UNNAMED
+--add-opens
+org.example/org.example.controller.subclasses.manager=ALL-UNNAMED
+```
+
+
+- Tests
+```
+-ea
+--add-exports
+javafx.graphics/com.sun.javafx.application=ALL-UNNAMED
+--add-modules
+javafx.base,javafx.controls,javafx.fxml,javafx.graphics
+--add-opens
+java.base/java.lang.reflect=com.jfoenix
+```
+
 ## Contributors :handshake:
     
     

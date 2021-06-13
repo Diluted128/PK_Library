@@ -87,7 +87,8 @@ public class RentItemController extends CustomerController {
 
     public void reserveItem() {
         //"Incorrect ID"
-        passedId = Integer.parseInt(IdField.getText());
+        passedId = getFromTextField();
+
 
         List<User> users = userRepository.getAllUsers();
         List<Item> items = itemRepository.getAllItems();
@@ -121,11 +122,164 @@ public class RentItemController extends CustomerController {
         setTableView();
 
     }
+
+    public int getFromTextField() {
+        return Integer.parseInt(IdField.getText());
+    }
+
     public void setLoggedInUser(User user) {
         super.setLoggedInUser(user);
         setTableView();
     }
-    public String getIdField() {
-        return IdField.getText();
+    public TextField getIdField() {
+        return IdField;
+    }
+
+    public UserRepository getUserRepository() {
+        return userRepository;
+    }
+
+    public ItemRepository getItemRepository() {
+        return itemRepository;
+    }
+
+    public JFXButton getRentItemButton() {
+        return rentItemButton;
+    }
+
+    public void setRentItemButton(JFXButton rentItemButton) {
+        this.rentItemButton = rentItemButton;
+    }
+
+    public void setIdField(String value) {
+        IdField.setText(value);
+    }
+
+    public ScrollPane getScrollPane() {
+        return scrollPane;
+    }
+
+    public void setScrollPane(ScrollPane scrollPane) {
+        this.scrollPane = scrollPane;
+    }
+
+    public TableView<ItemDTO> getItems() {
+        return items;
+    }
+
+    public void setItems(TableView<ItemDTO> items) {
+        this.items = items;
+    }
+
+    public TableColumn<Item, Integer> getID() {
+        return ID;
+    }
+
+    public void setID(TableColumn<Item, Integer> ID) {
+        this.ID = ID;
+    }
+
+    public TableColumn<Item, String> getType() {
+        return type;
+    }
+
+    public void setType(TableColumn<Item, String> type) {
+        this.type = type;
+    }
+
+    public TableColumn<Item, String> getTitle() {
+        return title;
+    }
+
+    public void setTitle(TableColumn<Item, String> title) {
+        this.title = title;
+    }
+
+    public TableColumn<Item, List<String>> getAuthors() {
+        return authors;
+    }
+
+    public void setAuthors(TableColumn<Item, List<String>> authors) {
+        this.authors = authors;
+    }
+
+    public TableColumn<Item, Integer> getPages() {
+        return pages;
+    }
+
+    public void setPages(TableColumn<Item, Integer> pages) {
+        this.pages = pages;
+    }
+
+    public TableColumn<Item, String> getISBN() {
+        return ISBN;
+    }
+
+    public void setISBN(TableColumn<Item, String> ISBN) {
+        this.ISBN = ISBN;
+    }
+
+    public TableColumn<Item, Boolean> getIsReserved() {
+        return isReserved;
+    }
+
+    public void setIsReserved(TableColumn<Item, Boolean> isReserved) {
+        this.isReserved = isReserved;
+    }
+
+    public TableColumn<Item, Boolean> getIsRented() {
+        return isRented;
+    }
+
+    public void setIsRented(TableColumn<Item, Boolean> isRented) {
+        this.isRented = isRented;
+    }
+
+    public TableColumn<Item, String> getPublisher() {
+        return publisher;
+    }
+
+    public void setPublisher(TableColumn<Item, String> publisher) {
+        this.publisher = publisher;
+    }
+
+    public TableColumn<Item, Genre> getGenre() {
+        return genre;
+    }
+
+    public void setGenre(TableColumn<Item, Genre> genre) {
+        this.genre = genre;
+    }
+
+    public TableColumn<Item, ArticleType> getArticleType() {
+        return articleType;
+    }
+
+    public void setArticleType(TableColumn<Item, ArticleType> articleType) {
+        this.articleType = articleType;
+    }
+
+    public int getPassedId() {
+        return passedId;
+    }
+
+    public void setPassedId(int passedId) {
+        this.passedId = passedId;
+    }
+
+    public void setUserRepository(UserRepository userRepository) {
+        this.userRepository = userRepository;
+    }
+
+    public void setItemRepository(ItemRepository itemRepository) {
+        this.itemRepository = itemRepository;
+    }
+
+    public ActionRepository getActionRepository() {
+        return actionRepository;
+    }
+
+    public void setActionRepository(ActionRepository actionRepository) {
+        this.actionRepository = actionRepository;
     }
 }
