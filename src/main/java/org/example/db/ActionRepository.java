@@ -27,6 +27,7 @@ public class ActionRepository {
     }
 
     public ArrayList<Action> getAllActions() {
+        //TODO: change to xml encoder/decoder
         ArrayList<Action> actions = new ArrayList<>();
         try (ObjectInputStream inputStream = new ObjectInputStream(new FileInputStream(actionsFile))) {
             actions = (ArrayList) inputStream.readObject();
@@ -36,11 +37,8 @@ public class ActionRepository {
         return actions;
     }
 
-    public boolean addNewActionAndReturnIfSuccessful(Action newAction) {
-
-        ArrayList<Action> actions = getAllActions();
-        actions.add(newAction);
-
+    public boolean saveActionsToFile(List<Action> actions) {
+        //TODO: change to xml encoder/decoder
         try (ObjectOutputStream outputStream = new ObjectOutputStream(new FileOutputStream(actionsFile))) {
             outputStream.writeObject(actions);
             return true;
@@ -48,37 +46,23 @@ public class ActionRepository {
             System.out.println(e.getMessage());
             return false;
         }
+    }
+
+
+
+
+    public boolean addNewActionAndReturnIfSuccessful(Action newAction) {
+        ArrayList<Action> actions = getAllActions();
+        actions.add(newAction);
+        return saveActionsToFile(actions);
     }
 
     public boolean removeActionAndReturnIfSuccessful(Action action) {
-
         ArrayList<Action> actions = getAllActions();
         actions.remove(action);
-
-        try (ObjectOutputStream outputStream = new ObjectOutputStream(new FileOutputStream(actionsFile))) {
-            outputStream.writeObject(actions);
-            return true;
-        } catch (IOException e) {
-            System.out.println(e.getMessage());
-            return false;
-        }
-
+        return saveActionsToFile(actions);
     }
 
-    public void saveActionsToFile(List<Action> actions) {
-        try (ObjectOutputStream outputStream = new ObjectOutputStream(new FileOutputStream(actionsFile))) {
-            outputStream.writeObject(actions);
-        } catch (IOException e) {
-            System.out.println(e.getMessage());
-        }
-    }
-    public void saveActionToFile(Action action) {
-        try (ObjectOutputStream outputStream = new ObjectOutputStream(new FileOutputStream(actionsFile))) {
-            outputStream.writeObject(action);
-        } catch (IOException e) {
-            System.out.println(e.getMessage());
-        }
-    }
 
 }
 

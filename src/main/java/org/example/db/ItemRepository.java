@@ -25,6 +25,7 @@ public class ItemRepository {
     }
 
     public ArrayList<Item> getAllItems() {
+        //TODO: change to xml encoder/decoder
         ArrayList<Item> items = new ArrayList<>();
         try (ObjectInputStream inputStream = new ObjectInputStream(new FileInputStream(itemsFile))) {
             items = (ArrayList) inputStream.readObject();
@@ -34,67 +35,38 @@ public class ItemRepository {
         return items;
     }
 
-    public void saveItemsToFile(List<Item> items) {
+    public boolean saveItemsToFile(List<Item> items) {
+        //TODO: change to xml encoder/decoder
         try (ObjectOutputStream outputStream = new ObjectOutputStream(new FileOutputStream(itemsFile))) {
             outputStream.writeObject(items);
+            return true;
         } catch (IOException e) {
             System.out.println(e.getMessage());
+            return false;
         }
     }
 
     public boolean addNewItemAndReturnIfSuccessful(Item newItem) {
         ArrayList<Item> items = getAllItems();
-
         items.add(newItem);
-
-        try (ObjectOutputStream outputStream = new ObjectOutputStream(new FileOutputStream(itemsFile))) {
-            outputStream.writeObject(items);
-            return true;
-        } catch (IOException e) {
-            System.out.println(e.getMessage());
-            return false;
-        }
+        return saveItemsToFile(items);
     }
 
     public boolean addNewItemsAndReturnIfSuccessful(List<Item> newItems) {
         ArrayList<Item> items = getAllItems();
-
         items.addAll(newItems);
-
-        try (ObjectOutputStream outputStream = new ObjectOutputStream(new FileOutputStream(itemsFile))) {
-            outputStream.writeObject(items);
-            return true;
-        } catch (IOException e) {
-            System.out.println(e.getMessage());
-            return false;
-        }
+        return saveItemsToFile(items);
     }
 
     public boolean removeItemAndReturnIfSuccessful(Item item) {
         ArrayList<Item> items = getAllItems();
-
         items.remove(item);
-
-        try (ObjectOutputStream outputStream = new ObjectOutputStream(new FileOutputStream(itemsFile))) {
-            outputStream.writeObject(items);
-            return true;
-        } catch (IOException e) {
-            System.out.println(e.getMessage());
-            return false;
-        }
+        return saveItemsToFile(items);
     }
 
     public boolean removeItemsAndReturnIfSuccessful(List<Item> items) {
         ArrayList<Item> itemList = getAllItems();
-
         itemList.removeAll(items);
-
-        try (ObjectOutputStream outputStream = new ObjectOutputStream(new FileOutputStream(itemsFile))) {
-            outputStream.writeObject(itemList);
-            return true;
-        } catch (IOException e) {
-            System.out.println(e.getMessage());
-            return false;
-        }
+        return saveItemsToFile(items);
     }
 }

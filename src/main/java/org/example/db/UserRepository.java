@@ -27,6 +27,8 @@ public class UserRepository {
         return userRepository;
     }
 
+
+
     public ArrayList<User> getAllUsers() {
         ArrayList<User> users = new ArrayList<>();
         try (ObjectInputStream inputStream = new ObjectInputStream(new FileInputStream(usersFile))) {
@@ -37,24 +39,7 @@ public class UserRepository {
         return users;
     }
 
-    public void saveUsersToFile(List<User> users) {
-        try (ObjectOutputStream outputStream = new ObjectOutputStream(new FileOutputStream(usersFile))) {
-            outputStream.writeObject(users);
-        } catch (IOException e) {
-            System.out.println(e.getMessage());
-        }
-    }
-
-    public boolean addNewUserAndReturnIfSuccessful(User newUser) {
-        ArrayList<User> users = getAllUsers();
-
-        if (users.stream().anyMatch(u -> u.getLogin().equals(newUser.getEmail()))) {
-            return false;
-        }
-
-
-        users.add(newUser);
-
+    public boolean saveUsersToFile(List<User> users) {
         try (ObjectOutputStream outputStream = new ObjectOutputStream(new FileOutputStream(usersFile))) {
             outputStream.writeObject(users);
             return true;
@@ -62,28 +47,29 @@ public class UserRepository {
             System.out.println(e.getMessage());
             return false;
         }
+    }
+
+
+
+    public boolean addNewUserAndReturnIfSuccessful(User newUser) {
+        ArrayList<User> users = getAllUsers();
+
+        if (users.stream().anyMatch(u -> u.getLogin().equals(newUser.getLogin()))) {
+            return false;
+        }
+
+        users.add(newUser);
+        return saveUsersToFile(users);
 
     }
 
     public boolean removeUserAndReturnIfSuccessful(User user) {
         ArrayList<User> users = getAllUsers();
-
-        if (users.stream().anyMatch(u -> u.getLogin().equals(user.getEmail()))) {
-            return false;
-        }
-
-
         users.remove(user);
-
-        try (ObjectOutputStream outputStream = new ObjectOutputStream(new FileOutputStream(usersFile))) {
-            outputStream.writeObject(users);
-            return true;
-        } catch (IOException e) {
-            System.out.println(e.getMessage());
-            return false;
-        }
-
+        return saveUsersToFile(users);
     }
+
+
     // wj
     //------------
     public ArrayList<User> returnAllWorkers(){
@@ -93,34 +79,7 @@ public class UserRepository {
             if(user instanceof Worker)
                 workers.add(user);
         }
-        return  workers;
+        return workers;
     }
 
-    public boolean addWorkerIfSuccessful(User worker){
-        ArrayList<User> workers = returnAllWorkers();
-
-        workers.add(worker);
-
-        try (ObjectOutputStream outputStream = new ObjectOutputStream(new FileOutputStream(usersFile))) {
-            outputStream.writeObject(workers);
-            return true;
-        } catch (IOException e) {
-            System.out.println(e.getMessage());
-            return false;
-        }
-    }
-
-    public boolean removeWorkerIfSuccessful(User worker){
-        ArrayList<User> workers = returnAllWorkers();
-
-        workers.remove(worker);
-
-        try (ObjectOutputStream outputStream = new ObjectOutputStream(new FileOutputStream(usersFile))) {
-            outputStream.writeObject(workers);
-            return true;
-        } catch (IOException e) {
-            System.out.println(e.getMessage());
-            return false;
-        }
-    }
 }
