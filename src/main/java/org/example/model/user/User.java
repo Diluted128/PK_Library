@@ -5,6 +5,7 @@ import org.example.model.item.Item;
 
 import java.io.Serializable;
 import java.util.List;
+import java.util.Objects;
 
 @SuppressWarnings("unused")
 public abstract class User implements Serializable {
@@ -105,4 +106,18 @@ public abstract class User implements Serializable {
     public boolean areCredentialsEqual(String login, String password) {
         return this.getLogin().equals(login) && this.getPassword().equals(password);
     }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        User user = (User) o;
+        return userID == user.userID;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(userID);
+    }
+
 }

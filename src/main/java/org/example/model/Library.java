@@ -7,6 +7,7 @@ import org.example.model.user.User;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 public class Library {
     private String name;
@@ -68,4 +69,16 @@ public class Library {
                 .forEach(System.out::println);
     }
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Library library = (Library) o;
+        return Objects.equals(name, library.name) && Objects.equals(blacklist, library.blacklist) && Objects.equals(users, library.users) && Objects.equals(items, library.items) && Objects.equals(actions, library.actions);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(name, blacklist, users, items, actions);
+    }
 }

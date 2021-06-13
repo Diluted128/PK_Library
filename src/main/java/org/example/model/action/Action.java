@@ -8,7 +8,6 @@ import java.time.Instant;
 
 public abstract class Action implements Serializable {
 
-
     private Instant time;
     private User user;
     private Item item;
