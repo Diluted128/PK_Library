@@ -76,64 +76,69 @@ public class ConfirmRentalController extends WorkerController {
 
     public void confirmRental(){
 
-        passedRentItemId = Integer.parseInt(rentalItemId.getText());
-
         try {
-            if (rentalItemId.getText().equals("")) {
+            passedRentItemId = Integer.parseInt(rentalItemId.getText());
+
+            try {
+                if (rentalItemId.getText().equals("")) {
+                    throw new TextFieldEmptyException();
+                }
+            } catch (TextFieldEmptyException e) {
+                System.out.println(e.getMessage());
                 IDwarning = true;
-                throw new TextFieldEmptyException();
+                Thread confirm_t = new Thread(new Confirm_Thread(rentedWarning, IDwarning));
+                confirm_t.start();
             }
-        } catch (TextFieldEmptyException e) {
-            System.out.println(e.getMessage());
+
+            List<User> users = userRepository.getAllUsers();
+            List<Item> items = itemRepository.getAllItems();
+            List<Action> actions = actionRepository.getAllActions();
+
+            Item item;
+            try {
+                item = items.stream().filter(i -> i.getItemID() == passedRentItemId).findFirst().get();
+            } catch (Exception e) {
+                IDwarning = true;
+                throw new IncorrectIdException();
+            }
+
+
+            User user = actions.stream()
+                    .filter(a -> a.getItem().getItemID() == item.getItemID())
+                    .filter(a -> a.getActionType().equals(ActionType.RESERVATION))
+                    .filter(a -> ((Reservation) a).getPositionInQueue() == 1)
+                    .map(a -> a.getUser()).findFirst().get();
+
+            actions.stream()
+                    .filter(a -> a.getItem().equals(item))
+                    .filter(a -> a.getActionType().equals(ActionType.RESERVATION))
+                    .filter(a -> ((Reservation) a).getPositionInQueue() > 1)
+                    .forEach(a -> ((Reservation) a).setPositionInQueue(((Reservation) a).getPositionInQueue() - 1));
+
+
+            item.setIsReserved(false);
+            item.setIsRented(true);
+
+            users.stream()
+                    .filter(u -> u.getLogin().equals(user.getLogin()))
+                    .forEach(u -> ((Customer) u).removeReservedItem(item));
+            users.stream()
+                    .filter(u -> u.getLogin().equals(user.getLogin()))
+                    .forEach(u -> ((Customer) u).addRentedItem(item));
+
+
+            actions.add(new Rental(Instant.now(), user, item, 30, true));
+
+            itemRepository.saveItemsToFile(items);
+            actionRepository.saveActionsToFile(actions);
+            userRepository.saveUsersToFile(users);
+
+            setTableView();
+        }
+        catch (Exception e){
             Thread confirm_t = new Thread(new Confirm_Thread(rentedWarning, IDwarning));
             confirm_t.start();
         }
-
-        List<User> users = userRepository.getAllUsers();
-        List<Item> items = itemRepository.getAllItems();
-        List<Action> actions = actionRepository.getAllActions();
-
-        Item item;
-        try {
-            item = items.stream().filter(i -> i.getItemID() == passedRentItemId).findFirst().get();
-        } catch (Exception e) {
-            IDwarning = true;
-            throw new IncorrectIdException();
-        }
-
-
-
-        User user = actions.stream()
-                .filter(a -> a.getItem().getItemID() == item.getItemID())
-                .filter(a -> a.getActionType().equals(ActionType.RESERVATION))
-                .filter(a -> ((Reservation) a).getPositionInQueue() == 1)
-                .map(a -> a.getUser()).findFirst().get();
-
-        actions.stream()
-                .filter(a -> a.getItem().equals(item))
-                .filter(a -> a.getActionType().equals(ActionType.RESERVATION))
-                .filter(a -> ((Reservation) a).getPositionInQueue() > 1)
-                .forEach(a -> ((Reservation)a).setPositionInQueue(((Reservation) a).getPositionInQueue() - 1));
-
-
-        item.setIsReserved(false);
-        item.setIsRented(true);
-
-        users.stream()
-                .filter(u -> u.getLogin().equals(user.getLogin()))
-                .forEach(u -> ((Customer)u).removeReservedItem(item));
-        users.stream()
-                .filter(u -> u.getLogin().equals(user.getLogin()))
-                .forEach(u -> ((Customer)u).addRentedItem(item));
-
-
-        actions.add(new Rental(Instant.now(), user, item, 30, true));
-
-        itemRepository.saveItemsToFile(items);
-        actionRepository.saveActionsToFile(actions);
-        userRepository.saveUsersToFile(users);
-
-        setTableView();
     }
 
 
@@ -142,17 +147,27 @@ public class ConfirmRentalController extends WorkerController {
 
         passedPickupItemId = Integer.parseInt(pickupItemId.getText());
 
+        try {
+            if (rentalItemId.getText().equals("")) {
+                throw new TextFieldEmptyException();
+            }
+        } catch (TextFieldEmptyException e) {
+            System.out.println(e.getMessage());
+            IDwarning = true;
+            Thread confirm_t = new Thread(new Confirm_Thread(rentedWarning, IDwarning));
+            confirm_t.start();
+        }
+
         List<User> users = userRepository.getAllUsers();
         List<Item> items = itemRepository.getAllItems();
         List<Action> actions = actionRepository.getAllActions();
         Item item;
 
-
-
         try {
             item = items.stream().filter(i -> i.getItemID() == passedPickupItemId).findFirst().get();
         } catch (IncorrectIdException | TextFieldEmptyException | RentedBookException e){
             System.out.println(e.getMessage());
+
             Thread confirm_t = new Thread(new Confirm_Thread(rentedWarning, IDwarning));
             confirm_t.start();
             return;
@@ -175,24 +190,19 @@ public class ConfirmRentalController extends WorkerController {
                     .findFirst().get();
         } catch (IncorrectIdException | TextFieldEmptyException | RentedBookException e){
             System.out.println(e.getMessage());
+            rentedWarning = true;
             Thread confirm_t = new Thread(new Confirm_Thread(rentedWarning, IDwarning));
             confirm_t.start();
             return;
         }
 
-
-
-
         long between = DAYS.between(Instant.now().adjustInto(Instant.now()), Instant.now().adjustInto(action.getTime()));
         int daysDuration = ((Rental) action).getDaysDuration();
-
 
         item.setIsReserved(false);
         item.setIsRented(false);
 
         ((Customer)user).removeRentedItem(item);
-
-
 
         users.stream()
                 .filter(u -> u.getLogin().equals(user.getLogin()))
@@ -215,11 +225,9 @@ public class ConfirmRentalController extends WorkerController {
         itemRepository.updateItemInfo(item);
         userRepository.updateUserInfo(user);
 
-
         itemRepository.saveItemsToFile(items);
         actionRepository.saveActionsToFile(actions);
         userRepository.saveUsersToFile(users);
-
 
         setTableView();
 
