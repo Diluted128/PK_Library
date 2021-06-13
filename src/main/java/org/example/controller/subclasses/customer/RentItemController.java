@@ -99,7 +99,7 @@ public class RentItemController extends CustomerController {
         if (optionalItem.isPresent()) {
             item = optionalItem.get();
         } else {
-            //todo: do what program has to do when bad is is passed
+            //todo: do what program has to do when bad id is passed
             return;
         }
 

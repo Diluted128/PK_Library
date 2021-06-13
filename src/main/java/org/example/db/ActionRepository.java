@@ -10,7 +10,7 @@ import java.util.List;
 
 public class ActionRepository {
 
-    private static final File actionsFile = new File("./src/main/java/org/example/db/actions.bin");
+    private static final File actionsFile = new File("./src/main/java/org/example/db/actions.xml");
     private static ActionRepository actionRepository = createSingletonInstance();
 
     private static ActionRepository createSingletonInstance() {

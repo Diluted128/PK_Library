@@ -112,8 +112,8 @@ public class App extends Application {
 
             List<File> files = List.of(
             new File("./src/main/java/org/example/db/users.bin"),
-            new File("./src/main/java/org/example/db/items.bin"),
-            new File("./src/main/java/org/example/db/actions.bin")
+            new File("./src/main/java/org/example/db/items.xml"),
+            new File("./src/main/java/org/example/db/actions.xml")
             );
             files.forEach(f -> {
                 if (f.exists()) {

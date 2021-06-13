@@ -65,9 +65,6 @@ public class ConfirmRentalController extends WorkerController {
     private TableColumn<Item, ArticleType> articleType;
 
     private int passedRentItemId;
-
-
-
     private UserRepository userRepository = new UserRepository();
     private ItemRepository itemRepository = new ItemRepository();
     private ActionRepository actionRepository = new ActionRepository();
@@ -148,7 +145,6 @@ public class ConfirmRentalController extends WorkerController {
         ObservableList<ItemDTO> observableItems = FXCollections.observableArrayList();
         observableItems.addAll(itemsDTO);
         items.setItems(observableItems);
-
 
     }
 
