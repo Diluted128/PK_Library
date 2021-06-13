@@ -19,6 +19,11 @@
             <Image url="@../../../../../src/main/java/org/example/images/RentItemBackground.png" />
          </image>
       </ImageView>
+      <Label fx:id="WarningId" layoutX="636.0" layoutY="495.0" prefHeight="15.0" prefWidth="80.0" text="Inncorect Id" textFill="RED" visible="false">
+         <font>
+            <Font name="Open Sans Bold" size="14.0" />
+         </font>
+      </Label>
       <TextField fx:id="IdField" layoutX="636.0" layoutY="512.0" prefHeight="25.0" prefWidth="66.0" promptText="Item ID">
          <effect>
             <ColorAdjust brightness="-0.19" contrast="0.15" hue="0.41" />

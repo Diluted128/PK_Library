@@ -7,9 +7,13 @@ import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import org.example.controller.abstraction.CustomerController;
+import org.example.controller.subclasses.home.PasswordReminderController;
+import org.example.controller.subclasses.worker.ConfirmRentalController;
 import org.example.db.ActionRepository;
 import org.example.db.ItemRepository;
 import org.example.db.UserRepository;
+import org.example.exception.IncorrectIdException;
+import org.example.exception.TextFieldEmptyException;
 import org.example.model.action.Action;
 import org.example.model.action.Reservation;
 import org.example.model.item.*;
@@ -27,6 +31,8 @@ public class RentItemController extends CustomerController {
     private JFXButton rentItemButton;
     @FXML
     private TextField IdField;
+    @FXML
+    private Label WarningId;
     @FXML
     private ScrollPane scrollPane;
     @FXML
@@ -83,43 +89,53 @@ public class RentItemController extends CustomerController {
 
     }
 
-
-
     public void reserveItem() {
-        //"Incorrect ID Exception"
-        passedId = Integer.parseInt(IdField.getText());
+        try {
+            String id = IdField.getText();
 
-        List<User> users = userRepository.getAllUsers();
-        List<Item> items = itemRepository.getAllItems();
-        List<Action> actions = actionRepository.getAllActions();
+            if (id.equals("")) {
+                throw new TextFieldEmptyException();
+            }
+            passedId = Integer.parseInt(id);
 
-        Optional<Item> optionalItem = items.stream().filter(i -> i.getItemID() == passedId).findFirst();
-        User user = users.stream().filter(u -> u.getLogin().equals(loggedInUser.getLogin())).findFirst().get();
-        Item item;
-        if (optionalItem.isPresent()) {
-            item = optionalItem.get();
-        } else {
-            //todo: do what program has to do when bad id is passed
-            return;
+            //"Incorrect ID Exception"
+            passedId = Integer.parseInt(IdField.getText());
+
+            List<User> users = userRepository.getAllUsers();
+            List<Item> items = itemRepository.getAllItems();
+            List<Action> actions = actionRepository.getAllActions();
+
+            Optional<Item> optionalItem = items.stream().filter(i -> i.getItemID() == passedId).findFirst();
+            User user = users.stream().filter(u -> u.getLogin().equals(loggedInUser.getLogin())).findFirst().get();
+            Item item;
+            if (optionalItem.isPresent()) {
+                item = optionalItem.get();
+            } else {
+                throw new IncorrectIdException();
+            }
+
+            Customer customer = (Customer) user;
+
+            Long positionInQueue = users.stream()
+                    .filter(u -> u.getRoles().contains(Role.CUSTOMER))
+                    .filter(u -> ((Customer) u).getReservedItems().contains(item))
+                    .count();
+
+            item.setIsReserved(true);
+            customer.addReservedItem(item);
+            actions.add(new Reservation(Instant.now(), user, item, positionInQueue + 1));
+
+            itemRepository.saveItemsToFile(items);
+            actionRepository.saveActionsToFile(actions);
+            userRepository.saveUsersToFile(users);
+
+            setTableView();
         }
-
-        Customer customer = (Customer)user;
-
-        Long positionInQueue = users.stream()
-                .filter(u -> u.getRoles().contains(Role.CUSTOMER))
-                .filter(u -> ((Customer)u).getReservedItems().contains(item))
-                .count();
-
-        item.setIsReserved(true);
-        customer.addReservedItem(item);
-        actions.add(new Reservation(Instant.now(), user, item, positionInQueue + 1));
-
-        itemRepository.saveItemsToFile(items);
-        actionRepository.saveActionsToFile(actions);
-        userRepository.saveUsersToFile(users);
-
-        setTableView();
-
+        catch(TextFieldEmptyException | IncorrectIdException e){
+            System.out.println(e.getMessage());
+            Thread rent_t = new Thread(new Rent_Thread());
+            rent_t.start();
+        }
     }
     public void setLoggedInUser(User user) {
         super.setLoggedInUser(user);
@@ -127,5 +143,19 @@ public class RentItemController extends CustomerController {
     }
     public String getIdField() {
         return IdField.getText();
+    }
+
+    class Rent_Thread implements Runnable {
+
+        @Override
+        public  void run() {
+            WarningId.setVisible(true);
+            try {
+                Thread.sleep(5000);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+            WarningId.setVisible(false);
+        }
     }
 }
