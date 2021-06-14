@@ -53,12 +53,12 @@
             <TableColumn fx:id="WorkerPassword" prefWidth="103.0" text="Password" />
          </columns>
       </TableView>
-      <TextField fx:id="workerToFireID" layoutX="645.0" layoutY="532.0" prefHeight="25.0" prefWidth="66.0" promptText="Worker ID">
+      <TextField fx:id="workerToFireID" layoutX="645.0" layoutY="532.0" prefHeight="25.0" prefWidth="66.0" promptText="User ID">
          <effect>
             <ColorAdjust brightness="0.1" hue="0.27" />
          </effect>
       </TextField>
-      <JFXButton layoutX="579.0" layoutY="602.0" onAction="#fireWorker" prefHeight="35.0" prefWidth="199.0" ripplerFill="#ff03ff" style="-fx-background-color: #924da5;" text="Fire worker" textFill="WHITE">
+      <JFXButton layoutX="579.0" layoutY="602.0" onAction="#fireWorker" prefHeight="35.0" prefWidth="199.0" ripplerFill="#ff03ff" style="-fx-background-color: #924da5;" text="remove user" textFill="WHITE">
          <font>
             <Font name="Open Sans Bold" size="14.0" />
          </font>
@@ -66,12 +66,12 @@
             <ColorAdjust contrast="0.24" hue="0.79" />
          </effect>
       </JFXButton>
-      <Label layoutX="612.0" layoutY="567.0" prefHeight="20.0" prefWidth="134.0" text="Put ID to fire worker" textFill="#757575">
+      <Label layoutX="606.0" layoutY="572.0" prefHeight="20.0" prefWidth="145.0" text="Put ID to remove user" textFill="#757575">
          <font>
             <Font name="Open Sans Regular" size="14.0" />
          </font>
       </Label>
-      <Label layoutX="340.0" layoutY="36.0" prefHeight="52.0" prefWidth="169.0" text="Fire worker">
+      <Label layoutX="340.0" layoutY="36.0" prefHeight="52.0" prefWidth="169.0" text="Remove user">
          <font>
             <Font name="Open Sans Regular" size="24.0" />
          </font>
