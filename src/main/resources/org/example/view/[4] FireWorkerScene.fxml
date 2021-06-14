@@ -35,7 +35,7 @@
             <Cursor fx:constant="HAND" />
          </cursor>
       </JFXButton>
-      <JFXButton buttonType="RAISED" focusTraversable="false" layoutX="53.0" layoutY="345.0" onAction="#changeSceneToSignOut" prefHeight="35.0" prefWidth="178.0" ripplerFill="#4c026f" text="-" textFill="WHITE">
+      <JFXButton fx:id="signOutButton"  buttonType="RAISED" focusTraversable="false" layoutX="53.0" layoutY="345.0" onAction="#changeSceneToSignOut" prefHeight="35.0" prefWidth="178.0" ripplerFill="#4c026f" text="-" textFill="WHITE">
          <font>
             <Font size="1.0" />
          </font>
@@ -58,7 +58,7 @@
             <ColorAdjust brightness="0.1" hue="0.27" />
          </effect>
       </TextField>
-      <JFXButton layoutX="579.0" layoutY="602.0" onAction="#fireWorker" prefHeight="35.0" prefWidth="199.0" ripplerFill="#ff03ff" style="-fx-background-color: #924da5;" text="remove user" textFill="WHITE">
+      <JFXButton fx:id="fireWorkerButton" layoutX="579.0" layoutY="602.0" onAction="#fireWorker" prefHeight="35.0" prefWidth="199.0" ripplerFill="#ff03ff" style="-fx-background-color: #924da5;" text="remove user" textFill="WHITE">
          <font>
             <Font name="Open Sans Bold" size="14.0" />
          </font>

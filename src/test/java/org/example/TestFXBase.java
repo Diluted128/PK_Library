@@ -9,19 +9,21 @@ import javafx.stage.Stage;
 import org.example.App;
 import org.junit.After;
 import org.junit.Before;
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeEach;
 import org.testfx.api.FxToolkit;
 import org.testfx.framework.junit5.ApplicationTest;
 
 import java.util.concurrent.TimeoutException;
 
 
-public abstract class TextFXBase extends ApplicationTest {
+public abstract class TestFXBase extends ApplicationTest {
 
     @Before
     public void setUpClass() throws Exception {
-        App.addInitalData();
         ApplicationTest.launch(App.class);
     }
+
 
     @Override
     public void start(Stage stage) throws Exception {

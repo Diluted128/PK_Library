@@ -23,6 +23,10 @@ public abstract class Action implements Serializable {
         this.actionType = actionType;
     }
 
+    public static void  setStaticCounterToOne() {
+        idCounter = 1;
+    }
+
     public int getActionID() {
         return actionID;
     }

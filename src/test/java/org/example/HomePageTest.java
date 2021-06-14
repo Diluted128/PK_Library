@@ -1,15 +1,18 @@
 package org.example;
 
 import org.junit.Test;
+import org.junit.jupiter.api.BeforeEach;
 import org.testfx.api.FxAssert;
-import org.testfx.assertions.api.Assertions;
 import org.testfx.matcher.base.NodeMatchers;
 
-public class HomePageTest extends TextFXBase {
+public class HomePageTest extends TestFXBase {
 
 
     @Test
     public void shouldCreateNewAccount() throws Exception {
+
+        App.addInitalData();
+
 
         //given
         String login = "TestUser";
@@ -47,6 +50,9 @@ public class HomePageTest extends TextFXBase {
     @Test
     public void shouldLogInAsCustomer() throws Exception {
 
+        App.addInitalData();
+
+
         //given
         String login = "customer";
         String password = "customer";
@@ -67,6 +73,9 @@ public class HomePageTest extends TextFXBase {
     @Test
     public void shouldLogInAsWorker() throws Exception {
 
+        App.addInitalData();
+
+
         //given
         String login = "worker";
         String password = "worker";
@@ -85,6 +94,9 @@ public class HomePageTest extends TextFXBase {
 
     @Test
     public void shouldLogInAsManger() throws Exception {
+
+        App.addInitalData();
+
 
         //given
         String login = "admin";

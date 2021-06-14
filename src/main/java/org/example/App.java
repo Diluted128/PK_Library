@@ -7,6 +7,7 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 import org.example.db.ItemRepository;
 import org.example.db.UserRepository;
+import org.example.model.action.Action;
 import org.example.model.item.*;
 import org.example.model.user.Customer;
 import org.example.model.user.Manager;
@@ -36,6 +37,12 @@ public class App extends Application {
         }
 
         public static void addInitalData() {
+
+
+            User.setStaticCounterToOne();
+            Item.setStaticCounterToOne();
+            Action.setStaticCounterToOne();
+
             Manager manager = new Manager(
                     "John",
                     "Doe",

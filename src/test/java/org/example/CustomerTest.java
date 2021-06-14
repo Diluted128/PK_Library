@@ -1,18 +1,20 @@
 package org.example;
 
-import javafx.scene.control.TableCell;
-import javafx.scene.control.TableView;
-import org.example.model.item.ItemDTO;
+import org.junit.Before;
 import org.junit.Test;
+import org.junit.jupiter.api.BeforeEach;
 import org.testfx.api.FxAssert;
-import org.testfx.api.FxRobot;
 import org.testfx.matcher.base.NodeMatchers;
 import org.testfx.matcher.control.TableViewMatchers;
 
-public class CustomerTest  extends TextFXBase {
+public class CustomerTest  extends TestFXBase {
 
     @Test
     public void shouldReserveABook() {
+
+        App.addInitalData();
+
+
         //login values
         String customer = "customer";
         String worker = "worker";
@@ -111,4 +113,5 @@ public class CustomerTest  extends TextFXBase {
         FxAssert.verifyThat("#balanceField", NodeMatchers.hasChild("0.0"));
         sleep(3000);
     }
+
 }

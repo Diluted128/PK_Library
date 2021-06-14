@@ -30,6 +30,10 @@ public abstract class User implements Serializable {
 
     }
 
+    public static void  setStaticCounterToOne() {
+        idCounter = 1;
+    }
+
     public String getFirstName() {
         return firstName;
     }

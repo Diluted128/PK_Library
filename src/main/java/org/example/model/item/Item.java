@@ -1,5 +1,7 @@
 package org.example.model.item;
 
+import org.example.db.ItemRepository;
+
 import java.io.Serializable;
 import java.util.List;
 import java.util.Objects;
@@ -25,6 +27,10 @@ public abstract class Item implements Serializable {
         isRented = false;
         isReserved = false;
         itemID = counter++;
+    }
+
+    public static void  setStaticCounterToOne() {
+        counter = 1;
     }
 
     public List<String> getAuthors() {

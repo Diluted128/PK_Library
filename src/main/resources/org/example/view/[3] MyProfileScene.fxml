@@ -67,7 +67,7 @@
          </font>
       </Label>
       <Label fx:id="emailField" layoutX="448.0" layoutY="527.0" prefHeight="32.0" prefWidth="233.0" text="-" />
-      <JFXButton buttonType="RAISED" focusTraversable="false" layoutX="50.0" layoutY="502.0" onAction="#changeSceneToSignOut" prefHeight="35.0" prefWidth="184.0" ripplerFill="#4c026f" text="-" textFill="WHITE">
+      <JFXButton fx:id="signOutButton"  buttonType="RAISED" focusTraversable="false" layoutX="50.0" layoutY="502.0" onAction="#changeSceneToSignOut" prefHeight="35.0" prefWidth="184.0" ripplerFill="#4c026f" text="-" textFill="WHITE">
          <font>
             <Font size="1.0" />
          </font>

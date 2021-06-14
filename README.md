@@ -70,6 +70,9 @@ javafx.graphics/com.sun.javafx.application=ALL-UNNAMED
 javafx.base,javafx.controls,javafx.fxml,javafx.graphics
 --add-opens
 java.base/java.lang.reflect=com.jfoenix
+--add-opens
+org.example/org.example.model.user=javafx.base
+
 ```
 
 ## Contributors :handshake:
