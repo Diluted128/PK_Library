@@ -1,7 +1,7 @@
 ![LOGO](https://user-images.githubusercontent.com/67759414/120201068-4e68c680-c225-11eb-87f9-9216754dc110.png)
-
-
-  
+![GitHub last commit](https://img.shields.io/github/last-commit/Diluted128/PK_Library) 
+![GitHub repo size](https://img.shields.io/github/repo-size/Diluted128/PK_Library) 
+ ![GitHub contributors](https://img.shields.io/github/contributors/Diluted128/PK_Library)
 ## Basic Overview
 
  Simple program in java to simulate and manage real library resources for workers. Using this app you can hire/fire employees, view stats about rented books, show info about customers and more! 
